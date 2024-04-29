@@ -1,0 +1,120 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+
+
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 27vh;
+  height: 100vh;
+  background-color: #fafafa;
+  left: -27vh;
+  transition: all 500ms linear;
+  z-index: 1000;
+}
+
+#sidebar.active {
+  left: 0px;
+}
+
+#sidebar .toggle-btn {
+  position: absolute;
+  margin-left: 10px;
+  left: 100%;
+  top: 10px;
+  cursor: pointer;
+  transition: all 0.9s;
+}
+
+#sidebar .toggle-btn span svg {
+  width: 38px;
+  height: 38px;
+  border-radius: 5px;
+  color: rgba(34, 0, 80, 1);
+  background-color: #fff;
+  transition: all 0.9s;
+}
+
+#sidebar .toggle-btn span svg:hover {
+  color: #ffff;
+  background-color: rgba(34, 0, 80, 1);
+  border: 1px solid;
+  transition: all 0.9s;
+}
+
+#sidebar .containerProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 15px 30px;
+}
+
+#sidebar .containerProfile .logo {
+  width: 100%;
+  border-radius: 100%;
+}
+
+#sidebar .containerProfile img {
+  width: 160px;
+  height: 180px;
+}
+
+#sidebar .containerProfile h3 {
+  padding-top: 15px;
+  color: #727272;
+  font-size: 22px;
+}
+
+#sidebar .containerProfile p {
+  color: grey;
+  font-size: 15px;
+}
+
+#sidebar .navbarItems {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  gap: 20px;
+  padding: 0 15px;
+}
+
+
+#sidebar .navbarItems a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  gap: 15px;
+  width: 100%;
+  font-size: 18px;
+  color: #727272;
+  padding: 8px 0;
+  border-radius: 50px;
+  text-align: center;
+}
+
+#sidebar .navbarItems a svg {
+  width: 22px;
+}
+
+#sidebar .navbarItems a:hover {
+  background-image: linear-gradient(to right, #35155d, #4e3378, #685194, #8371b0, #9f91cc);
+  color: white;
+}
+
+#sidebar .navbarItems a.itemActive {
+  background-image: linear-gradient(to right, #35155d, #4e3378, #685194, #8371b0, #9f91cc);
+  color: white;
+}
+
+
+

@@ -1,0 +1,137 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+}
+  
+  /* Search Bar */
+  
+  .search{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .search input{
+    width: 85%;
+    height: 45px;
+    border-radius: 10px 0 0 10px;
+    border: 1px solid var(--background-stroke);;
+    background-color: var(--background-fill);
+    font-size: 17px;
+    padding: 0 25px;
+  }
+  
+  .search button{
+    width: 15%;
+    border-radius: 0 10px 10px 0;
+    border: 1px solid var(--background-btn-primary);
+    background-color: var(--background-btn-primary);
+    color: #ffff;
+    font-size: 17px;
+    transition: all ease 0.7s;
+  }
+  
+  .search button:hover{
+    background-color: var(--background-btn-primary-hover);
+    transition: all ease 0.7s;
+  }
+  
+  .search button i{
+    margin: 0 10px;
+  }
+  
+  /* Container estudents */
+  
+  .information{
+    display: flex;
+    align-items: center;
+    margin: 45px 0 0 0 ;
+    border: 1px solid var(--background-navbar);
+    border-radius: 15px 15px 0 0;
+    height: 50px;
+    color: var(--letter-color-main-dark);
+    font: bold;
+    padding: 0 0 0 25px;
+    background-color: var(--background-navbar);
+  }
+  
+  /* Estudents */
+
+  .container-users{
+    overflow: auto;
+    height: 60%;
+  }
+  
+  .estudents{
+    display: grid;
+    grid-template-columns: 40% 40% 15% 10%;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid grey;
+    border-right: 1px solid grey;
+  }
+  
+  .estudents p{
+    text-align: start;
+    font-size: 17px;
+    color: var(--letter-color-main-dark);
+    margin: 0;
+  }
+  
+  .estudents a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 40px;
+    margin: 0 15px;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  
+  .estudents :nth-child(4){
+    background-color: var(--background-btn-secondary);
+    color: var(--letter-color-text);
+    border: 1px solid  var(--background-btn-secondary);
+    transition: all ease 0.3s;
+  }
+  
+  .estudents :nth-child(4){
+    background-color: var(--background-btn-primary);
+    color: var(--letter-color-text);
+    border: 1px solid  var(--background-btn-primary);
+    transition: all ease 0.3s;
+  }
+  
+  .estudents :nth-child(4):hover{
+    background-color: var(--background-btn-secondary-hover);
+    transition: all ease 0.3s;
+    cursor: pointer;
+  }
+  
+  .estudents :nth-child(4):hover{
+    background-color: var(--background-btn-primary-hover);
+    transition: all ease 0.3s;
+    cursor: pointer;
+  }
+  
+  .estudents img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+   /* clase nueva  */
+   .buscador {
+    display: none;
+  }
+
+  .borrar{
+    display: none;
+  }

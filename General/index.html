@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="/General/stylesLogin.css" />
+  <link rel="stylesheet" href="/General/generalStylesTeachers.css" />
+  <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css " rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&family=Ubuntu:wght@300;400;500;700&display=swap"
+    rel="stylesheet" />
+  <title>Riwi Mindset</title>
+</head>
+
+<body class="bodyInicio">
+  <div class="container" id="container">
+    <!-- STUDENTS -->
+    <div class="form-container sign-in">
+      <form>
+        <h1>Inicio Sesion Estudiantes</h1>
+        <span>Riwi Mindset</span>
+        <input type="text" id="cedulaEstudiante" placeholder="Cedula" />
+        <input type="password" id="passwordEstudiante" placeholder="Contraseña" />
+        <button id="buttonLoginStudents" href="">Iniciar Sesion</button>
+      </form> 
+    </div>
+<!-- PSYCHOLOGIST -->
+    <div class="form-container sign-up">
+      <form>
+        <h1>Inicio Sesion Psicologos</h1>
+        <span>Riwi Mindset</span>
+        <input type="text" id="cedulaProfesor" placeholder="Cedula" />
+        <input type="password" id="passwordProfesor" placeholder="Contraseña" />
+        <button id="buttonLoginPyschologist" href="">Iniciar Sesion</button>
+      </form>
+    </div>
+
+    <div class="toggle-container">
+      <div class="toggle">
+        <div class="toggle-panel toggle-left">
+          <h1>Riwi Mindset</h1>
+          <p class="textoProfesor">
+            ¡ Te damos la bienvenida a un espacio donde la mente y la tecnologia se fusionan !
+          </p>
+          <button class="hidden" id="inicioEstudiante">¿Eres Estudiante?</button>
+        </div>
+        <div class="toggle-panel toggle-right">
+          <h1>Riwi Mindset</h1>
+          <p class="textoEstudiante">
+            Encuentra la armonia entre tu código y tu bienestar mental.
+          </p>
+          <button class="hidden" id="inicioProfesor">¿Eres Psicologo?'</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js "></script>
+  <script type="module" src="./login.js"></script>
+  <script src="https://kit.fontawesome.com/bb0a767d46.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+

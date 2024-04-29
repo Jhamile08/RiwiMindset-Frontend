@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teachers | Schedule</title>
+  <link rel="stylesheet" href="/Teachers/UserTeacher/Registrer/stylesRegistrers.css">
+  <link rel="stylesheet" href="/General/generalStylesTeachers.css">
+  <link rel="stylesheet" href="./styleResultTest.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+  <script src="../../../General/guardian/guardianTeachersUsersWindows.js"></script>
+</head>
+
+<body class="bodyTeachers">
+  <nav class="nav-bar">
+    <div class="imagenLogo">
+      <span class="image">
+        <img src="/General/Images/ImagesTeachers/logoImagen.png" alt="" />
+      </span>
+    </div>
+
+    <div class="nav">
+      <a href="/Teachers/HomeTeachers/indexTeachersHome.html">
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+          <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+          <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+        </svg>Home</li>
+      </a>
+      <a href="/Teachers/UserTeacher/indexTeachersUsers.html">
+        <li class="iconActive"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+        </svg>Users</li>
+      </a>
+      <a href="/Teachers/SheduleTeachers/indexTeachersSchedule.html">
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar-event-fill" viewBox="0 0 16 16">
+          <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2m-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5"/>
+        </svg>Schedule</li>
+      </a>
+    </div>
+
+    <li class="logOut">
+      <button id="btnLogOutSubPage">Log out</button>
+    </li>
+
+   <!--  <div class="containerSwitch">
+      <label class="switch">
+        <input type="checkbox" id="input">
+        <span class="slider"></span>
+      </label>
+    </div> -->
+  </nav>
+
+  <div class="container-right">
+
+    <div class="headers">
+      <div class="header1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-mortarboard-fill cap" viewBox="0 0 16 16">
+          <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917z"/>
+          <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z"/>
+        </svg>
+        <h3>Estudiantes</h3>
+      </div>
+      <div class="header2">
+        <h3 id="nameTeacher"></h3>
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-down-short" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"/>
+        </svg>
+        <img id="fotoTeacher" src="" alt="" />
+      </div>
+    </div>
+
+
+    <!--  -->
+
+    <div class="info">
+
+      <div class="perfil">
+        <div class="data-user" id="data-user">
+
+          <!-- inyeccion foto edad y nombre  -->
+
+        </div>
+        <div class="secciones">
+          <a href="/Teachers/UserTeacher/Remition/Remisiones.html">
+            <li class="seccionesPerfil"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
+              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
+            </svg> Remisiones</li>
+          </a>
+          <a href="/Teachers/UserTeacher/Registrer/IndexTeachersUsers-register.html">
+            <li class="seccionesPerfil"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
+              <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8z"/>
+            </svg> Registros</li>
+          </a>
+          <a href="/Teachers/UserTeacher/ResultTest/indexResultTest.html">
+            <li class="seccionesPerfil iconActive"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pie-chart-fill" viewBox="0 0 16 16">
+              <path d="M15.985 8.5H8.207l-5.5 5.5a8 8 0 0 0 13.277-5.5zM2 13.292A8 8 0 0 1 7.5.015v7.778zM8.5.015V7.5h7.485A8 8 0 0 0 8.5.015"/>
+            </svg> Resultado test</li>
+          </a>
+        </div>
+      </div>
+      
+
+      <hr/>
+
+      <div class="main">
+        <h2 class="title-table">Tabla de Resultados</h2>
+
+        <input type="radio" id="control-1" style="display: none;" name="control" checked />
+        <input type="radio" id="control-2" style="display: none;" name="control" />
+        <input type="radio" id="control-3" style="display: none;" name="control" />
+
+
+        <label for="control-1" class="dot dot-1"></label>
+        <label for="control-2" class="dot dot-2"></label>
+        <label for="control-3" class="dot dot-3"></label>
+
+
+
+        <!--First slide-->
+        <label for="control-3" class="prev"><svg xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-math-lower" width="44" height="44" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M19 18l-14 -6l14 -6" />
+          </svg>
+        </label>
+        <label for="control-2" class="next"><svg xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-math-greater" width="44" height="44" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 18l14 -6l-14 -6" />
+          </svg>
+        </label>
+        <!--Second slide-->
+        <label for="control-3" class="prev"><svg xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-math-lower" width="44" height="44" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M19 18l-14 -6l14 -6" />
+          </svg>
+        </label>
+        <label for="control-3" class="next"><svg xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-math-greater" width="44" height="44" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 18l14 -6l-14 -6" />
+          </svg>
+        </label>
+        <!--Third slide-->
+        <label for="control-2" class="prev"><svg xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-math-lower" width="44" height="44" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M19 18l-14 -6l14 -6" />
+          </svg>
+        </label>
+        <label for="control-4" class="next"><svg xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-math-greater" width="44" height="44" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 18l14 -6l-14 -6" />
+          </svg>
+        </label>
+        <!--Fourth slide-->
+        <label for="control-3" class="prev"><svg xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-math-lower" width="44" height="44" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M19 18l-14 -6l14 -6" />
+          </svg>
+        </label>
+        <label for="control-5" class="next"><svg xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-math-greater" width="44" height="44" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 18l14 -6l-14 -6" />
+          </svg>
+        </label>
+        <!--Fifth slide-->
+        <label for="control-4" class="prev"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="44.089px" height="94.67px"
+            viewBox="0 0 44.089 94.67" enable-background="new 0 0 44.089 94.67" xml:space="preserve">
+            
+          </svg>
+        </label>
+        <label for="control-1" class="next"><svg xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-math-greater" width="44" height="44" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 18l14 -6l-14 -6" />
+          </svg>
+        </label>
+
+
+
+
+        <div class="slide slide-1">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th style="text-align: center;">Test Ingles</th>
+                <th></th>
+              </tr>
+              <tr>
+                <th style="text-align: center;">Intento</th>
+                <th style="text-align: center;">Fecha</th>
+                <th style="text-align: center;">Porcentaje</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+        </div>
+        <div class="slide slide-2">
+          <table>
+            <thead>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th style="text-align: center;">Test Logica</th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <th style="text-align: center;">Intento</th>
+                  <th style="text-align: center;">Fecha</th>
+                  <th style="text-align: center;">Porcentaje</th>
+                </tr>
+              </thead>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Logica</td>
+                <td>10%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="slide slide-3">
+          <table>
+            <thead>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th style="text-align: center;">Test Mental</th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <th style="text-align: center;">Intento</th>
+                  <th style="text-align: center;">Fecha</th>
+                  <th style="text-align: center;">Porcentaje</th>
+                </tr>
+              </thead>
+            </thead>
+            <tbody>
+              <tr>
+              <td style="text-align: center;">1</td>
+              <td style="text-align: center;">Logica</td>
+              <td style="text-align: center;">10%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <!-- <div class="btnes">
+        <a href="/Teachers/UserTeacher/indexTeachersUsers.html"><button class="btnatras"><img src="/General/Images/ImagesTeachers/SVG/FlechaAtras.svg"
+              alt=""></button></a>
+      </div> -->
+
+
+    </div>
+
+
+  </div>
+
+  <script src="./test.js"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/bb0a767d46.js" crossorigin="anonymous"></script>
+  <script src="../../logOutTeachers/logOutTeachersSubPage.js"></script>
+</body>
+
+</html>

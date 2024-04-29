@@ -1,0 +1,187 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+/* Tabla */
+
+.result-tests{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
+table {
+    width: 500px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    margin-top: 100px;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+   
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+  .title-table{
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  /* // tabla */
+  .main {
+    width: 800px;
+    height: 600px;
+    position: absolute;
+    top: 20%;
+    left: 45%;
+  }
+  
+  .slide {
+      width: 500px;
+      height: 600px;
+      position: absolute;
+    opacity: 0;
+    transition: opacity .3s ease;
+      top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%)
+  }
+  
+  .slide-1 {
+    background-image: url(http://pabook.libraries.psu.edu/palitmap/CherrySpringsRedTelescopes.jpg);
+  }
+  
+  .slide-2 {
+    background-image: url(http://www.mso.anu.edu.au/galah/images/m31_gendler.jpg);
+  }
+  
+  .slide-3 {
+    background-image: url(http://i.space.com/images/i/000/010/331/wS1/milky-way-echinopsis-atacamensis-1600.jpg?1308606679);
+  }
+
+  .btnes{
+    border: solid 2px red;
+  }
+  
+
+  
+  .prev, .next {
+    position: absolute;
+    top:50%;
+    transform:translateY(-50%);
+    transition: top .1s ease;
+    cursor: pointer;
+  }
+  
+  .prev:active, .next:active {
+    top: calc(50% + 3px);
+  }
+  
+  .prev {
+    left: 0;
+  }
+  
+  
+  .next {
+  right: 0;
+  }
+  
+  label {
+    display: none;
+  }
+  
+  .dot {
+    display: block;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color:gray;
+    background-color:rgba(40, 37, 40, 0.2);
+    border-radius: 50%;
+    left: calc(50% - 4px);
+    bottom: -30px;
+    cursor:pointer;
+  }
+  
+  .dot-1 {
+    transform: translateX(-28px);
+  }
+  
+  .dot-2 {
+    transform: translateX(-14px);
+  }
+  
+  .dot-4 {
+    transform: translateX(14px);
+  }
+  
+  .dot-5 {
+    transform: translateX(28px);
+  }
+  
+  #control-1:checked ~ .dot-1, #control-2:checked ~ .dot-2, #control-3:checked ~ .dot-3, #control-4:checked ~ .dot-4, #control-5:checked ~ .dot-5 {
+    width: 12px;
+    height: 12px;
+    background-color:white;
+    border: 2px solid black;
+  }
+  
+  #control-1:checked ~ .dot-1 {
+   transform: translate(-30px,2px);
+  }
+  
+  #control-2:checked ~ .dot-2 {
+   transform: translate(-16px,2px);
+  }
+  
+  #control-3:checked ~ .dot-3 {
+   transform: translate(-2px, 2px);
+  }
+  
+  #control-4:checked ~ .dot-4 {
+   transform: translate(12px,2px);
+  }
+  
+  #control-5:checked ~ .dot-5 {
+   transform: translate(26px,2px);
+  }
+  
+  #control-1:checked ~ label[for="control-3"].prev, #control-1:checked ~ label[for="control-2"].next  {
+    display: inline-block;
+  }
+  
+  #control-1:checked ~ .slide-1 {
+    opacity: 1;
+  }
+  
+  
+  #control-2:checked ~ label[for="control-1"].prev, #control-2:checked ~ label[for="control-3"].next {
+    display: inline-block;
+  }
+  
+  #control-2:checked ~ .slide-2 {
+    opacity: 1;
+  }
+  
+  #control-3:checked ~ label[for="control-2"].prev, #control-3:checked ~ label[for="control-1"].next {
+    display: inline-block;
+  }
+  
+  #control-3:checked ~ .slide-3 {
+    opacity: 1;
+  }
+  

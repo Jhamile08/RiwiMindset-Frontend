@@ -1,0 +1,44 @@
+#bodyStart{
+    background-image: url(/General/Images/ImagesStudents/backgroundStart.jpg);
+    background-size: cover;
+    height: 100%;
+}
+
+.containerSubtitle{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 50vh;
+}
+
+.containerSubtitle p{
+    color: var(--color-letter-Start);
+    font-size: 155px;
+    text-align: center;
+    letter-spacing: 60px;
+}
+
+.containerButtonStart{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+}
+
+.containerButtonStart a{
+    padding: 20px 80px;
+    font-size: 35px;
+    border-radius: 50px;
+    letter-spacing: 5px;
+    font-weight: bolder;
+    text-decoration: none;
+    color: var(--color-letter-Start);
+    background: linear-gradient(to right, #6B26E7, #D300CA);
+    opacity: 0.9;
+    transition: all ease 0.7s;
+}
+
+.containerButtonStart a:hover{
+    opacity: 1;
+    transition: all ease 0.6s;
+}

@@ -1,0 +1,163 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+/* Registros */
+
+.estudent-img{
+  background-position: cover;
+}
+
+.info {
+  display: flex;
+  height: 75%;
+}
+
+.info .perfil {
+  display: grid;
+  place-items: center;
+  width: 30%;
+}
+
+.data-user{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  font-size: 150%;
+}
+
+.info .registros {
+  overflow: auto;
+  width: 100%;
+}
+
+.info .registros p {
+  margin-bottom: 1%;
+}
+
+.historialRegistro {
+  color: rgb(64, 64, 64);
+  font-size: large;
+  margin: 0 0 0 2%;
+}
+
+.registroEspecifico button {
+  position: relative;
+  left: 80%;
+  background-color: rgb(210, 210, 210);
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.registroEspecifico {
+  margin: 0 2% 0 2%;
+}
+
+.registroInfo {
+  padding: 20px;
+  background-color: rgb(210, 210, 210);
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+
+.secciones a {
+  background-color: white;
+  color: black;
+  text-decoration: none;
+}
+
+.secciones a:hover {
+  background-color: #8626ff;
+  color: white;
+}
+
+.btnCrearRegistro {
+  background-color: #8626ff;
+  border: #8626ff;
+  position: fixed;
+  left: 82.5%;
+  bottom: 4%;
+  border-color: #6f1fcf;
+  color: rgb(255, 255, 255);
+  padding: 12px 22px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btnatras {
+  background-color: #8626ff;
+  border: #8626ff;
+  position: fixed;
+  left: 91.2%;
+  bottom: 4%;
+  border-color: #6f1fcf;  
+  padding: 4px 22px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.seccionesPerfil {
+  list-style: none;
+  padding: 20px 10px;
+  color: rgb(0, 0, 0);
+  margin-top: 3%;
+}
+
+.seccionesPerfil.iconActive {
+  background-color: #7f00ff;
+  color: white;
+  border-radius: 15px;
+}
+
+.seccionesPerfil {
+  padding: 20px;
+}
+
+.seccionesPerfil:hover {
+  background-color: #6f1fcf;
+  color: white;
+  border-radius: 15px;
+}
+
+.navbar .nav a {
+  text-decoration: none;
+}
+
+.perfil img{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.nombreUsuario{
+  margin: 0 2px 2px 2px;
+}
+
+.edadUsuario{
+  color: rgb(78, 78, 78);
+}
+
+/* Estilo para el texto que se muestra en Ver Más */
+
+/* .textarea{
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente blanco */
+/*   border: 1px solid #ccc;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
+/*} */
+

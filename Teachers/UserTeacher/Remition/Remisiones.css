@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+}
+/* CSS FORMULARIO */
+
+.PDF-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+input,
+textarea,
+select {
+  border: none;
+  background-color: white;
+}
+
+textarea {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+#PDF {
+  width: 90%;
+  border: solid;
+  padding-left: 11px;
+}
+
+.pdfboton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 10px;
+}
+
+.btnCrearPdf{
+  margin: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#btnCrearPdf{
+  display: flex;
+  padding: 8px;
+  color:white;
+  background-color: #8626ff;
+  border-radius: 10px;
+}
+
+/* css enfermedades */
+
+.buscador {
+  display: flex;
+  flex-direction: column;
+  max-width: 30%;
+  max-height: 40%;
+  overflow: auto;
+  padding: 0%
+}
+
+.dms .p {
+  width: 80%;
+  font-size:small;
+}
+
+.codigo{
+  color: black;
+  text-decoration: none;
+}
+
+.cont-enfermedades{
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  background-color: white;
+  height: 40%;
+  overflow: auto;
+}
+
+.consulta .placeholder {
+  width: "200px";
+  height: "20px";
+}
+
+.busqueda {
+  display: none;
+}
+
+.texto-consulta {
+  float: right;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 20px;
+  text-size-adjust: inherit;
+}
+
+
+/* css estilos buscador */
+
+#patologia {
+  display: flex;
+  border: solid;
+  width: 100%;
+  height: 30px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.titleInformation{
+  background-color: #7f00ff;
+  color: white;
+  padding: 5px;
+}

@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* Cards de citas agendadas */
+
+.cards-home {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+    overflow: auto;
+    max-height: 70vh;
+}
+
+.card-home {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+}
+
+.card-home:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-home * {
+    margin-bottom: 10px;
+}
+
+
+.delete-appointment {
+    background-color: var(--background-btn-delete-appointment);
+    border: solid var(--background-btn-delete-appointment);
+    border-radius: 15px;
+    padding: 10px 20px;
+    font-size: 80%;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.delete-appointment:hover {
+    background-color: rgba(243, 93, 93, 0.9);
+}
+
+button {
+    font-size: 14px;
+}
+
+/* Tabla de reportaje */
+
+
+.table-report-home {
+    margin-top: 2%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+th,
+td {
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+th {
+    background-color: #1f1e1e;
+    color: white;
+}
+
+td {
+    font-size: 100%;
+    background-color: rgb(224, 224, 224);
+}
+
+.table-report-home tr:nth-child(even) {
+    background-color: #b1afaf;
+}
+
+#search{
+    display: none;
+}
+
+
+/* Responsive para Telefonos */
+
+@media (max-width: 768px) {
+    .cards-home {
+        grid-template-columns: repeat(auto-fill, minmax(2, 1fr));
+        gap: 5% 3%;
+        font-size: 60%;
+    }
+
+    .card-home {
+        margin-bottom: 20px;
+    }
+
+    .reschedule,
+    .delete-appointment {
+        font-size: 10%;
+    }
+
+    .table-report-home {
+        margin-top: 2%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-x: auto;
+    }
+}

@@ -1,0 +1,140 @@
+@import url(/General/generalStylesTeachers.css);
+
+body{
+  height: 100%;
+}
+
+.containerHome{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0% 3%;
+  gap: 2%;
+}
+
+/* Calendario */
+
+.schedule-config {
+    background-color: var(--backgroudn-btn-third);
+    border: solid var(--backgroudn-btn-third);
+    color: white;
+  }
+
+.schedule {
+    display: flex;
+    width: 70%;
+    height: 100%;
+    align-items: center;
+  }
+  
+  #calendar {
+    font-size: 120%;
+    width: 100%;
+    height: 70vh;
+  }
+
+
+  .fc-col-header{
+    width: 100%;
+  }
+
+  .fc-scrollgrid-sync-table{
+    width: 100%;
+  }
+  
+  .fc-header-toolbar {
+    background-color: var(--background-color-navbar);
+    color: var(--letter-color-main-dark);
+    padding: 1%;
+  }
+  
+  .fc .fc-col-header-cell-cushion{
+    text-decoration: none;
+    color: black;
+  }
+
+  .fc .fc-daygrid-day-number{
+    text-decoration: none;
+    color: black;
+  }
+  
+  /* Cambiar el color de los botones del encabezado */
+  .fc .fc-button-primary {
+    background-color: var(--background-btn-primary);
+    color: #fff;
+    border-color: var(--background-btn-primary);
+  }
+  .fc .fc-button-primary:not(:disabled).fc-button-active {
+    background-color: var(--background-btn-primary-hover);
+    color: #fff;
+    border-color: var(--background-btn-primary-hover);
+  }
+  
+  .fc .fc-button-primary:disabled {
+    background-color: var(--background-btn-primary-hover);
+    color: #fff;
+    border-color: var(--background-btn-primary-hover);
+  }
+  
+  .fc .fc-button-primary:hover {
+    border-color: var(--background-btn-primary-hover);
+    color: var(--fc-button-text-color);
+    background-color: var(--background-btn-primary-hover);
+  }
+  
+  
+  /* Cambiar el color de fondo del día seleccionado */
+  
+  .fc .fc-daygrid-day.fc-day-today {
+    background-color: rgba(16, 176, 194, 0.2);
+  }
+  
+  .fc .fc-dayGridDay.fc-day.fc-day-selected {
+    background-color: black;
+  }
+  
+  /* Cambiar el color de fondo de la hora seleccionada en la vista de día */
+  .fc .fc-time-grid .fc-highlight {
+    background-color: black;
+  }
+  
+  /* Cambiar el color de fondo de la hora seleccionada en la vista de semana */
+  .fc .fc-time-grid .fc-highlight {
+    background-color: black;
+  }
+  
+  /* Cambiar el color de fondo de la hora seleccionada en la vista de semana y día */
+  .fc-highlight {
+    background-color: rgba(16, 176, 194, 0.2);
+    /* Reemplaza con el color que desees */
+  }
+
+#reservationForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  } 
+
+  .titleForm{
+    text-align: center;
+  }
+
+  #eventForm{
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+  }
+
+  #eventFormTeacher{
+    display: none;
+  }
+
+  @media (max-width: 700px){
+    #calendar {
+      font-size: 50%;
+    }
+  }

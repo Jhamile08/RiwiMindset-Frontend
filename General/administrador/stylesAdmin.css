@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+     background: rgb(0, 0, 0);
+    background: linear-gradient(15deg,
+      rgba(0, 0, 0, 1) 50vh,
+      rgba(27, 0, 50, 1) 90vh,
+      rgba(34, 0, 80, 1) 90%);
+}
+
+.containerForms {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.containerForms #containerFormEstudents {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+}
+
+.containerForms #containerFormEstudents .titleEstudents{
+    text-align: center;
+    color: #ffff;
+    letter-spacing: 3px;
+}
+
+.containerForms #containerFormEstudents .containerForms1 {
+    display: flex;
+    width: 100%;
+    gap: 15px;
+}
+
+.containerForms #containerFormEstudents form .typeForm1 {
+    display: flex;
+    
+}
+
+.containerForms #containerFormEstudents form .typeForm2 {
+    display: flex;
+
+}
+
+.containerForms #containerFormEstudents form .containerForms2 button{
+    width: 100%;
+    height: 50px;
+    background-color: #3B00A4;
+    border-color: #3B00A4;
+    color: #ffff;
+}
+
+.containerForms #containerFormEstudents form .containerForms2 button:hover{
+    background-color: #1C004D;
+}
+
+.containerForms #containerFormEstudents .containerImg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.containerForms #containerFormEstudents .containerImg label{
+  display: block;
+  width: 200px;
+  background-color: #3B00A4;
+  color: #fff;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: all ease 0.3s;
+}
+
+.containerForms #containerFormEstudents .containerImg label:hover{
+    background-color: #1C004D;
+    transition: all ease 0.3s;
+}
+
+.containerForms #containerFormEstudents .containerImg input{
+    display: none;
+}
+
+.containerForms #containerFormEstudents .containerImg img{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+}
+
+.containerForms #containerFormTeachers {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+}
+
+.containerForms #containerFormTeachers .titleTeachers{
+    text-align: center;
+    color: #ffff;
+    letter-spacing: 3px;
+}
+
+
+.containerForms #containerFormTeachers .containerForms1 {
+    display: flex;
+    width: 100%;
+    gap: 15px;
+}
+
+.containerForms #containerFormTeachers form .typeForm1 {
+    display: flex;
+}
+
+.containerForms #containerFormTeachers form .typeForm2 {
+    display: flex;
+}
+
+.containerForms #containerFormTeachers .containerImg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.containerForms #containerFormTeachers .containerImg label{
+  display: block;
+  width: 200px;
+  background-color: #3B00A4;
+  color: #fff;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: all ease 0.3s;
+}
+
+.containerForms #containerFormTeachers .containerImg label:hover{
+    background-color: #1C004D;
+    transition: all ease 0.3s;
+}
+
+.containerForms #containerFormTeachers .containerImg input{
+    display: none;
+}
+
+.containerForms #containerFormTeachers .containerImg img{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+}
+
+.containerForms #containerFormTeachers form .containerForms2 button{
+    width: 100%;
+    height: 50px;
+    background-color: #3B00A4;
+    border-color: #3B00A4;
+    color:#fff;
+}
+
+.containerForms #containerFormTeachers form .containerForms2 button:hover{
+    background-color: #1C004D;
+}

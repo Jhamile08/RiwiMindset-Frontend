@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estudents | Tests</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./stylesHomeTest.css">
+    <link rel="stylesheet" href="/General/generalStylesStudents.css">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="../../General/guardian/guardianStudent.js"></script>
+</head>
+
+<body>
+    <nav id="sidebar">
+        <div class="toggle-btn">
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              fill="currentColor" class="bi bi-list"
+              viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+            </svg>
+          </span>
+        </div>
+        <div class="containerProfile">
+            <img id="fotoStudent" src="" class="logo" />
+            <h3 id="nameStudent"></h3>
+            <p id="cedulaStudent"></p>
+        </div>
+        <div class="navbarItems">
+          <a href="/Students/HomeStudents/indexHomeEstudents.html" ><svg xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor" class="bi bi-house-fill"
+              viewBox="0 0 16 16">
+              <path
+                d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
+              <path
+                d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z" />
+            </svg>Home</a>
+          <a href="/Students/TestStudents/indexTestHome.html" class="itemActive"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+              class="bi bi-book" viewBox="0 0 16 16">
+              <path
+                d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783" />
+            </svg>Tests</a>
+          <a href="/Students/DatesStudents/indexDateEstudents.html"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+              class="bi bi-award" viewBox="0 0 16 16">
+              <path
+                d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702z" />
+              <path
+                d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z" />
+            </svg>Citas</a>
+        </div>
+      </nav>
+
+    <div class="container-down" style="height: 100vh;">
+
+        <div class="container-wave">
+            <div class="content-wave">
+                <h2 class="title-test">Tests para mejorar</h2>
+            </div>
+            <div class="content-wave-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f3f3f3" fill-opacity="1" d="M0,128L360,224L720,192L1080,224L1440,160L1440,320L1080,320L720,320L360,320L0,320Z"></path></svg></div>
+        </div>
+
+        <div class="container-cards" id="xarwa">
+            <a class="cards" id="ingles" type="button" class="btn btn-primary" data-toggle="modal"
+                data-target="#exampleModal" value="ingles">
+                <div>
+                    <img class="imgs-cards" src="/General/Images/ImagesStudents/inglesicono.png" alt="">
+                    <p>Realiza este test para mejorar tu habilidades en ingles </p>
+                </div>
+            </a>
+            <a class="cards" id="logicas" type="button" class="btn btn-primary" data-toggle="modal"
+                data-target="#exampleModal">
+                <div>
+                    <img class="imgs-cards" src="/General/Images/ImagesStudents/logicaincono.png" alt="">
+                    <p class="cards-p">Realiza este test para mejorar tu habilidades en logicas </p>
+                </div>
+            </a>
+            <a class="cards" id="mentales" type="button" class="btn btn-primary" data-toggle="modal"
+                data-target="#exampleModal">
+                <div>
+                    <img class="imgs-cards" src="/General/Images/ImagesStudents/mentalicono.png" alt="">
+                    <p>Realiza este test para mejorar tu habilidades en mentales </p>
+                </div>
+            </a>
+        </div>
+
+        <div class="container">
+            <div class="containerHome">
+            </div>
+            <button id="siguiente-btn" class="btn-siguiente" style="position: absolute;">Siguiente</button>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="contentInfoTest">
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" id="testButton" data-dismiss="modal" style="background-color: #3f337e;">Realizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/bb0a767d46.js" crossorigin="anonymous"></script>
+    <script type="module" src="./testStudents.js"></script>
+    <script type="module" src="../dataInyectStudents/dataInyectStudents.js"></script>
+    <script type="module" src="/Students/HomeStudents/scriptsHome.js"></script>
+
+</body>
+
+</html>
