@@ -3,22 +3,21 @@ import { deleteEventFromServer } from "../SheduleTeachers/TeachersSchedule.js";
 /* Inyectar citas de la base de datos json */
 getDataJsonArray();
 
-
 function getDataJsonArray() {
   fetch("http://localhost:4002/events")
-    .then(response => {
+    .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       return response.json();
     })
-    .then(dataJsonArray => {
+    .then((dataJsonArray) => {
       dataJsonArray.sort((a, b) => {
         const dateA = moment(`${a.date} ${a.time}`, "YYYY-MM-DD HH:mm");
         const dateB = moment(`${b.date} ${b.time}`, "YYYY-MM-DD HH:mm");
         return dateA - dateB;
       });
-      
+
       // Muestra los eventos ordenados
       dataJsonArray.forEach((element) => {
         showHTMLArray(element);
@@ -27,7 +26,7 @@ function getDataJsonArray() {
       console.log(dataJsonArray);
       generateReport(dataJsonArray);
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("Error al obtener y parsear el JSON:", error);
     });
 }
@@ -38,32 +37,45 @@ function showHTMLArray({ id, title, reason, date, time }) {
   eventHTML.classList.add("card-home");
   eventHTML.dataset.eventId = id;
   // Obtener el día de la semana a partir de la fecha
-  moment.locale('es');
+  moment.locale("es");
   const dayOfWeek = moment(date, "YYYY-MM-DD").format("dddd");
   eventHTML.innerHTML = `
-        <div class="card-home-text">
-          <h3>${dayOfWeek}</h3>
-          <h3>${date}</h3>
-          <h4>${time}</h4>
-          <p>${title}</p>
-          <p><b>Motivo: </b>${reason}</p>
+        <div class="codersData">
+          <img width="100px" src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg">
+          <div class="codersData-text">
+            <p>${title}</p>
+            <p>Cedula</p>
+          </div>
         </div>
+
+        
         <div class="buttons">
           <button class="delete-appointment">Eliminar cita</button>
+        </div>
+        
+
+        <div class="eventsData">
+          <div>
+            <h3>${dayOfWeek}</h3>
+            <h3>${date}</h3>
+            <h4>${time}</h4>
+          </div>
+
+          <div class="reason">
+            <p><b>Motivo</b></p>
+            <p>${reason}</p>
+          </div>
         </div>
     `;
 
   contain.appendChild(eventHTML);
 
-  const deleteButton = eventHTML.querySelector('.delete-appointment');
-  deleteButton.addEventListener('click', () => {
+  const deleteButton = eventHTML.querySelector(".delete-appointment");
+  deleteButton.addEventListener("click", () => {
     const eventId = eventHTML.dataset.eventId;
     deleteAppointment(eventId);
   });
-
-};
-
-
+}
 
 function deleteAppointment(eventId) {
   // Confirmar antes de eliminar
@@ -78,7 +90,7 @@ function deleteAppointment(eventId) {
     allowOutsideClick: false,
     allowEscapeKey: false,
     allowEnterKey: false,
-    focusConfirm: false
+    focusConfirm: false,
   }).then((result) => {
     if (result.isConfirmed) {
       // Muestra una segunda alerta como modal
@@ -90,15 +102,14 @@ function deleteAppointment(eventId) {
         allowOutsideClick: true,
         allowEscapeKey: true,
         allowEnterKey: true,
-        focusConfirm: true
+        focusConfirm: true,
       }).then(() => {
-            // Eliminar el evento del servidor
+        // Eliminar el evento del servidor
         deleteEventFromServer(eventId);
       });
     }
   });
-};
-
+}
 
 // Función para generar el informe
 function generateReport(events) {
@@ -107,7 +118,7 @@ function generateReport(events) {
   let motivesCount = {};
 
   // Iterar sobre los eventos
-  events.forEach(event => {
+  events.forEach((event) => {
     const reason = event.reason;
 
     // Incrementar el contador del motivo actual
@@ -129,7 +140,7 @@ function generateReport(events) {
   const minReason = motives[counts.indexOf(minCount)];
 
   // Inyectar datos en la tabla
-  const reportTable = document.querySelector('.table-report-home');
+  const reportTable = document.querySelector(".table-report-home");
   const row = reportTable.insertRow(1); // Asumiendo que la primera fila es para la información total
   const cell1 = row.insertCell(0);
   const cell2 = row.insertCell(1);
