@@ -31,7 +31,7 @@ function getDataJsonArray() {
     });
 }
 
-function showHTMLArray({ id, title, reason, date, time }) {
+function showHTMLArray({ id, title, reason, date, time, profileStudent }) {
   const contain = document.querySelector(".cards-home");
   const eventHTML = document.createElement("div");
   eventHTML.classList.add("card-home");
@@ -55,9 +55,15 @@ function showHTMLArray({ id, title, reason, date, time }) {
   // Formatear la hora en un formato deseado (hh:mm A - hh:mm A)
   const startTime = moment(time, "HH:mm").format("hh:mma");
   const endTime = moment(time, "HH:mm").add(1, 'hour').format("hh:mma");
+
+  if (title.toLowerCase() === "bloqueado") {
+    // No hacer nada si el título es "Bloqueado"
+    return;
+  }
+
   eventHTML.innerHTML = `
         <div class="codersData">
-          <img class="profilePhoto" src="https://img.freepik.com/free-photo/portrait-man-having-great-time_23-2149443790.jpg?size=626&ext=jpg&ga=GA1.1.1224184972.1714003200&semt=ais">
+          <img class="profilePhoto" src="${profileStudent}">
 
           <div class="codersData-text">
             <p><b>${title}</b></p>
@@ -135,18 +141,24 @@ function deleteAppointment(eventId) {
 // Función para generar el informe
 function generateReport(events) {
   // Contadores
-  let totalCitas = events.length;
+  let totalCitas = 0;
   let motivesCount = {};
 
   // Iterar sobre los eventos
   events.forEach((event) => {
     const reason = event.reason;
 
-    // Incrementar el contador del motivo actual
-    if (motivesCount[reason]) {
-      motivesCount[reason]++;
-    } else {
-      motivesCount[reason] = 1;
+    // Verificar si el motivo no es "Bloqueado"
+    if (reason.toLowerCase() !== "bloqueado") {
+      // Incrementar el contador total de citas
+      totalCitas++;
+
+      // Incrementar el contador del motivo actual
+      if (motivesCount[reason]) {
+        motivesCount[reason]++;
+      } else {
+        motivesCount[reason] = 1;
+      }
     }
   });
 
@@ -168,8 +180,8 @@ function generateReport(events) {
   const cell3 = row.insertCell(2);
 
   cell1.textContent = totalCitas;
-  cell2.textContent = maxReason;
-  cell3.textContent = minReason;
+  cell2.textContent = maxReason || "N/A";
+  cell3.textContent = minReason || "N/A";
 }
 
 // Llamar a la función con los datos del evento

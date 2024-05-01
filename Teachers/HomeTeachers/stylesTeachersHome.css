@@ -56,6 +56,13 @@
     background-position: center;
 }
 
+.titleEvent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
 .codersData-text{
     justify-content: center;
     display: flex;
