@@ -38,33 +38,53 @@ function showHTMLArray({ id, title, reason, date, time }) {
   eventHTML.dataset.eventId = id;
   // Obtener el día de la semana a partir de la fecha
   moment.locale("es");
-  const dayOfWeek = moment(date, "YYYY-MM-DD").format("dddd");
+  const eventDate = moment(date, "YYYY-MM-DD");
+  let dayOfWeek = eventDate.format("dddd");
+  // Convertir la primera letra en mayúscula
+  dayOfWeek = dayOfWeek.charAt(0).toUpperCase() + dayOfWeek.slice(1);
+  // Obtener la fecha actual
+  const today = moment().startOf('day');
+  // Comparar la fecha del evento con la fecha actual
+  if (eventDate.isSame(today, 'day')) {
+    dayOfWeek = "Hoy";
+  } else if (eventDate.isSame(today.clone().add(1, 'day'), 'day')) {
+    dayOfWeek = "Mañana";
+  }
+  // Convertir la fecha al formato "DD de MMMM"
+  const formattedDate = moment(date, "YYYY-MM-DD").format("DD [de] MMMM");
+  // Formatear la hora en un formato deseado (hh:mm A - hh:mm A)
+  const startTime = moment(time, "HH:mm").format("hh:mma");
+  const endTime = moment(time, "HH:mm").add(1, 'hour').format("hh:mma");
   eventHTML.innerHTML = `
         <div class="codersData">
-          <img width="100px" src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg">
+          <img class="profilePhoto" src="https://img.freepik.com/free-photo/portrait-man-having-great-time_23-2149443790.jpg?size=626&ext=jpg&ga=GA1.1.1224184972.1714003200&semt=ais">
+
           <div class="codersData-text">
-            <p>${title}</p>
-            <p>Cedula</p>
+            <p><b>${title}</b></p>
+            <p>Clan</p>
           </div>
         </div>
 
-        
+        <hr class="line">
+
         <div class="buttons">
           <button class="delete-appointment">Eliminar cita</button>
           <button class="update-appointment">Reagendar cita</button>
         </div>
         
+        <hr class="line">
 
         <div class="eventsData">
-          <div>
-            <h3>${dayOfWeek}</h3>
-            <h3>${date}</h3>
-            <h4>${time}</h4>
+          <div class="eventsDate">
+            <h3>${dayOfWeek} ${formattedDate}</h3>
+            <h4>${startTime} - ${endTime}</h4>
           </div>
 
+          <hr class="line lineEvents">
+
           <div class="reason">
-            <p><b>Motivo</b></p>
-            <p>${reason}</p>
+            <p>Motivo</p>
+            <p><b>${reason}</b></p>
           </div>
         </div>
     `;

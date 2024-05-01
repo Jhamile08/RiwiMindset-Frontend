@@ -8,8 +8,8 @@
 /* Cards de citas agendadas */
 
 .cards-home {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
     overflow: auto;
@@ -18,34 +18,49 @@
 }
 
 .card-home {
-    width: auto;
     display: flex;
     flex-direction: column;
     background-color: white;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: -2px -1px 17px -9px rgba(0,0,0,0.49);
+    -moz-box-shadow: -2px -1px 17px -9px rgba(0,0,0,0.49);
+    box-shadow: -2px -1px 17px -9px rgba(0,0,0,0.49);
     transition: box-shadow 0.3s;
     width: 400px;
 }
 
 .card-home:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: -2px -1px 17px -2px rgba(0,0,0,0.49);
+    -moz-box-shadow: -2px -1px 17px -2px rgba(0,0,0,0.49);
+    box-shadow: -2px -1px 17px -2px rgba(0,0,0,0.49);
 }
 
 .card-home * {
-    margin-bottom: 5px;
-    font-size: 110%;
+    font-size: 105%;
 }
 
 .codersData{
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5%;
+}
+
+.profilePhoto{
+    margin: 0 0 0 10%;
+    width: 100px;
+    height: 100px;
+    align-self: center;
+    border-radius: 500%;
+    background-position: center;
 }
 
 .codersData-text{
+    justify-content: center;
     display: flex;
     flex-direction: column;
-    font-size: 140%;
+    font-size: 130%;
     flex-wrap: wrap;
 }
 
@@ -53,10 +68,24 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin: 0 5%;
+}
+
+.line{
+    border: solid black 1px;
+    height: 100%;
+}
+
+.lineEvents{
+    align-self: flex-end;
 }
 
 .reason{
     text-align: center;
+}
+
+.reason p{
+    margin: 0;
 }
 
 
@@ -76,8 +105,8 @@
 }
 
 .update-appointment{
-    background-color: rgb(1, 57, 161);
-    border: solid rgb(1, 57, 161);
+    background-color: rgb(20, 100, 250);
+    border: solid rgb(20, 100, 250);
     border-radius: 15px;
     padding: 10px 20px;
     font-size: 80%;
@@ -87,7 +116,7 @@
 }
 
 .update-appointment:hover {
-    background-color: rgba(15, 0, 223, 0.9);
+    background-color: rgba(0, 89, 255, 0.9);
 }
 
 
