@@ -51,6 +51,7 @@ function showHTMLArray({ id, title, reason, date, time }) {
         
         <div class="buttons">
           <button class="delete-appointment">Eliminar cita</button>
+          <button class="update-appointment">Reagendar cita</button>
         </div>
         
 
