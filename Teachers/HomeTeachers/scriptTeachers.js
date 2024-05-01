@@ -31,7 +31,7 @@ function getDataJsonArray() {
     });
 }
 
-function showHTMLArray({ id, title, reason, date, time, profileStudent }) {
+function showHTMLArray({ id, title, reason, date, time, profileStudent, clanStudent }) {
   const contain = document.querySelector(".cards-home");
   const eventHTML = document.createElement("div");
   eventHTML.classList.add("card-home");
@@ -67,7 +67,7 @@ function showHTMLArray({ id, title, reason, date, time, profileStudent }) {
 
           <div class="codersData-text">
             <p><b>${title}</b></p>
-            <p>Clan</p>
+            <p>${clanStudent}</p>
           </div>
         </div>
 
