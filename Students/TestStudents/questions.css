@@ -15,6 +15,7 @@ body{
 .title-question{
     color: rgb(95, 44, 136);
     margin: 0;
+    font-size: 35px;
     font-family: "Cinzel", serif;
 }
 .container-test{
@@ -29,9 +30,12 @@ body{
     height: 80%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .question-test{
-    font-size: 22px;
+    font-size: 28px;
     padding: 10px 0px;
 }
 .answers{
@@ -39,7 +43,7 @@ body{
 }
 .answers li{
     list-style: none;
-    padding: 12px;
+    padding: 20px;
     margin: 20px 0;
     background-color: #f4f4f4;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -52,8 +56,9 @@ body{
 .answers li a {
     color: rgb(115, 64, 157);
     text-decoration: none;
-    font-size: 18px;
+    font-size: 25px;
 }
 .content-test-inside{
     margin: 30px 80px;
+    width: 100%;
 }
