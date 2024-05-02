@@ -9,12 +9,13 @@
   display: flex;
   flex-direction: column;
   position: fixed;
-  width: 27vh;
+  width: 37vh;
   height: 100vh;
   background-color: #fafafa;
-  left: -27vh;
+  left: -37vh;
   transition: all 500ms linear;
   z-index: 1000;
+  box-shadow: 10px 0px 10px 0px rgba(0, 0, 0, 0.3), 20px 0px 40px 0px rgba(0, 0, 0, 0.2);
 }
 
 #sidebar.active {
@@ -49,17 +50,22 @@
 #sidebar .containerProfile {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content:end ;
   position: relative;
   width: 100%;
-  height: auto;
-  padding: 15px 30px;
+  height: 37%;
+  padding: 10px 22px;
+  background-color: #4e3378;
+  border-bottom-right-radius: 28%;
+
 }
 
 #sidebar .containerProfile .logo {
-  width: 100%;
+  width: 40%;
+  height: 35%;
   border-radius: 100%;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 #sidebar .containerProfile img {
@@ -68,23 +74,27 @@
 }
 
 #sidebar .containerProfile h3 {
-  padding-top: 15px;
-  color: #727272;
-  font-size: 22px;
+  padding-top: 8%;
+  color: white;
+  font-size: 130%;
+  font-weight: 400;
 }
 
 #sidebar .containerProfile p {
-  color: grey;
-  font-size: 15px;
+  color: rgba(255, 255, 255, 0.79);
+  font-size: 90%;
 }
 
 #sidebar .navbarItems {
   display: flex;
   flex-direction: column;
   position: relative;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  gap: 20px;
+  gap: 1.5rem;
   padding: 0 15px;
+  margin-top: 50%;
 }
 
 
@@ -98,7 +108,7 @@
   font-size: 18px;
   color: #727272;
   padding: 8px 0;
-  border-radius: 50px;
+  border-radius: 5px;
   text-align: center;
 }
 
