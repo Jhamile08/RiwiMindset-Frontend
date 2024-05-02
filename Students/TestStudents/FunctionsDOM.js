@@ -10,7 +10,7 @@ let modalTitle = document.querySelector(".modal-title")
 const btnSiguiente = document.querySelector(".btn-siguiente");
 const inputs = document.querySelector(".content-test input")
 
-import { get, post, update } from "./../../General/apiConnection/apiConnection.js";
+import { get } from "./../../General/apiConnection/apiConnection.js";
 import { URL_STUDENTS, URL_TEST  } from "./../../General/apiConnection/URLS.js";
 
 // renderizar info del modal sobre el test
