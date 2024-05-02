@@ -8,7 +8,7 @@ function cambiarContenido(opcion) {
       case "Mindset":
         brainHome.innerHTML = ` <div class="Mindset">
         <h2>Que es MindSet</h2>
-        <img src="/img/logo.png" alt="Logo MindSet">
+        <img src="./img/logo.png" alt="Logo MindSet">
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa id deleniti molestiae quos mollitia debitis officiis esse necessitatibus, sequi animi modi corrupti consequatur at provident fugiat obcaecati quo quis autem!</p>
         </div>`;
         break;
@@ -26,7 +26,7 @@ function cambiarContenido(opcion) {
         <div class="specialist">
         <h2>ESPECIALISTAS</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem nihil nulla saepe. Itaque officia similique commodi natus. Cum ullam asperiores ipsum voluptates voluptas a molestias atque, similique explicabo eos aliquam!</p>
-        <img src="/img/lalili.png" alt="lili">
+        <img src="./img/lalili.png" alt="lili">
         </div>`;
         break;
   

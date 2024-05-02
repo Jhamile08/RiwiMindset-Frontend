@@ -15,7 +15,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.350)), url(/img/fondo.png);
+        background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.350)), url(./img/fondo.png);
         background-size: cover;
         background-position: center, 100%;
     }
@@ -206,7 +206,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background-image:linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.350)), url(/img/fondo2.png);
+        background-image:linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.350)), url(./img/fondo2.png);
         background-size: cover;
         background-position: center, 100%;
     
