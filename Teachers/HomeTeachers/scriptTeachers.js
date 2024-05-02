@@ -31,7 +31,15 @@ function getDataJsonArray() {
     });
 }
 
-function showHTMLArray({ id, title, reason, date, time, profileStudent, clanStudent }) {
+function showHTMLArray({
+  id,
+  title,
+  reason,
+  date,
+  time,
+  profileStudent,
+  clanStudent,
+}) {
   const contain = document.querySelector(".cards-home");
   const eventHTML = document.createElement("div");
   eventHTML.classList.add("card-home");
@@ -43,18 +51,18 @@ function showHTMLArray({ id, title, reason, date, time, profileStudent, clanStud
   // Convertir la primera letra en mayúscula
   dayOfWeek = dayOfWeek.charAt(0).toUpperCase() + dayOfWeek.slice(1);
   // Obtener la fecha actual
-  const today = moment().startOf('day');
+  const today = moment().startOf("day");
   // Comparar la fecha del evento con la fecha actual
-  if (eventDate.isSame(today, 'day')) {
+  if (eventDate.isSame(today, "day")) {
     dayOfWeek = "Hoy";
-  } else if (eventDate.isSame(today.clone().add(1, 'day'), 'day')) {
+  } else if (eventDate.isSame(today.clone().add(1, "day"), "day")) {
     dayOfWeek = "Mañana";
   }
   // Convertir la fecha al formato "DD de MMMM"
   const formattedDate = moment(date, "YYYY-MM-DD").format("DD [de] MMMM");
   // Formatear la hora en un formato deseado (hh:mm A - hh:mm A)
   const startTime = moment(time, "HH:mm").format("hh:mma");
-  const endTime = moment(time, "HH:mm").add(1, 'hour').format("hh:mma");
+  const endTime = moment(time, "HH:mm").add(1, "hour").format("hh:mma");
 
   if (title.toLowerCase() === "bloqueado") {
     // No hacer nada si el título es "Bloqueado"
@@ -67,7 +75,7 @@ function showHTMLArray({ id, title, reason, date, time, profileStudent, clanStud
 
           <div class="codersData-text">
             <p><b>${title}</b></p>
-            <p>${clanStudent}</p>
+            <p class="pClan">${clanStudent}</p>
           </div>
         </div>
 
@@ -82,14 +90,14 @@ function showHTMLArray({ id, title, reason, date, time, profileStudent, clanStud
 
         <div class="eventsData">
           <div class="eventsDate">
-            <h3>${dayOfWeek} ${formattedDate}</h3>
-            <h4>${startTime} - ${endTime}</h4>
+            <h3> <span class="dayOfWeek">${dayOfWeek}</span> <span class="formattedDate">${formattedDate}</span></h3>
+            <h4><b>${startTime} - ${endTime}</b></h4>
           </div>
 
           <hr class="line lineEvents">
 
           <div class="reason">
-            <p>Motivo</p>
+            <p class="reasonText">Motivo</p>
             <p><b>${reason}</b></p>
           </div>
         </div>
