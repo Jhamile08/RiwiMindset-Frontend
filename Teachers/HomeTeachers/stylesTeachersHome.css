@@ -34,6 +34,7 @@
     box-shadow: -2px -1px 17px -9px rgba(0,0,0,0.29);
     transition: box-shadow 0.3s;
     width: 400px;
+    max-height: 300px;
 }
 
 .card-home:hover {
