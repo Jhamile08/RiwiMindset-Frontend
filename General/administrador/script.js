@@ -18,6 +18,47 @@ inputFileEstudents.onchange = function () {
   };
 };
 
+/* Vista Botonoes */
+const header = document.querySelector(".header");
+
+const buttonStudents = document.querySelector(".buttonStudent");
+const buttonPsicologyst = document.querySelector(".buttonPsicologyst");
+const buttonTest = document.querySelector(".buttonTest");
+
+const containerForms = document.querySelector(".containerForms");
+const containerFormEstudents = document.querySelector("#containerFormEstudents");
+const containerFormTeachers = document.querySelector("#containerFormTeachers");
+
+const usersList = document.querySelector(".usersList");
+
+const buttonStudentAdd = document.querySelector(".buttonStudentAdd")
+
+/* Event Listener Vistas */
+
+header.addEventListener('click',()=>{
+  containerForms.style.display="none";
+  buttonStudents.style.display="block";
+  buttonPsicologyst.style.display="block";
+  buttonTest.style.display="block";
+  usersList.style.display="none";
+})
+
+buttonStudents.addEventListener('click',()=>{
+  containerFormEstudents.style.display="none";
+  containerFormTeachers.style.display="none";
+  buttonStudents.style.display="none";
+  buttonPsicologyst.style.display="none";
+  buttonTest.style.display="none";
+  usersList.style.display="block";
+})
+
+buttonStudentAdd.addEventListener('click',()=>{
+  containerForms.style.display="block"
+  containerFormEstudents.style.display="block";
+  usersList.style.display="none";
+})
+
+
 /* -------STUDENTS------- */
 /* Select */
 const formStudents = document.querySelector('#formStudents');
