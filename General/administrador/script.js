@@ -1,4 +1,4 @@
-import { URL_STUDENTS, URL_PSYCHOLOGISTS } from '../apiConnection/URLS.js';
+import { URL_CODERS, URL_PSYCHOLOGISTS } from '../apiConnection/URLS.js';
 import { post, get, update, deleteHttp } from '../apiConnection/apiConnection.js';
 
 /* img */
@@ -67,8 +67,6 @@ const lastNameStudent = document.querySelector('#lastNameStudent');
 const cedulaStudent = document.querySelector("#idStudent")
 const emailStudent = document.querySelector('#emailStudent');
 const celStudent = document.querySelector('#celStudent');
-const passwordStudent = document.querySelector('#passwordStudent');
-const confirmPasswordStudent = document.querySelector('#confirmPasswordStudent');
 const bornDateStudent = document.querySelector('#bornDateStudent');
 const clan = document.querySelector('#clan');
 const studentId = document.querySelector("#studentId");
@@ -77,111 +75,78 @@ const studentId = document.querySelector("#studentId");
 /* Events */
 formStudents.addEventListener('submit', event => {
   event.preventDefault();
+  console.log(typeof(inputFileEstudents.value));
+  console.log(typeof(cedulaStudent.value));
   registerStudent();
 });
 
+let photoUrl;
+
+document.getElementById('buttonRegister').addEventListener('click', function () {
+  const fileInput = document.getElementById('inputFileEstudents');
+  const file = fileInput.files[0];
+
+  if (!file) {
+      alert("Porfavor seleccione un archivo");
+      return;
+  }
+
+  // Replace with your own Cloudinary API endpoint and preset
+  const cloudName = 'dycsevcp0';
+  const uploadPreset = 'RiwiMindset-files';
+
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('upload_preset', uploadPreset);
+
+  photoUrl = fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+      method: 'POST',
+      body: formData
+  })
+  .then(response => response.json())
+  .then(data => data.secure_url)
+  .catch(error => {
+      console.error('Error uploading the image:', error);
+  });
+  
+})
+
 async function registerStudent() {
 
-
-  const edad = calcularEdad(bornDateStudent.value);
+  const cedulaConvertida = parseInt(cedulaStudent.value);
 
   newStudent = {
-    id: cedulaStudent.value,
-    nombre: `${nameStudent.value} ${lastNameStudent.value}`,
-    email: emailStudent.value,
-    phone: celStudent.value,
-    password: passwordStudent.value,
+    name: `${nameStudent.value} ${lastNameStudent.value}`,
     clan: clan.value,
-    edad: edad,
-    foto: [newStudent.foto], // Asigna la URL base64 del objeto newStudent
-    fecha: [],
-    recomendaciones: [],
-    observaciones: [],
-    puntaje: {
-      ingles: {
-        begginer: {
-          intentos: [],
-          fecha: [],
-          puntaje: [],
-        },
-        middle: {
-          intentos: [],
-          fecha: [],
-          puntaje: [],
-        },
-        advance: {
-          intentos: [],
-          fecha: [],
-          puntaje: [],
-        },
-      },
-      logicas: {
-        begginer: {
-          intentos: [],
-          fecha: [],
-          puntaje: [],
-        },
-        middle: {
-          intentos: [],
-          fecha: [],
-          puntaje: [],
-        },
-        advance: {
-          intentos: [],
-          fecha: [],
-          puntaje: [],
-        },
-      },
-      mentales: {
-        begginer: {
-          intentos: [],
-          fecha: [],
-          puntaje: [],
-        },
-        middle: {
-          intentos: [],
-          fecha: [],
-          puntaje: [],
-        },
-        advance: {
-          intentos: [],
-          fecha: [],
-          puntaje: [],
-        },
-      },
-    },
+    phone: celStudent.value,
+    email: emailStudent.value,
+    dateborn: bornDateStudent.value,
+    photo: await photoUrl, // Asigna la URL base64 del objeto newStudent
+    cc: cedulaConvertida,
   };
 
   if (studentId.value) {
-    console.log("hola");
     await update(studentId.value, newStudent);
 
   } else {
 
-    const response = await fetch(URL_STUDENTS);
+    const response = await fetch(URL_CODERS);
     const data = await response.json();
 
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].id === cedulaStudent.value) {
+    for (let i = 0; i < data.content.length; i++) {
+      if (data.content[i].id === cedulaStudent.value) {
         alert('Cedula ya se encuentra registrada');
         return;
       }
 
-      if (data[i].email === emailStudent.value) {
+      if (data.content[i].email === emailStudent.value) {
         alert('Email ya se encuentra registrado');
         return;
       }
     }
 
-    if (
-      passwordStudent.value !== confirmPasswordStudent.value ||
-      confirmPasswordStudent.value !== passwordStudent.value
-    ) {
-      alert('Ambas contrasenas deben ser iguales');
-      return;
-    }
-
-    post(URL_STUDENTS, newStudent);
+    console.log(newStudent);
+    post(URL_CODERS, newStudent);
     alert('Registrado exitosamente');
   }
 }
@@ -312,15 +277,15 @@ async function fillStudent(id) {
 }
 
 async function renderStudents() {
-  const students = await get(URL_STUDENTS);
+  const students = await get(URL_CODERS);
   tbody.innerHTML = '';
-  students.forEach(student => {
+  students.content.forEach(student => {
     tbody.innerHTML += `
       <tr>
-          <td><img src="${student.foto}" width="50px" height="50px" style="border-radius: 50%;"></td>
-          <td>${student.id}</td>
-          <td>${student.nombre}</td>
-          <td>${student.edad}</td>
+          <td><img src="${student.photo}" width="50px" height="50px" style="border-radius: 50%;"></td>
+          <td>${student.cc}</td>
+          <td>${student.name}</td>
+          <td>${student.clan}</td>
           <td>
               <button class="btn btn-danger btn-delete" studentId="${student.id}">Delete</button>
           </td>
@@ -335,7 +300,7 @@ renderStudents();
 
 document.body.addEventListener('click', event => {
   const id = event.target.getAttribute("studentId");
-  const studentToAction = `${URL_STUDENTS}/${id}`
+  const studentToAction = `${URL_CODERS}/${id}`
   if (event.target.classList.contains("btn-delete")) {
     deleteHttp(studentToAction);
   } if (event.target.classList.contains("btn-edit")) {
