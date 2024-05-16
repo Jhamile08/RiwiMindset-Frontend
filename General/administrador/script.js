@@ -147,6 +147,7 @@ async function registerStudent() {
 
     console.log(newStudent);
     post(URL_CODERS, newStudent);
+    
     alert('Registrado exitosamente');
   }
 }
@@ -257,37 +258,36 @@ function calcularEdad(fechaNacimiento) {
 async function getStudentId(id) {
   const response = await fetch(id);
   const data = response.json();
-  return data;
+  return data.content;
 };
 
 async function fillStudent(id) {
-  const student = await getStudentId(id);
+  const coder = await getStudentId(id);
 
-  profilePicEstudents.src = student.foto
-  nameStudent.value = student.nombre;
-  lastNameStudent.value = student.nombre;
-  cedulaStudent.value = student.id;
-  emailStudent.value = student.email;
-  celStudent.value = student.phone;
-  passwordStudent.value = student.password;
-  confirmPasswordStudent.value = student.password;
+  profilePicEstudents.src = coder.foto
+  nameStudent.value = coder.nombre;
+  lastNameStudent.value = coder.nombre;
+  cedulaStudent.value = coder.id;
+  emailStudent.value = coder.email;
+  celStudent.value = coder.phone;
   bornDateStudent.value = bornDateStudent.value;
-  clan.value = student.clan
+  clan.value = coder.clan
 
 }
 
 async function renderStudents() {
-  const students = await get(URL_CODERS);
+  const coders = await get(URL_CODERS);
   tbody.innerHTML = '';
-  students.content.forEach(student => {
+  coders.content.forEach(coder => {
     tbody.innerHTML += `
       <tr>
-          <td><img src="${student.photo}" width="50px" height="50px" style="border-radius: 50%;"></td>
-          <td>${student.cc}</td>
-          <td>${student.name}</td>
-          <td>${student.clan}</td>
+          <td><img src="${coder.photo}" width="50px" height="50px" style="border-radius: 50%;"></td>
+          <td>${coder.cc}</td>
+          <td>${coder.name}</td>
+          <td>${coder.clan}</td>
           <td>
-              <button class="btn btn-danger btn-delete" studentId="${student.id}">Delete</button>
+              <button class="btn btn-info btn-info" studentId="${coder.id}">EDITAR</button>
+              <button class="btn btn-danger btn-delete" studentId="${coder.id}">Delete</button>
           </td>
       </tr>
       `
