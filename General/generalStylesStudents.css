@@ -91,6 +91,7 @@
   position: relative;
   justify-content: center;
   align-items: center;
+  text-align: center;
   width: 100%;
   gap: 1.5rem;
   padding: 0 15px;
@@ -116,15 +117,68 @@
   width: 22px;
 }
 
-#sidebar .navbarItems a:hover {
+#sidebar .navbarItems > a:hover {
   background-image: linear-gradient(to right, #35155d, #4e3378, #685194, #8371b0, #9f91cc);
   color: white;
 }
 
-#sidebar .navbarItems a.itemActive {
+#sidebar .navbarItems > a.itemActive {
   background-image: linear-gradient(to right, #35155d, #4e3378, #685194, #8371b0, #9f91cc);
   color: white;
 }
 
+/*LOG OUT*/
 
+ul{
+  list-style-type: none;
+  padding: 8px 0;
+  width: 100%;
+  margin-top: 15%;
+}
 
+li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.cta {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.cta:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: block;
+  border-radius: 28px;
+  background: #4e3378;
+  width: 56px;
+  height: 56px;
+  transition: all 0.3s ease;
+}
+
+.cta span {
+  position: relative;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  
+}
+
+ul span:hover{
+  color: white;
+}
+
+.cta:hover:before {
+  width: 100%;
+  background: linear-gradient(to right, #35155d, #4e3378, #685194, #8371b0, #9f91cc);
+  color: white;
+}
+
+.cta:active {
+  transform: scale(0.96);
+}
