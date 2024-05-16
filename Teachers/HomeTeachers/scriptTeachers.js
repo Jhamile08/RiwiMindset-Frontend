@@ -1,10 +1,11 @@
 import { deleteEventFromServer } from "../SheduleTeachers/TeachersSchedule.js";
+import { URL_APPOINTMENTS } from "../../General/apiConnection/URLS.js"
 
 /* Inyectar citas de la base de datos json */
 getDataJsonArray();
 
 function getDataJsonArray() {
-  fetch("http://localhost:4002/events")
+  fetch(URL_APPOINTMENTS)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -12,19 +13,20 @@ function getDataJsonArray() {
       return response.json();
     })
     .then((dataJsonArray) => {
-      dataJsonArray.sort((a, b) => {
+
+      dataJsonArray.content.sort((a, b) => {
         const dateA = moment(`${a.date} ${a.time}`, "YYYY-MM-DD HH:mm");
         const dateB = moment(`${b.date} ${b.time}`, "YYYY-MM-DD HH:mm");
         return dateA - dateB;
       });
 
       // Muestra los eventos ordenados
-      dataJsonArray.forEach((element) => {
+      dataJsonArray.content.forEach((element) => {
         showHTMLArray(element);
       });
       // Llama a la función de informe con los datos del evento
       console.log(dataJsonArray);
-      generateReport(dataJsonArray);
+      generateReport(dataJsonArray.content);
     })
     .catch((error) => {
       console.error("Error al obtener y parsear el JSON:", error);
@@ -37,8 +39,7 @@ function showHTMLArray({
   reason,
   date,
   time,
-  profileStudent,
-  clanStudent,
+  coder
 }) {
   const contain = document.querySelector(".cards-home");
   const eventHTML = document.createElement("div");
@@ -71,11 +72,11 @@ function showHTMLArray({
 
   eventHTML.innerHTML = `
         <div class="codersData">
-          <img class="profilePhoto" src="${profileStudent}">
+          <img class="profilePhoto" src="${coder.photo}">
 
           <div class="codersData-text">
-            <p><b>${title}</b></p>
-            <p class="pClan">${clanStudent}</p>
+            <p><b>${coder.name}</b></p>
+            <p class="pClan">${coder.clan}</p>
           </div>
         </div>
 
