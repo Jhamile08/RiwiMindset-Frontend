@@ -3,22 +3,21 @@ import { deleteEventFromServer } from "../SheduleTeachers/TeachersSchedule.js";
 /* Inyectar citas de la base de datos json */
 getDataJsonArray();
 
-
 function getDataJsonArray() {
   fetch("http://localhost:4002/events")
-    .then(response => {
+    .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       return response.json();
     })
-    .then(dataJsonArray => {
+    .then((dataJsonArray) => {
       dataJsonArray.sort((a, b) => {
         const dateA = moment(`${a.date} ${a.time}`, "YYYY-MM-DD HH:mm");
         const dateB = moment(`${b.date} ${b.time}`, "YYYY-MM-DD HH:mm");
         return dateA - dateB;
       });
-      
+
       // Muestra los eventos ordenados
       dataJsonArray.forEach((element) => {
         showHTMLArray(element);
@@ -27,43 +26,91 @@ function getDataJsonArray() {
       console.log(dataJsonArray);
       generateReport(dataJsonArray);
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("Error al obtener y parsear el JSON:", error);
     });
 }
 
-function showHTMLArray({ id, title, reason, date, time }) {
+function showHTMLArray({
+  id,
+  title,
+  reason,
+  date,
+  time,
+  profileStudent,
+  clanStudent,
+}) {
   const contain = document.querySelector(".cards-home");
   const eventHTML = document.createElement("div");
   eventHTML.classList.add("card-home");
   eventHTML.dataset.eventId = id;
   // Obtener el día de la semana a partir de la fecha
-  moment.locale('es');
-  const dayOfWeek = moment(date, "YYYY-MM-DD").format("dddd");
+  moment.locale("es");
+  const eventDate = moment(date, "YYYY-MM-DD");
+  let dayOfWeek = eventDate.format("dddd");
+  // Convertir la primera letra en mayúscula
+  dayOfWeek = dayOfWeek.charAt(0).toUpperCase() + dayOfWeek.slice(1);
+  // Obtener la fecha actual
+  const today = moment().startOf("day");
+  // Comparar la fecha del evento con la fecha actual
+  if (eventDate.isSame(today, "day")) {
+    dayOfWeek = "Hoy";
+  } else if (eventDate.isSame(today.clone().add(1, "day"), "day")) {
+    dayOfWeek = "Mañana";
+  }
+  // Convertir la fecha al formato "DD de MMMM"
+  const formattedDate = moment(date, "YYYY-MM-DD").format("DD [de] MMMM");
+  // Formatear la hora en un formato deseado (hh:mm A - hh:mm A)
+  const startTime = moment(time, "HH:mm").format("hh:mma");
+  const endTime = moment(time, "HH:mm").add(1, "hour").format("hh:mma");
+
+  if (title.toLowerCase() === "bloqueado") {
+    // No hacer nada si el título es "Bloqueado"
+    return;
+  }
+
   eventHTML.innerHTML = `
-        <div class="card-home-text">
-          <h3>${dayOfWeek}</h3>
-          <h3>${date}</h3>
-          <h4>${time}</h4>
-          <p>${title}</p>
-          <p><b>Motivo: </b>${reason}</p>
+        <div class="codersData">
+          <img class="profilePhoto" src="${profileStudent}">
+
+          <div class="codersData-text">
+            <p><b>${title}</b></p>
+            <p class="pClan">${clanStudent}</p>
+          </div>
         </div>
+
+        <hr class="line">
+
         <div class="buttons">
           <button class="delete-appointment">Eliminar cita</button>
+          <button class="update-appointment">Reagendar cita</button>
+        </div>
+        
+        <hr class="line">
+
+        <div class="eventsData">
+          <div class="eventsDate">
+            <h3> <span class="dayOfWeek">${dayOfWeek}</span> <span class="formattedDate">${formattedDate}</span></h3>
+            <h4><b>${startTime} - ${endTime}</b></h4>
+          </div>
+
+          <hr class="line lineEvents">
+
+          <div class="reason">
+            <p class="reasonText">Motivo</p>
+            <p><b>${reason}</b></p>
+          </div>
         </div>
     `;
 
   contain.appendChild(eventHTML);
 
-  const deleteButton = eventHTML.querySelector('.delete-appointment');
-  deleteButton.addEventListener('click', () => {
+  const deleteButton = eventHTML.querySelector(".delete-appointment");
+  deleteButton.addEventListener("click", () => {
     const eventId = eventHTML.dataset.eventId;
     deleteAppointment(eventId);
   });
-
-};
-
-
+}
 
 function deleteAppointment(eventId) {
   // Confirmar antes de eliminar
@@ -78,7 +125,7 @@ function deleteAppointment(eventId) {
     allowOutsideClick: false,
     allowEscapeKey: false,
     allowEnterKey: false,
-    focusConfirm: false
+    focusConfirm: false,
   }).then((result) => {
     if (result.isConfirmed) {
       // Muestra una segunda alerta como modal
@@ -90,31 +137,36 @@ function deleteAppointment(eventId) {
         allowOutsideClick: true,
         allowEscapeKey: true,
         allowEnterKey: true,
-        focusConfirm: true
+        focusConfirm: true,
       }).then(() => {
-            // Eliminar el evento del servidor
+        // Eliminar el evento del servidor
         deleteEventFromServer(eventId);
       });
     }
   });
-};
-
+}
 
 // Función para generar el informe
 function generateReport(events) {
   // Contadores
-  let totalCitas = events.length;
+  let totalCitas = 0;
   let motivesCount = {};
 
   // Iterar sobre los eventos
-  events.forEach(event => {
+  events.forEach((event) => {
     const reason = event.reason;
 
-    // Incrementar el contador del motivo actual
-    if (motivesCount[reason]) {
-      motivesCount[reason]++;
-    } else {
-      motivesCount[reason] = 1;
+    // Verificar si el motivo no es "Bloqueado"
+    if (reason.toLowerCase() !== "bloqueado") {
+      // Incrementar el contador total de citas
+      totalCitas++;
+
+      // Incrementar el contador del motivo actual
+      if (motivesCount[reason]) {
+        motivesCount[reason]++;
+      } else {
+        motivesCount[reason] = 1;
+      }
     }
   });
 
@@ -129,15 +181,15 @@ function generateReport(events) {
   const minReason = motives[counts.indexOf(minCount)];
 
   // Inyectar datos en la tabla
-  const reportTable = document.querySelector('.table-report-home');
+  const reportTable = document.querySelector(".table-report-home");
   const row = reportTable.insertRow(1); // Asumiendo que la primera fila es para la información total
   const cell1 = row.insertCell(0);
   const cell2 = row.insertCell(1);
   const cell3 = row.insertCell(2);
 
   cell1.textContent = totalCitas;
-  cell2.textContent = maxReason;
-  cell3.textContent = minReason;
+  cell2.textContent = maxReason || "N/A";
+  cell3.textContent = minReason || "N/A";
 }
 
 // Llamar a la función con los datos del evento

@@ -1,7 +1,9 @@
 import { calendar, isTimeSlotOccupied } from "../../Teachers/SheduleTeachers/TeachersSchedule.js";
 
-/* Select NameStudent  */
+/* Select NameStudent & Photo */
 const nameStudent = document.querySelector("#nameStudent");
+const fotoStudent = document.querySelector("#fotoStudent");
+const clanStudent = document.querySelector("#clanStudent");
 
   /* Se selecciona el form */
 const eventForm = document.getElementById("eventForm");
@@ -40,6 +42,8 @@ eventForm.addEventListener("submit", async function (e) {
         reason: reason,
         date: eventDate,
         time: eventTime,
+        profileStudent: [fotoStudent.src],
+        clanStudent: clanStudent.textContent
       };
       // Enviar el nuevo evento al servidor usando fetch con una solicitud POST al servidor JSON.
       const response = await fetch("http://localhost:4002/events", {
