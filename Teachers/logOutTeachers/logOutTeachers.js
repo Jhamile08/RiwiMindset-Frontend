@@ -1,6 +1,7 @@
-const btnButtonLogOut = document.getElementById('btnLogOut');
+    const btnButtonLogOut = document.getElementById('btnLogOut');
 
-btnButtonLogOut.addEventListener('click', ()=>{
-    localStorage.removeItem("teacher");
-    window.location.href= "../../General/indexLogin.html"
-});
+    btnButtonLogOut.addEventListener('click', ()=>{
+        localStorage.removeItem("teacher");
+        window.location.href= "../../General/index.html"
+    });
+//id="btnLogOut"
