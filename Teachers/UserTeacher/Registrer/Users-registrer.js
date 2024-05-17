@@ -14,11 +14,16 @@ async function inyect() {
     // Inyectar foto y card 
     const user = document.querySelector('#data-user');
     const coderUser = document.createElement('div');
+    coderUser.classList.add("container-img-p");
 
     coderUser.innerHTML = `
-        <img src="${student.foto}" alt="" id="foto"></img>
-        <p id="nombre">${student.nombre}</p>
-        <p id="nombre">  edad: ${student.edad}</p>
+        <div>
+            <img src="${student.foto}" alt="" id="foto"></img>
+        </div>
+        <div>    
+            <p id="nombre">${student.nombre}</p>
+            <p class="perfil-clan" id="nombre">${student.clan}</p>
+        </div>    
     `;
 
     user.appendChild(coderUser);
@@ -32,59 +37,118 @@ async function inyectHistoria() {
     for (let i = 0; i < student.fecha.length; i++) {
         const register = document.createElement('div');
         register.classList.add("registroEspecifico");
-        register.innerHTML = `
+        register.innerHTML = ` 
             <p class="fechaEntrevista">
                 <b> fecha: </b> ${student.fecha[i]}
             </p>
             <p class="registroInfo">
                 ${student.recomendaciones[i]}
             </p>
-            <button id="btnfuera btn" class="btnVerMas" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Ver más</button>
+            <button id="btndentro btn" class="btnrecomendacion" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Ver más</button>
         `;
         // Pasar la función mostrarVerMas como manejador de eventos
-        register.querySelector('.btnVerMas').addEventListener('click', () => mostrarVerMas(i));
+        register.querySelector('.btnrecomendacion').addEventListener('click', () => ocultarMostrar(i));
         historial.appendChild(register);
     }
 };
-
-// MODAL VER MAS
-async function mostrarVerMas(i) {
+// ocultar y mostrar
+async function ocultarMostrar(i) {
+    const containerRegistros = document.querySelector(".registros")
+    containerRegistros.style.display = 'none';
     const student = await get(`${URL_STUDENTS}/${selectedStudentId}`);
 
     const parrafoRecomendaciones = document.querySelector('.pRecomendaciones');
     parrafoRecomendaciones.innerHTML = `
-            <textarea style="width: 100%" id="textAreaRecomendaciones">${student.recomendaciones[i]}</textarea>
-            <hr>
+            <div class="container-title">
+                <h2>RECOMENDACIONES</h2>
+                <div>
+                <button id="btnfuera btn" class="btnVerMasRecomendaciones" data-bs-toggle="modal" href="#exampleModalToggle" role="button"><img src="../../../General/Images/ImagesTeachers/SVG/edit.svg" alt=""></button></button>
+                    <img src="../../../General/Images/ImagesTeachers/SVG/delete.svg" alt="">
+                </div>
+            </div>
             <p>${student.fecha[i]}</p>
+            <p>${student.recomendaciones[i]}</p>
+            <hr>
             `;
 
     const parrafoObservaciones = document.querySelector('.pObservaciones');
     parrafoObservaciones.innerHTML = `
-            <textarea style="width: 100%" id="textAreaObservaciones">${student.observaciones[i]}</textarea>
-            <hr>
+            <div class="container-title">
+                <h2>OBSERVACIONES</h2>
+                <div>
+                <button id="btnfuera btn" class="btnVerMasObservaciones" data-bs-toggle="modal" href="#exampleModalToggle" role="button"><img src="../../../General/Images/ImagesTeachers/SVG/edit.svg" alt=""></button></button>
+                    <img src="../../../General/Images/ImagesTeachers/SVG/delete.svg" alt="">
+                </div>    
+            </div>
             <p>${student.fecha[i]}</p>
+            <p>${student.observaciones[i]}</p>
+            
+            `;
+            document.querySelector('.btnVerMasRecomendaciones').addEventListener('click', () => mostrarVerMasRecomendaciones(i));
+            document.querySelector('.btnVerMasObservaciones').addEventListener('click', () => mostrarVerMasObservaciones(i));
+};
+// MODAL VER MAS
+async function mostrarVerMasRecomendaciones(i) {
+    const student = await get(`${URL_STUDENTS}/${selectedStudentId}`);
+    const pObservaciones = document.querySelector('.pObservaciones');
+    pObservaciones.style.display = 'none';
+    const parrafoRecomendaciones = document.querySelector('.pRecomendaciones');
+    parrafoRecomendaciones.innerHTML = `
+            <h2>RECOMENDACIONES</h2>
+            <p>${student.fecha[i]}</p>
+            <textarea style="width: 100%; height: 220px" id="textAreaRecomendaciones">${student.recomendaciones[i]}</textarea>
+            <div class="modal-footer">
+            <button class="btn btn-primary" id="editarRecomendaciones" data-bs-target="#exampleModalToggle2"
+              data-bs-toggle="modal" style="left: 0;">GUARDAR</button>
+            </div>
             `;
 
-    document.querySelector('#editarRecomendaciones').addEventListener('click', () => guardar(i));
-    document.querySelector('#editarObservaciones').addEventListener('click', () => guardar(i));
+
+    document.querySelector('#editarRecomendaciones').addEventListener('click', () => guardar(i,'recomendaciones'));
+};
+async function mostrarVerMasObservaciones(i) {
+    const pRecomendaciones = document.querySelector('.pRecomendaciones');
+    pRecomendaciones.style.display = 'none';
+    const student = await get(`${URL_STUDENTS}/${selectedStudentId}`);
+
+
+    const parrafoObservaciones = document.querySelector('.pObservaciones');
+    parrafoObservaciones.innerHTML = `
+            <h2>OBSERVACION</h2>
+            <p>${student.fecha[i]}</p>
+            <textarea style="width: 100%; height: 220px" id="textAreaObservaciones">${student.observaciones[i]}</textarea>
+            <div class="modal-footer">
+            <button class="btn btn-primary" id="editarObservaciones" data-bs-target="#exampleModalToggle2"
+              data-bs-toggle="modal" style="left: 0;">GUARDAR</button>
+          </div>
+            `;
+    document.querySelector('#editarObservaciones').addEventListener('click', () => guardar(i,'observaciones'));
 };
 
+//Guardar las modificaciones
 
-
-async function guardar(i) {
+async function guardar(i, tipo) {
     console.log("Datos guardados");
 
-    // Obtener el contenido de los textarea modificados
-    const nuevaRecomendacion = document.getElementById('textAreaRecomendaciones').value;
-    const nuevaObservacion = document.getElementById('textAreaObservaciones').value;
+    let nuevaRecomendacion = "";
+    let nuevaObservacion = "";
+
+    if (tipo === 'recomendaciones') {
+        nuevaRecomendacion = document.getElementById('textAreaRecomendaciones').value;
+    } else if (tipo === 'observaciones') {
+        nuevaObservacion = document.getElementById('textAreaObservaciones').value;
+    }
 
     try {
         // Obtener el objeto estudiante del servidor
         let student = await get(`${URL_STUDENTS}/${selectedStudentId}`);
 
         // Actualizar las recomendaciones y observaciones en el objeto estudiante
-        student.recomendaciones[i] = nuevaRecomendacion;
-        student.observaciones[i] = nuevaObservacion;
+        if (tipo === 'recomendaciones') {
+            student.recomendaciones[i] = nuevaRecomendacion;
+        } else if (tipo === 'observaciones') {
+            student.observaciones[i] = nuevaObservacion;
+        }
 
         // Enviar los datos actualizados al servidor utilizando el método update
         const response = await update(`${URL_STUDENTS}/${selectedStudentId}`, student);
@@ -98,12 +162,9 @@ async function guardar(i) {
 }
 
 
-
-
 /* CREAR REGISTRO */
 
 const btnCrearRegistro = document.getElementById("btnCrearRegistro")
-
 btnCrearRegistro.addEventListener('click', crearRegistro)
 
 function crearRegistro() {
