@@ -12,10 +12,24 @@
 </head>
 
 <body>
+    
+    <header class="header">
+            <img src="../Images/imagesAdmin/adminVector.png" width="100px">
+            <h1>Panel de Control</h1>
+    </header>
+    
     <div class="generalContainer">
 
-        <div class="containerForms">
+        <div class="buttonsViews">
+            <button class="buttonStudent">ESTUDIANTES</button>
+            <button class="buttonPsicologyst">PSICOLOGAS</button>
+            <button class="buttonTest">TEST</button>
+        </div>
+
+       <div class="containerForms">
+
             <div id="containerFormEstudents">
+
                 <form id="formStudents">
 
                     <input type="hidden" id="studentId">
@@ -54,16 +68,6 @@
                             <label for="celStudent">Telefono</label>
                         </div>
                     </div>
-                    <div class="containerForms1 mb-3">
-                        <div class="form-floating ">
-                            <input type="password" id="passwordStudent" class="form-control" required>
-                            <label for="passwordStudent">Contraseña</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="password" id="confirmPasswordStudent" class="form-control" required>
-                            <label for="confirmPasswordStudent">Validar Contraseña</label>
-                        </div>
-                    </div>
                     <div class="containerForms2 mb-3">
                         <div class="form-floating">
                             <input type="date" id="bornDateStudent" class="form-control" required>
@@ -74,18 +78,17 @@
                         <div class="form-floating">
                             <select id="clan" class="form-control" required>
                                 <option value="">Seleccione un clan</option>
-                                <option value="Van Rossum">Van Rossum</option>
-                                <option value="Meta">Meta</option>
-                                <option value="Gosling">Gosling</option>
-                                <option value="Jobs">Jobs</option>
-                                <option value="Lovelace">Lovelace</option>
+                                <option value="VANROSSUM">VANROSSUM</option>
+                                <option value="META">META</option>
+                                <option value="GATES">GATES</option>
+                                <option value="LOVELACE">LOVELACE</option>
                             </select>
                             <label for="clan">Clan</label>
                         </div>
                     </div>
 
                     <div class="containerForms2 mb-3 button">
-                        <button class="btn">Registrar</button>
+                        <button class="btn" id="buttonRegister">Registrar</button>
                     </div>
                 </form>
             </div>
@@ -140,8 +143,13 @@
             </div>
         </div>
 
-        <div class="usersList d-flex flex-column align-items-center justify-content-center">
-            <h2 class="my-4 text-white">Lista de Estudiantes</h2>
+       <div class="usersList">
+
+        <div>
+            <button class="buttonStudentAdd"> <img width="50px" src="/General/Images/imagesAdmin/add-user-icon-vector-26201329.png">Agregar Estudiante</button>
+       </div>
+
+            <h2 class="my-4 text-black">Registros</h2>
             <div>
                 <table class="table table-striped">
                     <thead>
@@ -149,8 +157,8 @@
                             <th>FOTO</th>
                             <th>CEDULA</th>
                             <th>NOMBRE</th>
-                            <th>EDAD</th>
-                            <th>ELIMINAR</th>
+                            <th>CLAN</th>
+                            <th>ACCIONES</th>
                         </tr>
                     </thead>
                     <tbody id="tbody">
