@@ -1,4 +1,4 @@
-import {URL_STUDENTS, URL_PSYCHOLOGISTS, URL_ADMIN} from './apiConnection/URLS.js';
+import {URL_CODERS, URL_PSYCHOLOGISTS} from './apiConnection/URLS.js';
 // Selectors
 const container = document.getElementById('container')
 const inicioProfesor = document.getElementById('inicioProfesor');
@@ -11,7 +11,7 @@ const passwordStudent = document.querySelector("#passwordEstudiante");
 
 /* Select Psycologist */
 let buttonLoginPyschologist = document.querySelector('#buttonLoginPyschologist');
-const cedulaProfesor = document.querySelector("#cedulaProfesor");
+const cedulaPsychologist = document.querySelector("#cedulaProfesor");
 const passwordProfesor = document.querySelector("#passwordProfesor");
 
 //Script animation Login
@@ -61,16 +61,16 @@ buttonLoginPyschologist.addEventListener('click', (e)=>{
 })
 
 async function validateLoginForm() {
-    const responsePsychologists = await fetch(`${URL_PSYCHOLOGISTS}?id=${cedulaProfesor.value}`);
+    const responsePsychologists = await fetch(`${URL_PSYCHOLOGISTS}/${cedulaPsychologist.value}`);
     const dataPsychologists = await responsePsychologists.json();
     
-    const responseAdmins = await fetch(`${URL_ADMIN}?id=${cedulaProfesor.value}`);
-    const dataAdmins = await responseAdmins.json();
+/*     const responseAdmins = await fetch(`${URL_ADMIN}?id=${cedulaProfesor.value}`);
+    const dataAdmins = await responseAdmins.json(); */
     
-    const psychologistsExist = dataPsychologists && dataPsychologists.length > 0;
-    const adminsExist = dataAdmins && dataAdmins.length > 0;
+    const psychologistsExist = dataPsychologists.content && dataPsychologists.content.length > 0;
+/*     const adminsExist = dataAdmins && dataAdmins.length > 0; */
     
-    if (!psychologistsExist && !adminsExist) {
+    if (!psychologistsExist /* && !adminsExist */) {
         console.error("Cedula no registrada");
         Swal.fire({
             title: "La Cedula que ingresaste no se encuentra registrada",
@@ -80,7 +80,7 @@ async function validateLoginForm() {
     }
     
     if (psychologistsExist && dataPsychologists[0].password === passwordProfesor.value) {
-        localStorage.setItem("teacher",dataPsychologists[0].id);
+        localStorage.setItem("psychologist",dataPsychologists[0].id);
         window.location.href = "../Teachers/HomeTeachers/indexTeachersHome.html";
         return;
     }

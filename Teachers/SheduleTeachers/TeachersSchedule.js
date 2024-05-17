@@ -1,3 +1,6 @@
+import { URL_APPOINTMENTS } from '../../General/apiConnection/URLS.js';
+
+
 /* ------------CALENDAR----------------- */
 let calendar;
 
@@ -25,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       week: 'Semana',
       day: 'Día'
     },
-    /* inyectar a events del calendar la extraccion del json-server */
+    /* inyectar a events del calendar la extraccion de la app spring */
     events: fetchEventsFromServer,
     eventClick: function (info) {
       // Verificar si la vista es de estudiantes
@@ -108,6 +111,8 @@ document.addEventListener("DOMContentLoaded", async function () {
       const overlapping = allEvents.some(event => {
         const eventStartMoment = moment(event.start);
         const eventEndMoment = moment(event.end);
+        console.log(eventStartMoment);
+        console.log(eventEndMoment);
         return (
           (eventStartMoment.isBefore(moment(formattedEndTime)) && eventEndMoment.isAfter(moment(formattedStartTime))) ||
           (eventStartMoment.isSame(moment(formattedStartTime)) && eventEndMoment.isSame(moment(formattedEndTime)))
@@ -115,6 +120,8 @@ document.addEventListener("DOMContentLoaded", async function () {
       });
   
       if (!overlapping) {
+      const psychologistLoggedIn = localStorage.getItem("psychologist");
+
         const newEvent = {
           title: 'Bloqueado',
           start: moment(formattedStartTime).format(),
@@ -122,10 +129,11 @@ document.addEventListener("DOMContentLoaded", async function () {
           reason: 'Bloqueado',
           date: eventDate,
           time: `${startTime} - ${endTime}`,
+          pyschologistId: psychologistLoggedIn
         };
   
         // Envia el nuevo evento al servidor
-        const response = await fetch("http://localhost:4002/events", {
+        const response = await fetch(URL_APPOINTMENTS, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -201,16 +209,19 @@ export async function fetchEventsFromServer(info, successCallback, failureCallba
      // Determina el tipo de vista
      const isStudentView = document.body.classList.contains('student-view');
     // Realizar una solicitud (fetch) a la URL del servidor que contiene los eventos
-    const response = await fetch('http://localhost:4002/events');
+    const response = await fetch(URL_APPOINTMENTS);
     // Verifica si la solicitud fue exitosa (código de estado 200)
     if (response.ok) {
       // Si la respuesta fue exitosa, convierte el cuerpo de la respuesta a formato JSON
       const events = await response.json();
 
+    
        // Procesa los eventos según el tipo de vista
        const processedEvents = isStudentView
-       ? events.map(event => ({ ...event, title: 'Reservado' }))
-       : events;
+       ? events.content.map(event => ({ ...event, title: 'Reservado' }))
+       : events.content;
+
+       console.log(processedEvents);
 
       // Llama a la función de retorno de éxito (successCallback) y pasa los eventos
       successCallback(processedEvents);
@@ -235,7 +246,7 @@ export async function fetchEventsFromServer(info, successCallback, failureCallba
 export async function deleteEventFromServer(eventId) {
   try {
     // Realizar una solicitud (fetch) al servidor para eliminar el evento específico
-    const response = await fetch(`http://localhost:4002/events/${eventId}`, {
+    const response = await fetch(`${URL_APPOINTMENTS}/${eventId}`, {
       method: 'DELETE',
     });
     // Verifica si la solicitud fue exitosa (código de estado 200)
