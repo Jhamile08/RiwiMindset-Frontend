@@ -61,8 +61,12 @@
   width: 50%;
   border-radius: 25px;
   padding: 15px;
-  max-height: 170px;
+  max-height: 1500px;
   margin-left: 25%;
+}
+
+.image{
+  margin: 10% 0;
 }
 
 .nav-bar .nav li {
@@ -195,7 +199,9 @@ li a {
   background: #8636ff;
   color:white
 }
-
+.cta span:hover{
+  color:white;
+}
 .cta:hover svg {
   transform: translateX(0);
 }
