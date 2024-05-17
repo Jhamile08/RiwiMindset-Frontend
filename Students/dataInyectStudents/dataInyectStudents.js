@@ -3,7 +3,7 @@ import { URL_STUDENTS } from "../../General/apiConnection/URLS.js";
 /* SELECT */
 const fotoStudent = document.querySelector("#fotoStudent");
 const nameStudent = document.querySelector("#nameStudent");
-const cedulaStudent = document.querySelector("#cedulaStudent");
+const clanStudent = document.querySelector("#clanStudent");
 
 
 // Obtener el ID del estudiante del localStorage
@@ -21,7 +21,7 @@ async function inyect() {
 
     fotoStudent.src = student.foto;
     nameStudent.textContent = student.nombre;
-    cedulaStudent.textContent = student.cedula;
+    clanStudent.textContent = student.clan;
 };
 
 (async () => {
