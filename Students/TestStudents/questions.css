@@ -2,7 +2,7 @@
 /* Diseño de la pagina de preguntas */
 
 body{
-    background-color: #f4f4f4;
+    background-color: #dfad;
     height: 100%;
     margin: 0;
 }
@@ -15,7 +15,7 @@ body{
 .title-question{
     color: rgb(95, 44, 136);
     margin: 0;
-    font-size: 35px;
+    font-size: clamp(1rem, 1.5vw, 3rem);
     font-family: "Cinzel", serif;
 }
 .container-test{
@@ -31,8 +31,14 @@ body{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 10px;
     display: flex;
+    flex-direction: column;
+    gap: 20px;
     justify-content: center;
     align-items: center;
+    padding: 80px;
+}
+.content-recomendation{
+    text-align: center;
 }
 .question-test{
     font-size: 28px;
@@ -61,4 +67,7 @@ body{
 .content-test-inside{
     margin: 30px 80px;
     width: 100%;
+}
+.hidden{
+    display: none;
 }

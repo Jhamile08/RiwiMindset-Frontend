@@ -18,7 +18,12 @@ export async function post(url,info){
 // READ - OBTENER DATOS DEL JSON
 export async function get(url){
     try {
-        const response = await fetch(url);
+        const response = await fetch(url,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+    });
         const data = await response.json();
         return data;
     } catch (error) {

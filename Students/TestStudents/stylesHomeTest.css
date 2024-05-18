@@ -9,6 +9,7 @@ html {
     
 }
 
+
 .content-wave{
     background-color: #3f337e;
     width: 100%;
@@ -28,6 +29,7 @@ html {
     width: 100%;
     background-color: #f3f3f3;
     height: 200px;
+
 }
 
 .title-test{
@@ -76,6 +78,11 @@ html {
 }
 
 
+.question-container{
+    width: 100%;
+    height: 100%;
+}
+
 .slider-container {
     width: 100%;
     height: 80%;
@@ -121,18 +128,6 @@ html {
     height: 665px;
 }
 
-h1 {
-    font-size: 40px;
-    font-weight: 700;
-    text-align: left;
-    text-transform: uppercase;
-    color: #fff;
-    position: absolute;
-    top: 50%;
-    left: -10%;
-    transform: rotate(270deg);
-    transition: 0.7s ease;
-}
 
 .details {
     position: absolute;
@@ -193,7 +188,6 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: left;
-    width: 70%;
 }
 .pregunta-test{
     width: 80%;

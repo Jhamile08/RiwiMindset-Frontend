@@ -4,3 +4,6 @@ export const URL_PSYCHOLOGISTS =  `${URL_BASE}/psychologists`;
 export const URL_EVENTS =  `${URL_BASE}/events`;
 export const URL_TEST =  `${URL_BASE}/test`;
 export const URL_ADMIN =  `${URL_BASE}/admin`;
+export const URL_PREGUNTAS =  `http://localhost:8080/api/v1/question`;
+export const URL_RESPUESTAS = `http://localhost:8080/api/v1/result`;
+

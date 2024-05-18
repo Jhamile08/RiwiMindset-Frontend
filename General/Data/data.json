@@ -452,267 +452,7 @@
   "test": [
     {
       "preguntasIngles": {
-        "begginer": [
-          {
-            "contenido": "Complete the sentence with the correct answer: ¨Can I park in this place?¨ ",
-            "respuestas": [
-              {
-                "contenido": "A. Yes, you can't.",
-                "correcta": false
-              },
-              {
-                "contenido": "B.  No, this is my car.",
-                "correcta": false
-              },
-              {
-                "contenido": "C. Yes, you can park for an half hour.",
-                "correcta": true
-              }
-            ]
-          },
-          {
-            "contenido": "What is the correct word to call to my mother's sister?",
-            "respuestas": [
-              {
-                "contenido": "A. Aunt .",
-                "correcta": true
-              },
-              {
-                "contenido": "B. Uncle.",
-                "correcta": false
-              },
-              {
-                "contenido": "C. Daughter.",
-                "correcta": false
-              }
-            ]
-          },
-          {
-            "contenido": "- What is the error in the following sentence?: Mine mom loves me",
-            "respuestas": [
-              {
-                "contenido": "A. the use of the word 'loves'.",
-                "correcta": false
-              },
-              {
-                "contenido": "B. the word mom doesn't exist.",
-                "correcta": false
-              },
-              {
-                "contenido": "C. the use of 'mine' at the start of the sentence.",
-                "correcta": true
-              }
-            ]
-          },
-          {
-            "contenido": "- Complete the sentence with the correct word: The day ___ beautiful, I want to go to the beach",
-            "respuestas": [
-              {
-                "contenido": "A. Does.",
-                "correcta": false
-              },
-              {
-                "contenido": "B. Is.",
-                "correcta": true
-              },
-              {
-                "contenido": "C. Is.",
-                "correcta": false
-              }
-            ]
-          },
-          {
-            "contenido": "- indicate the correct tense of the following sentence: Mike likes to ride his bike on Mondays",
-            "respuestas": [
-              {
-                "contenido": "A. Future simple.",
-                "correcta": false
-              },
-              {
-                "contenido": "B. Presente perfecto.",
-                "correcta": true
-              },
-              {
-                "contenido": "C. Presente progresivo.",
-                "correcta": false
-              }
-            ]
-          }
-        ],
-        "middle": [
-          {
-            "contenido": "whats is the correct meaning of the expresion 'false cognate' ",
-            "respuestas": [
-              {
-                "contenido": "A. words that are spelled the same in Spanish and English.",
-                "correcta": false
-              },
-              {
-                "contenido": "B.  words with the same meaning.",
-                "correcta": false
-              },
-              {
-                "contenido": "C. words that seem similar but have a different meaning in Spanish and English.",
-                "correcta": true
-              }
-            ]
-          },
-          {
-            "contenido": "What is the correct way to write a question in English?",
-            "respuestas": [
-              {
-                "contenido": "A. Auxiliar/Verb/Complement .",
-                "correcta": true
-              },
-              {
-                "contenido": "B. Verb/Auxiliar/Complemente.",
-                "correcta": false
-              },
-              {
-                "contenido": "C. Complement/Verb/Auxiliar.",
-                "correcta": false
-              }
-            ]
-          },
-          {
-            "contenido": "-  What is the error in the following sentence?: Yesterday I was on the beach and I will eat ice cream.",
-            "respuestas": [
-              {
-                "contenido": "A. the use of the word 'I'.",
-                "correcta": false
-              },
-              {
-                "contenido": "B. the word beach doesn't exist.",
-                "correcta": false
-              },
-              {
-                "contenido": "C. the use of 'will' in past time.",
-                "correcta": true
-              }
-            ]
-          },
-          {
-            "contenido": "- Complete the sentence with the correct wordThere was a lot of snow falling, we didn't ___ to class all week: ",
-            "respuestas": [
-              {
-                "contenido": "A. Goes.",
-                "correcta": false
-              },
-              {
-                "contenido": "B. Went.",
-                "correcta": false
-              },
-              {
-                "contenido": "C. Go.",
-                "correcta": true
-              }
-            ]
-          },
-          {
-            "contenido": "- indicate the correct tense of the following sentence: I was swimming last Wednesday",
-            "respuestas": [
-              {
-                "contenido": "A. Progresive past.",
-                "correcta": true
-              },
-              {
-                "contenido": "B. Present perfect.",
-                "correcta": false
-              },
-              {
-                "contenido": "C. Progresive present.",
-                "correcta": false
-              }
-            ]
-          }
-        ],
-        "advance": [
-          {
-            "contenido": "whats is th correct auxilir of the perfect past on first person? ",
-            "respuestas": [
-              {
-                "contenido": "A. Did ",
-                "correcta": false
-              },
-              {
-                "contenido": "B. Was.",
-                "correcta": false
-              },
-              {
-                "contenido": "C. Had",
-                "correcta": true
-              }
-            ]
-          },
-          {
-            "contenido": "Which of these is a good example of a future tense phrase?",
-            "respuestas": [
-              {
-                "contenido": "A. I would go to Medellin next year.",
-                "correcta": false
-              },
-              {
-                "contenido": "B. I went to Medellin a year ago.",
-                "correcta": false
-              },
-              {
-                "contenido": "C. I will travel to Medellin next year.",
-                "correcta": true
-              }
-            ]
-          },
-          {
-            "contenido": "-  What is the error in the following sentence?: Diana had been in Australia on her birthday. She don't celebrate anything.",
-            "respuestas": [
-              {
-                "contenido": "A. the use of the word 'had'.",
-                "correcta": false
-              },
-              {
-                "contenido": "B. the use of the word 'don't'.",
-                "correcta": true
-              },
-              {
-                "contenido": "C. the use of 'had' in past time.",
-                "correcta": false
-              }
-            ]
-          },
-          {
-            "contenido": "- Complete the sentence with the correct wordThere was a lot of snow falling, we didn't ___ to class all week: ",
-            "respuestas": [
-              {
-                "contenido": "A. Goes.",
-                "correcta": false
-              },
-              {
-                "contenido": "B. Went.",
-                "correcta": false
-              },
-              {
-                "contenido": "C. Go.",
-                "correcta": true
-              }
-            ]
-          },
-          {
-            "contenido": "- indicate the correct tense of the following sentence: I was swimming last Wednesday",
-            "respuestas": [
-              {
-                "contenido": "A. Progresive past.",
-                "correcta": true
-              },
-              {
-                "contenido": "B. Present perfect.",
-                "correcta": false
-              },
-              {
-                "contenido": "C. Progresive present.",
-                "correcta": false
-              }
-            ]
-          }
-        ]
+
       },
       "preguntasLogicas": {
         "begginer": [
@@ -1292,6 +1032,41 @@
         "level": ""
       },
       "id": "3a21"
+    }
+  ],
+  "preguntas" :
+    {
+      "idPregunta" : [
+      1,
+      2
+    ],
+    "pregunta" : [
+      "pregunta1",
+      "pregunta2"
+    ],
+    "respuestas":[
+      ["respuesta", "respuesta"],
+      ["respuesta", "respuesta"]
+    ],
+    "tipoPregunta" : [
+      "english",
+      "logic"
+    ]
+  },
+  "resultado":[
+    {
+      "idResultado":[
+        1,
+        2
+      ],
+      "id_coder":[
+        "12",
+        "11",
+        "10"
+      ],
+      "resultado":[
+        "80"
+      ]
     }
   ]
 }
