@@ -5,7 +5,8 @@
   font-family: 'Ubuntu', sans-serif;
 }
 
-/* Registros */
+/* contenedor general */
+
 .container-right{
   background-color: #f4f4f4;
 }
@@ -38,20 +39,7 @@
   width: 6px; 
 }
 
-.container-registros::-webkit-scrollbar-thumb {
-  background-color: #ccc; 
-  border-radius: 3px; 
-}
 
-.container-registros::-webkit-scrollbar-thumb:hover {
-  background-color: #aaa; 
-}
-.container-registros{
-  background-color: white;
-  padding: 20px 30px;
-  height: 400px;
-  overflow-y: auto
-}
 .modal-footer{
   gap: 10px;
   padding: 20px;
@@ -74,6 +62,29 @@
 }
 .container-title img{
   display: flex;
+}
+
+/* Seccion de registros y recomendaciones */
+
+.container-registros::-webkit-scrollbar-thumb {
+  background-color: #ccc; 
+  border-radius: 3px; 
+}
+
+.container-registros::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa; 
+}
+.container-registros{
+  background-color: white;
+  padding: 20px 30px;
+  height: 400px;
+  overflow-y: auto
+}
+.container-button{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
 }
 .registroInfo{
   width: 60%;
@@ -110,10 +121,6 @@
   border-radius: 5px;
 }
 
-
-
-
-
 .secciones a {
   background-color: white;
   color: black;
@@ -130,10 +137,10 @@
   border: #8626ff;
   border-color: #6f1fcf;
   color: rgb(255, 255, 255);
-  height: 40px;
   padding: 10px 15px;
   cursor: pointer;
   border-radius: 5px;
+  text-decoration: none;
 }
 
 .btnatras {
@@ -147,10 +154,13 @@
   cursor: pointer;
   border-radius: 5px;
 }
+
+
+/* Seccion del perfil */
+
 .perfil-clan{
   color: rgb(115, 115, 115);
 }
-
 .seccionesPerfil {
   list-style: none;
   padding: 20px 10px;
@@ -192,18 +202,49 @@
   color: rgb(78, 78, 78);
 }
 
-/* Estilo para el texto que se muestra en Ver Más */
+/* Estilos de resultados de los test */
+.container-result{
+  display: flex;
+  flex-direction: column;
+  gap: 20%;
+  width: 100%;
+  height: 100%;
+}
+  /* cards de resultados de result test */
 
-/* .textarea{
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente blanco */
-/*   border: 1px solid #ccc;
-  z-index: 1000;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
-/*} */
+  .container-result{
+    display: flex;
+    align-items: center;
+  }
+  .content-result{
+    display: flex;
+    gap: 8%;
+  }
+  .design-result{
+    overflow-y: scroll;
+    height: 200px;
+    width: 400px;
+    border: 1px black solid;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  }
+  .design-result h1{
+    text-align: center;
+  }
 
+  .design-result::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento */
+  }
+
+  .design-result::-webkit-scrollbar-track {
+      background: #f1f1f1; /* Color de la pista de desplazamiento */
+  }
+  .design-result::-webkit-scrollbar-thumb {
+      background: #888; /* Color de la manija de desplazamiento */
+  }
+
+  .design-result::-webkit-scrollbar-thumb:hover {
+      background: #555; /* Color de la manija de desplazamiento al pasar el ratón por encima */
+  }
+  
