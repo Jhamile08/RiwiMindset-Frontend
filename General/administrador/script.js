@@ -28,10 +28,13 @@ const buttonTest = document.querySelector(".buttonTest");
 const containerForms = document.querySelector(".containerForms");
 const containerFormEstudents = document.querySelector("#containerFormEstudents");
 const containerFormTeachers = document.querySelector("#containerFormTeachers");
+const containerFormTest = document.querySelector("#containerFormTest");
 
 const usersList = document.querySelector(".usersList");
+const testList = document.querySelector(".testList");
 
 const buttonStudentAdd = document.querySelector(".buttonStudentAdd")
+const buttonTestAdd = document.querySelector(".buttonTestAdd")
 
 /* Event Listener Vistas */
 
@@ -46,16 +49,32 @@ header.addEventListener('click',()=>{
 buttonStudents.addEventListener('click',()=>{
   containerFormEstudents.style.display="none";
   containerFormTeachers.style.display="none";
+  containerFormTest.style.display="none";
   buttonStudents.style.display="none";
   buttonPsicologyst.style.display="none";
   buttonTest.style.display="none";
   usersList.style.display="block";
 })
 
+buttonTest.addEventListener('click',()=>{
+  containerFormEstudents.style.display="none";
+  containerFormTeachers.style.display="none";
+  containerFormTest.style.display="none";
+  buttonStudents.style.display="none";
+  buttonPsicologyst.style.display="none";
+  buttonTest.style.display="none";
+  testList.style.display="block";
+})
+
 buttonStudentAdd.addEventListener('click',()=>{
   containerForms.style.display="block"
   containerFormEstudents.style.display="block";
   usersList.style.display="none";
+})
+buttonTestAdd.addEventListener('click',()=>{
+  containerForms.style.display="block"
+  containerFormTest.style.display="block";
+  testList.style.display="none";
 })
 
 
@@ -305,5 +324,53 @@ document.body.addEventListener('click', event => {
     deleteHttp(studentToAction);
   } if (event.target.classList.contains("btn-edit")) {
     fillStudent(studentToAction);
+  }
+})
+
+
+
+
+/* -------TEST------- */
+/* Select from create form */
+const formTest = document.querySelector('#formTest');
+const question = document.querySelector('#Question');
+const correctAnswer = document.querySelector('#correctAnswer');
+const answerOne = document.querySelector("#AnswerOne")
+const answerTwo = document.querySelector('#AnswerTwo');
+const answerThree = document.querySelector('#AnswerThree');
+const type = document.querySelector('#type');
+const testId = document.querySelector("#testId");
+
+document.getElementById('buttonCreateTest').addEventListener('click', async function () {
+  newTest = {
+    typeTest: `${type.value}`,
+    question: question.value,
+    answers: celStudent.value,
+  };
+
+  if (testId.value) {
+    await update(testId.value, newTest);
+
+  } else {
+
+    const response = await fetch(URL_CODERS);
+    const data = await response.json();
+
+    for (let i = 0; i < data.content.length; i++) {
+      if (data.content[i].id === cedulaStudent.value) {
+        alert('Cedula ya se encuentra registrada');
+        return;
+      }
+
+      if (data.content[i].email === emailStudent.value) {
+        alert('Email ya se encuentra registrado');
+        return;
+      }
+    }
+
+    console.log(newStudent);
+    post(URL_CODERS, newStudent);
+    
+    alert('Registrado exitosamente');
   }
 })
