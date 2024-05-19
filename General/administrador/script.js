@@ -267,7 +267,7 @@ async function fillStudent(id) {
   profilePicEstudents.src = coder.foto
   nameStudent.value = coder.nombre;
   lastNameStudent.value = coder.nombre;
-  cedulaStudent.value = coder.id;
+  cedulaStudent.value = coder._id;
   emailStudent.value = coder.email;
   celStudent.value = coder.phone;
   bornDateStudent.value = bornDateStudent.value;
@@ -282,12 +282,12 @@ async function renderStudents() {
     tbody.innerHTML += `
       <tr>
           <td><img src="${coder.photo}" width="50px" height="50px" style="border-radius: 50%;"></td>
-          <td>${coder.cc}</td>
+          <td>${coder.document}</td>
           <td>${coder.name}</td>
           <td>${coder.clan}</td>
           <td>
-              <button class="btn btn-info btn-info" studentId="${coder.id}">EDITAR</button>
-              <button class="btn btn-danger btn-delete" studentId="${coder.id}">Delete</button>
+              <button class="btn btn-info btn-info" studentId="${coder._id}">EDITAR</button>
+              <button class="btn btn-danger btn-delete" studentId="${coder._id}">Delete</button>
           </td>
       </tr>
       `
