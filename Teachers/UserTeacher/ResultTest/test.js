@@ -1,4 +1,7 @@
 // Generamos una url base
+import { get, post, update } from "./../../../General/apiConnection/apiConnection.js";
+
+const url = "http://localhost:8080/api/v1/result";
 const urlBase = "http://localhost:4002/";
 // Obtener el ID del estudiante del localStorage
 const selectedStudentId = localStorage.getItem("selectedStudentId");
@@ -25,18 +28,79 @@ async function inyect() {
   user.appendChild(coderUser);
 };
 
-/* TEST */
-
-let tabla = document.querySelector('.slide tbody')
-
-tabla.innerHTML += `
-    <tr>
-    <td>1</td>
-    <td>18/02/2024</td>
-    <td>10%</td>
-    </tr>
-`
-
 document.addEventListener("DOMContentLoaded",()=>{
-    inyect();
+    inyect(), inyectarResultado();
 })
+// Inyeccion de resultados 
+
+async function inyectarResultado(){
+    let contentResult = document.querySelector(".content-result")
+    let contentResultEnglish = document.querySelector(".result-english")
+    let contentResultLogic = document.querySelector(".result-logic")
+    let contentResultMental = document.querySelector(".result-mental")
+    let data = await get(url);
+    let hasEnglishResult = false;
+    let hasLogicResult = false;
+    let hasMentalResult = false;
+
+    data["content"].forEach(resultado => {
+        if (resultado.typeTest === "ENGLISH") {
+            hasEnglishResult = true;
+        } else if (resultado.typeTest === "LOGIC") {
+            hasLogicResult = true;
+        } else if (resultado.typeTest === "MENTAL") {
+            hasMentalResult = true;
+        }
+    });
+    
+    // Mostrar mensajes si no hay resultados de algún tipo
+    if (!hasEnglishResult) {
+        contentResultEnglish.innerHTML += `
+            <ul>
+                <li>Aun no hay resultados disponibles</li>
+            </ul>
+        `;
+    }
+    
+    if (!hasLogicResult) {
+        contentResultLogic.innerHTML += `
+            <ul>
+                <li>Aun no hay resultados disponibles</li>
+            </ul>
+        `;
+    }
+    
+    if (!hasMentalResult) {
+        contentResultMental.innerHTML += `
+            <ul>
+                <li>Aun no hay resultados disponibles</li>
+            </ul>
+        `;
+    }
+
+    data["content"].forEach(resultado => {
+
+        if (resultado.typeTest == "ENGLISH") {
+            contentResultEnglish.innerHTML += `
+                <ul>
+                    <li>Puntaje : ${resultado.result}</li>
+                </ul>
+            `;
+        }else if (resultado.typeTest == "LOGIC") {
+            contentResultLogic.innerHTML += `
+            <ul>
+                <li>Puntaje : ${resultado.result}</li>
+            </ul>
+        `;
+        }else{
+            contentResultMental.innerHTML += `
+            <ul>
+                <li>Puntaje : ${resultado.result}</li>
+            </ul>
+        `;
+        }
+    });
+}
+
+
+
