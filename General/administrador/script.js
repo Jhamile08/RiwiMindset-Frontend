@@ -44,6 +44,7 @@ header.addEventListener('click',()=>{
   buttonPsicologyst.style.display="block";
   buttonTest.style.display="block";
   usersList.style.display="none";
+  testList.style.display="none";
 })
 
 buttonStudents.addEventListener('click',()=>{
