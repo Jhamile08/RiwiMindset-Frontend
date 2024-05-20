@@ -1,6 +1,6 @@
 import { renderModal } from "./FunctionsDOM.js";
-import { URL_PREGUNTAS, URL_RESPUESTAS } from "./../../General/apiConnection/URLS.js";
-import { get, update, post } from "../../../General/apiConnection/apiConnection.js";
+import { URL_PREGUNTAS } from "./../../General/apiConnection/URLS.js";
+import { get, post } from "../../../General/apiConnection/apiConnection.js";
 
 // selectors
 // selector del boton del modal
