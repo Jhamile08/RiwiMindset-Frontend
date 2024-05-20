@@ -20,7 +20,7 @@ async function renderCoders() {
             <p id="">${coder.name} </p>
             <p class="borrar" id="nombre">${coder.name} ${coder.clan}</p> 
             <p id="">${coder.clan} </p>
-            <a href="/Teachers/UserTeacher/Registrer/IndexTeachersUsers-register.html" type="submit" id="${coder.id}" class= "actualizar">ver perfil</a>
+            <a href="/Teachers/UserTeacher/Registrer/IndexTeachersUsers-register.html" type="submit" id="${coder._id}" class= "actualizar">ver perfil</a>
             <img src="${coder.photo}" alt="" id="foto"></img>
         </div>
         `
@@ -71,6 +71,7 @@ function nombre(apellido) {
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("actualizar")) {
     const studentId = e.target.getAttribute("id");
+    console.log(studentId);
     localStorage.setItem("selectedStudentId", studentId); // Almacenar ID del estudiante seleccionado
   }
 });

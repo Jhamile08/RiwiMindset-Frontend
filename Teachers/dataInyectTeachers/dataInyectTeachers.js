@@ -1,25 +1,25 @@
 import { URL_PSYCHOLOGISTS } from "../../General/apiConnection/URLS.js";
 
 /* SELECT */
-const fotoTeacher = document.querySelector("#fotoTeacher");
+const photoPsychologist = document.querySelector("#fotoTeacher");
 const nameTeacher = document.querySelector("#nameTeacher");
 
 // Obtener el ID del estudiante del localStorage
-const selectedTeacherId = localStorage.getItem("teacher");
+const selectedTeacherId = localStorage.getItem("userId");
 
 async function getTeacher(TeacherId) {
-    const response = await fetch(`${URL_PSYCHOLOGISTS}/${TeacherId}`);
-    const data = await response.json();
-    return data;
-};
+  const response = await fetch(`${URL_PSYCHOLOGISTS}/${selectedTeacherId}`);
+  const data = await response.json();
+  return data;
+}
 
 async function inyect() {
-    const teacher = await getTeacher(selectedTeacherId);
+  const teacher = await getTeacher(selectedTeacherId);
 
-    fotoTeacher.src = teacher.foto;
-    nameTeacher.textContent = teacher.nombre;
-};
+  photoPsychologist.src = teacher.photo;
+  nameTeacher.textContent = teacher.name;
+}
 
 (async () => {
-    await inyect();
+  await inyect();
 })();
