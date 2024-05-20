@@ -32,6 +32,7 @@ const containerFormTest = document.querySelector("#containerFormTest");
 
 const usersList = document.querySelector(".usersList");
 const testList = document.querySelector(".testList");
+const psychologistList = document.querySelector(".psychologistList");
 
 const buttonStudentAdd = document.querySelector(".buttonStudentAdd")
 const buttonTestAdd = document.querySelector(".buttonTestAdd")
@@ -44,6 +45,8 @@ header.addEventListener('click',()=>{
   buttonPsicologyst.style.display="block";
   buttonTest.style.display="block";
   usersList.style.display="none";
+  psychologistList.style.display="none";
+  testList.style.display="none";
 })
 
 /* BOTON CODER */
