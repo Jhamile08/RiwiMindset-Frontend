@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cinzel:wght@400..900&family=Comfortaa:wght@300..700&family=Rowdies:wght@300;400;700&display=swap');
+/* Diseño de la pagina de preguntas */
+
+body{
+    background-color: #dfad;
+    height: 100%;
+    margin: 0;
+}
+/* Style test */
+
+.container-title{
+    display: flex;
+    justify-content: center;
+}
+.title-question{
+    color: rgb(95, 44, 136);
+    margin: 0;
+    font-size: clamp(1rem, 1.5vw, 3rem);
+    font-family: "Cinzel", serif;
+}
+.container-test{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.content-test{
+    background-color: rgb(255, 255, 255);
+    width: 80%;
+    height: 80%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 80px;
+}
+.content-recomendation{
+    text-align: center;
+}
+.question-test{
+    font-size: 28px;
+    padding: 10px 0px;
+}
+.answers{
+    padding: 0;
+}
+.answers li{
+    list-style: none;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #f4f4f4;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.answers li:hover{
+    background-color: #e0e0e0;
+}
+.answers li a {
+    color: rgb(115, 64, 157);
+    text-decoration: none;
+    font-size: 25px;
+}
+.content-test-inside{
+    margin: 30px 80px;
+    width: 100%;
+}
+.hidden{
+    display: none;
+}
