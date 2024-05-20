@@ -67,10 +67,7 @@ body {
 }
 
 .containerForms {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+   
     padding-top: 20px;
     display: none;
 }
@@ -86,9 +83,10 @@ body {
 }
 
 .containerForms #containerFormEstudents .titleEstudents {
-    margin-top: 20px;
+    margin-top: 40px;
     text-align: center;
     color: #0d0d0d;
+
     letter-spacing: 3px;
 }
 
