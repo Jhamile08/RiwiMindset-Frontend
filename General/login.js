@@ -31,6 +31,16 @@ buttonLoginStudent.addEventListener('click', (e) => {
 })
 
 
+function decodeToken(token) {
+    try {
+        const decodedToken = jwt_decode(token);
+        const userId = decodedToken.sub; // Cambia 'id' por el nombre del campo que contiene el ID en tu token
+        localStorage.setItem('userId', userId);
+    } catch (error) {
+        console.error('Error al decodificar el token:', error);
+    }
+}
+
 
 async function validateFormLoginStudents() {
 
@@ -50,11 +60,13 @@ async function validateFormLoginStudents() {
             body: JSON.stringify(formDataCoder),
         });
 
-        const token = await response.json()
+        const accesToken = await response.json()
+
+        const token = accesToken.access_token;
 
         if (response.ok) {
-            console.log(JSON.stringify(token));
-            /*   window.location.href = '../Students/HomeStudents/indexHomeEstudents.html' */
+            decodeToken(token);
+            window.location.href = '../Students/HomeStudents/indexHomeEstudents.html'
             localStorage.setItem('token', JSON.stringify(token));
         }
         else {
