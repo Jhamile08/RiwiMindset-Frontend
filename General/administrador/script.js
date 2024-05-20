@@ -160,26 +160,19 @@ async function registerStudent() {
   const rol = document.querySelector("#role").value;
 
   newStudent = {
-    name: nameStudent,
-    photo: await photoUrl, // Asigna la URL base64 del objeto newStudent
-    email: emailStudent,
-    password: password,
-    phone: celStudent,
-    document: documentCoder,
-    dateBirth: bornDateStudent,
-    role: rol,
-    clan: clan,
+    "name": nameStudent,
+    "photo": await photoUrl, // Asigna la URL base64 del objeto newStudent
+    "email": emailStudent,
+    "password": password,
+    "phone": celStudent,
+    "document": documentCoder,
+    "dateBirth": bornDateStudent,
+    "role": rol,
+    "clan": clan,
   };
 
-console.log(newStudent);
-  console.log(typeof nameStudent);
-  console.log(typeof documentCoder);
-  console.log(typeof emailStudent);
-  console.log(typeof celStudent);
-  console.log(typeof bornDateStudent);
-  console.log(typeof clan);
-  console.log(typeof password);
-  console.log(typeof rol);
+
+
 
   if (studentId) {
     try {
