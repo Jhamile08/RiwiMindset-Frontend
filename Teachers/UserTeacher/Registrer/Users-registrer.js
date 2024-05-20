@@ -1,4 +1,4 @@
-import { URL_STUDENTS } from "../../../General/apiConnection/URLS.js";
+import { URL_CODERS, URL_RECORDS } from "../../../General/apiConnection/URLS.js";
 import { get, update, post } from "../../../General/apiConnection/apiConnection.js";
 
 document.addEventListener('DOMContentLoaded',()=>{
@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded',()=>{
 // Obtener el ID del estudiante del localStorage
 const selectedStudentId = localStorage.getItem("selectedStudentId");
 
-get(`${URL_STUDENTS}/${selectedStudentId}`);
+get(`${URL_CODERS}/5684379a-a77c-480b-a0d1-5bab72851366`);
 
 //Inyeccion del perfil del menu
 async function inyect() {
-    const student = await get(`${URL_STUDENTS}/${selectedStudentId}`);
+    const coder = await get(`${URL_CODERS}/5684379a-a77c-480b-a0d1-5bab72851366`);
     // Inyectar foto y card 
     const user = document.querySelector('#data-user');
     const coderUser = document.createElement('div');
@@ -18,11 +18,11 @@ async function inyect() {
 
     coderUser.innerHTML = `
         <div>
-            <img src="${student.foto}" alt="" id="foto"></img>
+            <img src="${coder.photo}" alt="" id="foto"></img>
         </div>
         <div>    
-            <p id="nombre">${student.nombre}</p>
-            <p class="perfil-clan" id="nombre">${student.clan}</p>
+            <p id="nombre">${coder.name}</p>
+            <p class="perfil-clan" id="nombre">${coder.clan}</p>
         </div>    
     `;
 
@@ -30,7 +30,7 @@ async function inyect() {
 };
 
 async function inyectHistoria() {
-    const student = await get(`${URL_STUDENTS}/${selectedStudentId}`);
+    const student = await get(`${URL_RECORDS}/1`);
     const historial = document.querySelector("#registro");
 
     // Iterar sobre el array de fechas (puede ser cualquier otro array)
