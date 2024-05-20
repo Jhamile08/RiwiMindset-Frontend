@@ -46,6 +46,8 @@ header.addEventListener('click',()=>{
   usersList.style.display="none";
 })
 
+/* BOTON CODER */
+
 buttonStudents.addEventListener('click',()=>{
   containerFormEstudents.style.display="none";
   containerFormTeachers.style.display="none";
@@ -77,6 +79,15 @@ buttonTestAdd.addEventListener('click',()=>{
   testList.style.display="none";
 })
 
+/* BOTON PSICOLOGA */
+buttonPsicologyst.addEventListener('click',()=>{
+  containerFormEstudents.style.display="none";
+  containerFormTeachers.style.display="none";
+  buttonStudents.style.display="none";
+  buttonPsicologyst.style.display="none";
+  buttonTest.style.display="none";
+  usersList.style.display="none";
+})
 
 /* -------STUDENTS------- */
 /* Select */
@@ -300,19 +311,19 @@ async function fillStudent(id) {
 
 }
 
-async function renderStudents() {
+async function renderCoders() {
   const coders = await get(URL_CODERS);
   tbody.innerHTML = '';
   coders.content.forEach(coder => {
     tbody.innerHTML += `
       <tr>
           <td><img src="${coder.photo}" width="50px" height="50px" style="border-radius: 50%;"></td>
-          <td>${coder.cc}</td>
+          <td>${coder.document}</td>
           <td>${coder.name}</td>
           <td>${coder.clan}</td>
           <td>
-              <button class="btn btn-info btn-info" studentId="${coder.id}">EDITAR</button>
-              <button class="btn btn-danger btn-delete" studentId="${coder.id}">Delete</button>
+              <button class="btn btn-info btn-info" studentId="${coder._id}">EDITAR</button>
+              <button class="btn btn-danger btn-delete" studentId="${coder._id}">Delete</button>
           </td>
       </tr>
       `
@@ -320,7 +331,9 @@ async function renderStudents() {
   });
 };
 
-renderStudents();
+
+
+renderCoders();
 
 
 document.body.addEventListener('click', event => {
@@ -332,10 +345,6 @@ document.body.addEventListener('click', event => {
     fillStudent(studentToAction);
   }
 })
-
-
-
-
 /* -------TEST------- */
 /* Select from create form */
 const formTest = document.querySelector('#formTest');

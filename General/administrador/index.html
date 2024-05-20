@@ -35,29 +35,33 @@
                     <input type="hidden" id="studentId">
 
                     <div class="titleEstudents mb-5">
-                        <h3>Register Estudents</h3>
+                        <h3>Registro Coder</h3>
                     </div>
-                    <div class="containerImg containerForms2 mb-5">
+
+                    <div class="containerImg containerForms2 mb-5 ">
                         <img src="./images/profile.png" id="profilePictureEstudents">
                         <label for="inputFileEstudents">Update Imagen</label>
                         <input type="file" accept="image/jpeg, image/png, image/jpg" id="inputFileEstudents" required>
                     </div>
-                    <div class="containerForms1 mb-3">
+
+                    <div class="containerForms2 mb-3">
                         <div class="form-floating">
                             <input type="text" id="nameStudent" class="form-control" required>
                             <label for="nameStudent">Nombre</label>
                         </div>
-                        <div class="form-floating">
-                            <input type="text" id="lastNameStudent" class="form-control" required>
-                            <label for="lastNameStudent">Apellido</label>
-                        </div>
                     </div>
-                    <div class="containerForms2 mb-3">
+
+                    <div class="containerForms1 mb-3">
                         <div class="form-floating">
                             <input type="number" id="idStudent" class="form-control" required>
                             <label for="idStudent">Cedula</label>
                         </div>
+                        <div class="form-floating">
+                            <input type="text" id="password" class="form-control" required>
+                            <label for="password">Contraseña</label>
+                        </div>
                     </div>
+
                     <div class="containerForms1 mb-3">
                         <div class="form-floating">
                             <input type="email" id="emailStudent" class="form-control" required>
@@ -68,13 +72,15 @@
                             <label for="celStudent">Telefono</label>
                         </div>
                     </div>
+
                     <div class="containerForms2 mb-3">
                         <div class="form-floating">
                             <input type="date" id="bornDateStudent" class="form-control" required>
                             <label for="bornDateStudent">Fecha Nacimiento</label>
                         </div>
                     </div>
-                    <div class="containerForms2 mb-3">
+
+                    <div class="containerForms1 mb-3">
                         <div class="form-floating">
                             <select id="clan" class="form-control" required>
                                 <option value="">Seleccione un clan</option>
@@ -84,6 +90,12 @@
                                 <option value="LOVELACE">LOVELACE</option>
                             </select>
                             <label for="clan">Clan</label>
+                        </div>
+                        <div class="form-floating">
+                            <select id="role" class="form-control" required>
+                                <option value="student">Coder</option>
+                            </select>
+                            <label for="role">Rol</label>
                         </div>
                     </div>
 
@@ -190,11 +202,17 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div>  
 
        <div class="usersList">
 
         <div>
+
+
+        <div class="psychologistList">
+
+        </div>
+
             <button class="buttonStudentAdd"> <img width="50px" src="/General/Images/imagesAdmin/add-user-icon-vector-26201329.png">Agregar Estudiante</button>
        </div>
 
