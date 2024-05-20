@@ -9,8 +9,8 @@ export async function renderModal(type){
     // const data = await get(URL_TEST)
     modalTitle.textContent = `${type}`
     contentInfo.innerHTML = `
-            <p>Duracion aprox: ${"quemado"}</p>
-            <p>Cantidad de preguntas: ${"cantidad"}</p>
+        <p>Duracion aprox: 5 minutos</p>
+        <p>Cantidad de preguntas: 3 preguntas</p>
     `;
 
     containerInfo.appendChild(contentInfo);
