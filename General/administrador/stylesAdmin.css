@@ -67,11 +67,13 @@ body {
 }
 
 .containerForms {
-   
     padding-top: 20px;
     display: none;
 }
 
+#formTest{
+    width: 500px;
+}
 
 .containerForms #containerFormEstudents {
     display: flex;
@@ -231,6 +233,9 @@ body {
 }
 
 .usersList {
+    display: none;
+}
+.testList{
     display: none;
 }
 

@@ -153,6 +153,55 @@
                     </div>
                 </form>
             </div>
+
+            <div id="containerFormTest">
+
+                <form id="formTest">
+
+                    <input type="hidden" id="testId">
+
+                    <div class="titleEstudents mb-5">
+                        <h3>Create test</h3>
+                    </div>
+                    <div class="containerForms1 mb-3">
+
+                            <div class="form-floating">
+                                <select id="type" class="form-control" required>
+                                    <option value="">Seleccione tipo de pregunta</option>
+                                    <option value="ENGLISH">Ingles</option>
+                                    <option value="LOGIC">Logicas</option>
+                                    <option value="MENTAL">Ayuda mental</option>
+                                </select>
+                                <label for="type">Tipo</label>
+                            </div>
+                        </div>
+                    <div class="containerForms1 mb-3">
+                        <div class="form-floating">
+                            <input type="text" id="question" class="form-control" required>
+                            <label for="Question">Pregunta</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" id="correctAnswer" class="form-control" required>
+                            <label for="correctAnswer">Respuesta correcta</label>
+                        </div>
+                    </div>
+                        <div class="form-floating">
+                            <input type="text" id="answerOne" class="form-control" required>
+                            <label for="AnswerOne">Respuesta relleno 1</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" id="answerTwo" class="form-control" required>
+                            <label for="AnswerTwo">Respuesta relleno 2</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" id="answerThree" class="form-control" required>
+                            <label for="AnswerThree">Respuesta relleno 3</label>
+                        </div>
+                    <div class="containerForms2 mb-3 button">
+                        <button class="btn" id="buttonCreateTest">Crear</button>
+                    </div>
+                </form>
+            </div>
         </div>  
 
        <div class="usersList">
@@ -184,6 +233,28 @@
                 </table>
             </div>
         </div>
+        <div class="testList">
+
+            <div>
+                <button class="buttonTestAdd"> <img width="50px" src="/General/Images/imagesAdmin/add-user-icon-vector-26201329.png">Agregar test</button>
+           </div>
+    
+                <h2 class="my-4 text-black">Tests</h2>
+                <div>
+                    <table class="table table-striped test-table">
+                        <thead>
+                            <tr>
+                                <th>Id test</th>
+                                <th>Tipo</th>
+                                <th>Pregunta</th>
+                                <th>Respuesta correcta</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyTest">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
     </div>
 
