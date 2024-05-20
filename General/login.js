@@ -25,7 +25,15 @@ inicioEstudiante.addEventListener('click', () => {
 
 
 /* Descifrar Token */
-
+function decodeToken(token) {
+    try {
+        const decodedToken = jwt_decode(token);
+        const userId = decodedToken.sub; // Cambia 'id' por el nombre del campo que contiene el ID en tu token
+        localStorage.setItem('userId', userId);
+    } catch (error) {
+        console.error('Error al decodificar el token:', error);
+    }
+}
 
 /* ----------- LOGIN STUDENTS -------- */
 buttonLoginStudent.addEventListener('click', (e) => {
