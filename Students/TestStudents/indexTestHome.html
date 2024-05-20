@@ -16,6 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <script src="../../General/guardian/guardianStudent.js"></script>
+        <link rel="stylesheet" href="./questions.css">
 </head>
 
 <body>
@@ -59,7 +60,7 @@
         </div>
       </nav>
 
-    <div class="container-down" style="height: 100vh;">
+    <div class="container-down" style="height: 100vh;" id="question-container">
 
         <div class="container-wave">
             <div class="content-wave">
@@ -69,21 +70,21 @@
         </div>
 
         <div class="container-cards" id="xarwa">
-            <a class="cards" id="ingles" type="button" class="btn btn-primary" data-toggle="modal"
+            <a class="cards" id="ENGLISH" type="button" class="btn btn-primary" data-toggle="modal"
                 data-target="#exampleModal" value="ingles">
                 <div>
                     <img class="imgs-cards" src="/General/Images/ImagesStudents/inglesicono.png" alt="">
                     <p>Realiza este test para mejorar tu habilidades en ingles </p>
                 </div>
             </a>
-            <a class="cards" id="logicas" type="button" class="btn btn-primary" data-toggle="modal"
+            <a class="cards" id="LOGIC" type="button" class="btn btn-primary" data-toggle="modal"
                 data-target="#exampleModal">
                 <div>
                     <img class="imgs-cards" src="/General/Images/ImagesStudents/logicaincono.png" alt="">
                     <p class="cards-p">Realiza este test para mejorar tu habilidades en logicas </p>
                 </div>
             </a>
-            <a class="cards" id="mentales" type="button" class="btn btn-primary" data-toggle="modal"
+            <a class="cards" id="MENTAL" type="button" class="btn btn-primary" data-toggle="modal"
                 data-target="#exampleModal">
                 <div>
                     <img class="imgs-cards" src="/General/Images/ImagesStudents/mentalicono.png" alt="">
@@ -92,11 +93,6 @@
             </a>
         </div>
 
-        <div class="container">
-            <div class="containerHome">
-            </div>
-            <button id="siguiente-btn" class="btn-siguiente" style="position: absolute;">Siguiente</button>
-        </div>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -104,9 +100,6 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                     <div class="modal-body">
                         <div class="contentInfoTest">
