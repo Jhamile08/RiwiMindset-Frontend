@@ -1,274 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>RiwiMindset - Forms </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/General/administrador/stylesAdmin.css">
+    <title>RiwiMindset - Forms</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/General/administrador/stylesAdmin.css" />
     <script src="/General/guardian/guardianAdmin.js"></script>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <header class="header">
-        <img src="../Images/imagesAdmin/adminVector.png" width="100px">
-        <h1>Panel de Control</h1>
+      <img src="../Images/imagesAdmin/adminVector.png" width="100px" />
+      <h1>Panel de Control</h1>
     </header>
 
     <div class="generalContainer">
+      <div class="buttonsViews">
+        <button class="buttonStudent">ESTUDIANTES</button>
+        <button class="buttonPsicologyst">PSICOLOGAS</button>
+        <button class="buttonTest">TEST</button>
+      </div>
 
-        <div class="buttonsViews">
-            <button class="buttonStudent">ESTUDIANTES</button>
-            <button class="buttonPsicologyst">PSICOLOGAS</button>
-            <button class="buttonTest">TEST</button>
+      <div class="containerForms">
+        <div id="containerFormEstudents">
+          <form id="formStudents">
+            <input type="hidden" id="studentId" />
+
+            <div class="titleEstudents mb-5">
+              <h3>Registro Coder</h3>
+            </div>
+
+            <div class="containerImg containerForms2 mb-5">
+              <img src="./images/profile.png" id="profilePictureEstudents" />
+              <label for="inputFileEstudents">Update Imagen</label>
+              <input
+                type="file"
+                accept="image/jpeg, image/png, image/jpg"
+                id="inputFileEstudents"
+                required
+                name="photo"
+              />
+            </div>
+
+            <div class="containerForms2 mb-3">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  id="nameStudent"
+                  class="form-control"
+                  required
+                  name="name"
+                />
+                <label for="nameStudent">Nombre</label>
+              </div>
+            </div>
+
+            <div class="containerForms1 mb-3">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  id="idStudent"
+                  class="form-control"
+                  required
+                  name="document"
+                />
+                <label for="idStudent">Cedula</label>
+              </div>
+              <div class="form-floating">
+                <input
+                  type="text"
+                  id="password"
+                  class="form-control"
+                  required
+                  name="password"
+                />
+                <label for="password">Contraseña</label>
+              </div>
+            </div>
+
+            <div class="containerForms1 mb-3">
+              <div class="form-floating">
+                <input
+                  type="email"
+                  id="emailStudent"
+                  class="form-control"
+                  required
+                  name="email"
+                />
+                <label for="emailStudent">Email</label>
+              </div>
+              <div class="form-floating">
+                <input
+                  type="text"
+                  id="celStudent"
+                  class="form-control"
+                  required
+                  name="phone"
+                />
+                <label for="celStudent">Telefono</label>
+              </div>
+            </div>
+
+            <div class="containerForms2 mb-3">
+              <div class="form-floating">
+                <input
+                  type="date"
+                  id="bornDateStudent"
+                  class="form-control"
+                  required
+                  name="dateBirth"
+                />
+                <label for="bornDateStudent">Fecha Nacimiento</label>
+              </div>
+            </div>
+
+            <div class="containerForms1 mb-3">
+              <div class="form-floating">
+                <select id="clan" class="form-control" required name="clan">
+                  <option value="">Seleccione un clan</option>
+                  <option value="VANROSSUM">VANROSSUM</option>
+                  <option value="META">META</option>
+                  <option value="GATES">GATES</option>
+                  <option value="LOVELACE">LOVELACE</option>
+                </select>
+                <label for="clan">Clan</label>
+              </div>
+              <div class="form-floating">
+                <select id="role" class="form-control" required name="role">
+                  <option value="student">Coder</option>
+                </select>
+                <label for="role">Rol</label>
+              </div>
+            </div>
+
+            <div class="containerForms2 mb-3 button">
+              <button class="btn" id="buttonRegister">Registrar</button>
+            </div>
+          </form>
         </div>
 
-        <div class="containerForms">
-
-            <div id="containerFormEstudents">
-
-                <form id="formStudents">
-
-                    <input type="hidden" id="studentId">
-
-                    <div class="titleEstudents mb-5">
-                        <h3>Registro Coder</h3>
-                    </div>
-
-                    <div class="containerImg containerForms2 mb-5 ">
-                        <img src="./images/profile.png" id="profilePictureEstudents">
-                        <label for="inputFileEstudents">Update Imagen</label>
-                        <input type="file" accept="image/jpeg, image/png, image/jpg" id="inputFileEstudents" required>
-                    </div>
-
-                    <div class="containerForms2 mb-3">
-                        <div class="form-floating">
-                            <input type="text" id="nameStudent" class="form-control" required>
-                            <label for="nameStudent">Nombre</label>
-                        </div>
-                    </div>
-
-                    <div class="containerForms1 mb-3">
-                        <div class="form-floating">
-                            <input type="number" id="idStudent" class="form-control" required>
-                            <label for="idStudent">Cedula</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="text" id="password" class="form-control" required>
-                            <label for="password">Contraseña</label>
-                        </div>
-                    </div>
-
-                    <div class="containerForms1 mb-3">
-                        <div class="form-floating">
-                            <input type="email" id="emailStudent" class="form-control" required>
-                            <label for="emailStudent">Email</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="number" id="celStudent" class="form-control" required>
-                            <label for="celStudent">Telefono</label>
-                        </div>
-                    </div>
-
-                    <div class="containerForms2 mb-3">
-                        <div class="form-floating">
-                            <input type="date" id="bornDateStudent" class="form-control" required>
-                            <label for="bornDateStudent">Fecha Nacimiento</label>
-                        </div>
-                    </div>
-
-                    <div class="containerForms1 mb-3">
-                        <div class="form-floating">
-                            <select id="clan" class="form-control" required>
-                                <option value="">Seleccione un clan</option>
-                                <option value="VANROSSUM">VANROSSUM</option>
-                                <option value="META">META</option>
-                                <option value="GATES">GATES</option>
-                                <option value="LOVELACE">LOVELACE</option>
-                            </select>
-                            <label for="clan">Clan</label>
-                        </div>
-                        <div class="form-floating">
-                            <select id="role" class="form-control" required>
-                                <option value="student">Coder</option>
-                            </select>
-                            <label for="role">Rol</label>
-                        </div>
-                    </div>
-
-                    <div class="containerForms2 mb-3 button">
-                        <button class="btn" id="buttonRegister">Registrar</button>
-                    </div>
-                </form>
+        <div id="containerFormTeachers">
+          <form id="formPsychologists">
+            <div class="titleTeachers mb-5">
+              <h3>Register Teachers</h3>
             </div>
-
-            <div id="containerFormTeachers">
-                <form id="formPsychologists">
-                    <div class="titleTeachers mb-5">
-                        <h3>Register Teachers</h3>
-                    </div>
-                    <div class="containerImg containerForms2 mb-5">
-                        <img src="./images/profile.png" id="profilePicturepsychologists">
-                        <label for="inputFilePsychologists">Update Imagen</label>
-                        <input type="file" accept="image/jpeg, image/png, image/jpg" id="inputFilePsychologists"
-                            required>
-                    </div>
-                    <div class="containerForms1 mb-3">
-                        <div class="form-floating">
-                            <input type="text" id="namePsychologists" class="form-control" required>
-                            <label for="namePsychologists">Nombre</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="text" id="lastNamePsychologists" class="form-control" required>
-                            <label for="lastNamePsychologists">Apellido</label>
-                        </div>
-                    </div>
-                    <div class="containerForms2 mb-3">
-                        <div class="form-floating">
-                            <input type="number" id="idPsychologist" class="form-control" required>
-                            <label for="idPsychologist">Cedula</label>
-                        </div>
-                    </div>
-                    <div class="containerForms2 mb-3">
-                        <div class="form-floating">
-                            <input type="text" id="emailPsychologists" class="form-control" required>
-                            <label for="emailPsychologists">Email</label>
-                        </div>
-                    </div>
-                    <div class="containerForms1 mb-3">
-                        <div class="form-floating ">
-                            <input type="password" id="passwordPsychologists" class="form-control" required>
-                            <label for="passwordPsychologists">Contraseña</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="password" id="confirmPasswordPsychologists" class="form-control" required>
-                            <label for="confirmPasswordPsychologists">Validar Contraseña</label>
-                        </div>
-                    </div>
-                    <div class="containerForms2 mb-3 button">
-                        <button class="btn">Registrar</button>
-                    </div>
-                </form>
+            <div class="containerImg containerForms2 mb-5">
+              <img
+                src="./images/profile.png"
+                id="profilePicturepsychologists"
+              />
+              <label for="inputFilePsychologists">Update Imagen</label>
+              <input
+                type="file"
+                accept="image/jpeg, image/png, image/jpg"
+                id="inputFilePsychologists"
+                required
+              />
             </div>
-
-            <div id="containerFormTest">
-                <form id="formTest">
-                    <input type="hidden" id="testId">
-                    <div class="titleEstudents mb-5">
-                        <h3>Create test</h3>
-                    </div>
-
-                    <div class="containerForms1 mb-3">
-                        <div class="form-floating">
-                            <select id="type" class="form-control" required>
-                                <option value="">Seleccione tipo de pregunta</option>
-                                <option value="ENGLISH">Ingles</option>
-                                <option value="LOGIC">Logicas</option>
-                                <option value="MENTAL">Ayuda mental</option>
-                            </select>
-                            <label for="type">Tipo</label>
-                        </div>
-                    </div>
-                    <div class="containerForms1 mb-3">
-                        <div class="form-floating">
-                            <input type="text" id="question" class="form-control" required>
-                            <label for="Question">Pregunta</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="text" id="correctAnswer" class="form-control" required>
-                            <label for="correctAnswer">Respuesta correcta</label>
-                        </div>
-                    </div>
-
-                    <div class="form-floating">
-                        <input type="text" id="answerOne" class="form-control" required>
-                        <label for="AnswerOne">Respuesta relleno 1</label>
-                    </div>
-
-                    <div class="form-floating">
-                        <input type="text" id="answerTwo" class="form-control" required>
-                        <label for="AnswerTwo">Respuesta relleno 2</label>
-                    </div>
-
-                    <div class="form-floating">
-                        <input type="text" id="answerThree" class="form-control" required>
-                        <label for="AnswerThree">Respuesta relleno 3</label>
-                    </div>
-
-                    <div class="containerForms2 mb-3 button">
-                        <button class="btn" id="buttonCreateTest">Crear</button>
-                    </div>
-                </form>
-
+            <div class="containerForms1 mb-3">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  id="namePsychologists"
+                  class="form-control"
+                  required
+                />
+                <label for="namePsychologists">Nombre</label>
+              </div>
+              <div class="form-floating">
+                <input
+                  type="text"
+                  id="lastNamePsychologists"
+                  class="form-control"
+                  required
+                />
+                <label for="lastNamePsychologists">Apellido</label>
+              </div>
             </div>
-
+            <div class="containerForms2 mb-3">
+              <div class="form-floating">
+                <input
+                  type="number"
+                  id="idPsychologist"
+                  class="form-control"
+                  required
+                />
+                <label for="idPsychologist">Cedula</label>
+              </div>
+            </div>
+            <div class="containerForms2 mb-3">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  id="emailPsychologists"
+                  class="form-control"
+                  required
+                />
+                <label for="emailPsychologists">Email</label>
+              </div>
+            </div>
+            <div class="containerForms1 mb-3">
+              <div class="form-floating">
+                <input
+                  type="password"
+                  id="passwordPsychologists"
+                  class="form-control"
+                  required
+                />
+                <label for="passwordPsychologists">Contraseña</label>
+              </div>
+              <div class="form-floating">
+                <input
+                  type="password"
+                  id="confirmPasswordPsychologists"
+                  class="form-control"
+                  required
+                />
+                <label for="confirmPasswordPsychologists"
+                  >Validar Contraseña</label
+                >
+              </div>
+            </div>
+            <div class="containerForms2 mb-3 button">
+              <button class="btn">Registrar</button>
+            </div>
+          </form>
         </div>
 
-        <div class="usersList">
-
-            <div>
-
-                <button class="buttonStudentAdd"> <img width="50px"
-                        src="/General/Images/imagesAdmin/add-user-icon-vector-26201329.png">Agregar Estudiante</button>
+        <div id="containerFormTest">
+          <form id="formTest">
+            <input type="hidden" id="testId" />
+            <div class="titleEstudents mb-5">
+              <h3>Create test</h3>
             </div>
 
-            <h2 class="my-4 text-black">Registros</h2>
-            <div>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>FOTO</th>
-                            <th>CEDULA</th>
-                            <th>NOMBRE</th>
-                            <th>CLAN</th>
-                            <th>ACCIONES</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tbody">
-                    </tbody>
-                </table>
+            <div class="containerForms1 mb-3">
+              <div class="form-floating">
+                <select id="type" class="form-control" required>
+                  <option value="">Seleccione tipo de pregunta</option>
+                  <option value="ENGLISH">Ingles</option>
+                  <option value="LOGIC">Logicas</option>
+                  <option value="MENTAL">Ayuda mental</option>
+                </select>
+                <label for="type">Tipo</label>
+              </div>
             </div>
+            <div class="containerForms1 mb-3">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  id="question"
+                  class="form-control"
+                  required
+                />
+                <label for="Question">Pregunta</label>
+              </div>
+              <div class="form-floating">
+                <input
+                  type="text"
+                  id="correctAnswer"
+                  class="form-control"
+                  required
+                />
+                <label for="correctAnswer">Respuesta correcta</label>
+              </div>
+            </div>
+
+            <div class="form-floating">
+              <input type="text" id="answerOne" class="form-control" required />
+              <label for="AnswerOne">Respuesta relleno 1</label>
+            </div>
+
+            <div class="form-floating">
+              <input type="text" id="answerTwo" class="form-control" required />
+              <label for="AnswerTwo">Respuesta relleno 2</label>
+            </div>
+
+            <div class="form-floating">
+              <input
+                type="text"
+                id="answerThree"
+                class="form-control"
+                required
+              />
+              <label for="AnswerThree">Respuesta relleno 3</label>
+            </div>
+
+            <div class="containerForms2 mb-3 button">
+              <button class="btn" id="buttonCreateTest">Crear</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="usersList">
+        <div>
+          <button class="buttonStudentAdd">
+            <img
+              width="50px"
+              src="/General/Images/imagesAdmin/add-user-icon-vector-26201329.png"
+            />Agregar Estudiante
+          </button>
         </div>
 
-        <div class="psychologistList">
+        <h2 class="my-4 text-black">Registros</h2>
+        <div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>FOTO</th>
+                <th>CEDULA</th>
+                <th>NOMBRE</th>
+                <th>CLAN</th>
+                <th>ACCIONES</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="psychologistList"></div>
+
+      <div class="testList">
+        <div>
+          <button class="buttonTestAdd">
+            <img
+              width="50px"
+              src="/General/Images/imagesAdmin/add-user-icon-vector-26201329.png"
+            />Agregar test
+          </button>
         </div>
 
-        <div class="testList">
-
-            <div>
-                <button class="buttonTestAdd"> <img width="50px"
-                        src="/General/Images/imagesAdmin/add-user-icon-vector-26201329.png">Agregar test</button>
-
-            </div>
-       
-
-            <h2 class="my-4 text-black">Tests</h2>
-            <div>
-                <table class="table table-striped test-table">
-                    <thead>
-                        <tr>
-                            <th>Id test</th>
-                            <th>Tipo</th>
-                            <th>Pregunta</th>
-                            <th>Respuesta correcta</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tbodyTest">
-                    </tbody>
-                </table>
-            </div>
+        <h2 class="my-4 text-black">Tests</h2>
+        <div>
+          <table class="table table-striped test-table">
+            <thead>
+              <tr>
+                <th>Id test</th>
+                <th>Tipo</th>
+                <th>Pregunta</th>
+                <th>Respuesta correcta</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyTest"></tbody>
+          </table>
         </div>
-
+      </div>
     </div>
 
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
     <script src="./script.js" type="module"></script>
-</body>
-
+  </body>
 </html>
