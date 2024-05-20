@@ -1,9 +1,6 @@
-export const URL_BASE = "http://localhost:4002";
-export const URL_STUDENTS =  `${URL_BASE}/students`;
-export const URL_PSYCHOLOGISTS =  `${URL_BASE}/psychologists`;
-export const URL_EVENTS =  `${URL_BASE}/events`;
-export const URL_TEST =  `${URL_BASE}/test`;
-export const URL_ADMIN =  `${URL_BASE}/admin`;
-export const URL_PREGUNTAS =  `http://localhost:8080/api/v1/question`;
-export const URL_RESPUESTAS = `http://localhost:8080/api/v1/result`;
-
+export const URL_BASE = "http://localhost:8080/api/v1";
+export const URL_CODERS =  `${URL_BASE}/coders`;
+export const URL_PSYCHOLOGISTS =  `${URL_BASE}/psychologist`;
+export const URL_APPOINTMENTS =  `${URL_BASE}/appointments`;
+export const URL_RECORDS =  `${URL_BASE}/records`;
+export const URL_PREGUNTAS = `http://localhost:8081/api/v1/question`;

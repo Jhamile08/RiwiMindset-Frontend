@@ -28,6 +28,8 @@ textarea {
   width: 90%;
   border: solid;
   padding-left: 11px;
+  height: 400px;
+  overflow-y: scroll;
 }
 
 .pdfboton {
@@ -61,7 +63,7 @@ textarea {
   display: flex;
   flex-direction: column;
   max-width: 30%;
-  max-height: 40%;
+  height: 700px;
   overflow: auto;
   padding: 0%
 }

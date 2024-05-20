@@ -3,21 +3,76 @@
     padding: 0;
 }
 
-body{
-     background: rgb(0, 0, 0);
-    background: linear-gradient(15deg,
-      rgba(0, 0, 0, 1) 50vh,
-      rgba(27, 0, 50, 1) 90vh,
-      rgba(34, 0, 80, 1) 90%);
+body {
+    background-image: url(../home/img/fondo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.header {
+    background-color: #3B00A4;
+    color: white;
+    font-size: 140%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 10%;
+}
+
+
+.generalContainer {
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.buttonsViews {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.buttonsViews button {
+    text-align: center;
+    color: white;
+    border-radius: 25px;
+    padding: 2rem;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+    border: #1C004D;
+    background-color: #9a74dc;
+    -webkit-box-shadow: 0px 0px 38px -10px rgba(0, 0, 0, 0.29);
+    -moz-box-shadow: 0px 0px 38px -10px rgba(0, 0, 0, 0.29);
+    box-shadow: 0px 0px 38px -10px rgba(0, 0, 0, 0.19);
+    transition: box-shadow 0.5s, background-color 0.5s;
+    width: 300px;
+    font-size: 2rem;
+
+    margin: clamp(1rem, 4vw, 6rem);
+}
+
+.buttonsViews button:hover {
+    color: white;
+    border-radius: 25px;
+    border: #1C004D;
+    background-color: #1C004D;
+    -webkit-box-shadow: 0px 0px 38px -10px rgba(0, 0, 0, 0.29);
+    -moz-box-shadow: 0px 0px 38px -10px rgba(0, 0, 0, 0.29);
+    box-shadow: 0px 0px 38px -10px rgba(0, 0, 0, 0.69);
 }
 
 .containerForms {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100vh;
     padding-top: 20px;
+    display: none;
+}
+
+#formTest{
+    width: 500px;
 }
 
 .containerForms #containerFormEstudents {
@@ -26,12 +81,14 @@ body{
     justify-content: start;
     align-items: center;
     height: 100%;
-    width: 50%;
+    
 }
 
-.containerForms #containerFormEstudents .titleEstudents{
+.containerForms #containerFormEstudents .titleEstudents {
+    margin-top: 40px;
     text-align: center;
-    color: #ffff;
+    color: #0d0d0d;
+
     letter-spacing: 3px;
 }
 
@@ -43,7 +100,7 @@ body{
 
 .containerForms #containerFormEstudents form .typeForm1 {
     display: flex;
-    
+
 }
 
 .containerForms #containerFormEstudents form .typeForm2 {
@@ -51,7 +108,7 @@ body{
 
 }
 
-.containerForms #containerFormEstudents form .containerForms2 button{
+.containerForms #containerFormEstudents form .containerForms2 button {
     width: 100%;
     height: 50px;
     background-color: #3B00A4;
@@ -59,11 +116,11 @@ body{
     color: #ffff;
 }
 
-.containerForms #containerFormEstudents form .containerForms2 button:hover{
+.containerForms #containerFormEstudents form .containerForms2 button:hover {
     background-color: #1C004D;
 }
 
-.containerForms #containerFormEstudents .containerImg{
+.containerForms #containerFormEstudents .containerImg {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,30 +128,30 @@ body{
     gap: 15px;
 }
 
-.containerForms #containerFormEstudents .containerImg label{
-  display: block;
-  width: 200px;
-  background-color: #3B00A4;
-  color: #fff;
-  padding: 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
-  transition: all ease 0.3s;
+.containerForms #containerFormEstudents .containerImg label {
+    display: block;
+    width: 200px;
+    background-color: #3B00A4;
+    color: #fff;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: all ease 0.3s;
 }
 
-.containerForms #containerFormEstudents .containerImg label:hover{
+.containerForms #containerFormEstudents .containerImg label:hover {
     background-color: #1C004D;
     transition: all ease 0.3s;
 }
 
-.containerForms #containerFormEstudents .containerImg input{
+.containerForms #containerFormEstudents .containerImg input {
     display: none;
 }
 
-.containerForms #containerFormEstudents .containerImg img{
-    width: 180px;
-    height: 180px;
+.containerForms #containerFormEstudents .containerImg img {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
 }
 
@@ -107,7 +164,7 @@ body{
     width: 50%;
 }
 
-.containerForms #containerFormTeachers .titleTeachers{
+.containerForms #containerFormTeachers .titleTeachers {
     text-align: center;
     color: #ffff;
     letter-spacing: 3px;
@@ -128,7 +185,7 @@ body{
     display: flex;
 }
 
-.containerForms #containerFormTeachers .containerImg{
+.containerForms #containerFormTeachers .containerImg {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -136,41 +193,55 @@ body{
     gap: 15px;
 }
 
-.containerForms #containerFormTeachers .containerImg label{
-  display: block;
-  width: 200px;
-  background-color: #3B00A4;
-  color: #fff;
-  padding: 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
-  transition: all ease 0.3s;
+.containerForms #containerFormTeachers .containerImg label {
+    display: block;
+    width: 200px;
+    background-color: #3B00A4;
+    color: #fff;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: all ease 0.3s;
 }
 
-.containerForms #containerFormTeachers .containerImg label:hover{
+.containerForms #containerFormTeachers .containerImg label:hover {
     background-color: #1C004D;
     transition: all ease 0.3s;
 }
 
-.containerForms #containerFormTeachers .containerImg input{
+.containerForms #containerFormTeachers .containerImg input {
     display: none;
 }
 
-.containerForms #containerFormTeachers .containerImg img{
+.containerForms #containerFormTeachers .containerImg img {
     width: 180px;
     height: 180px;
     border-radius: 50%;
 }
 
-.containerForms #containerFormTeachers form .containerForms2 button{
+.containerForms #containerFormTeachers form .containerForms2 button {
     width: 100%;
     height: 50px;
     background-color: #3B00A4;
     border-color: #3B00A4;
-    color:#fff;
+    color: #fff;
 }
 
-.containerForms #containerFormTeachers form .containerForms2 button:hover{
+.containerForms #containerFormTeachers form .containerForms2 button:hover {
     background-color: #1C004D;
+}
+
+.usersList {
+    display: none;
+}
+.testList{
+    display: none;
+}
+
+.buttonStudentAdd {
+    background-color: white;
+    border: solid 1px black;
+    padding: 1%;
+    border-radius: 10px;
 }

@@ -5,50 +5,114 @@
   font-family: 'Ubuntu', sans-serif;
 }
 
-/* Registros */
+/* contenedor general */
 
+.container-right{
+  background-color: #f4f4f4;
+}
 .estudent-img{
   background-position: cover;
 }
 
-.info {
+.container-img-p{
   display: flex;
-  height: 75%;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 40px;
+  
 }
-
-.info .perfil {
-  display: grid;
-  place-items: center;
-  width: 30%;
+.container-img-p p{
+  font-size: 30px;
+  margin: 0;
 }
-
-.data-user{
+.info{
+  display: flex;
+  justify-content: center;
+}
+.content-center{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  width: 75%;
+}
+
+.container-registros::-webkit-scrollbar {
+  width: 6px; 
+}
+
+
+.modal-footer{
+  gap: 10px;
+  padding: 20px;
+}
+.modal-footer button{
+  background-color: #7f00ff;
+  border: none;
+  border-radius: 20px;
+}
+.modal-footer button:hover{
+  background-color: #5300a6;
+  border: none;
+}
+.container-title{
+  display: flex;
+  justify-content: space-between;
+}
+.container-title div{
+  display: flex;
+}
+.container-title img{
+  display: flex;
+}
+
+/* Seccion de registros y recomendaciones */
+
+.container-registros::-webkit-scrollbar-thumb {
+  background-color: #ccc; 
+  border-radius: 3px; 
+}
+
+.container-registros::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa; 
+}
+.container-registros{
+  background-color: white;
+  padding: 20px 30px;
+  height: 400px;
+  overflow-y: auto
+}
+.container-button{
+  display: flex;
+  justify-content: center;
   gap: 20px;
-  font-size: 150%;
+  margin-top: 20px;
+}
+.registroInfo{
+  width: 60%;
+  height: 20px;
+  overflow: hidden;
 }
 
-.info .registros {
-  overflow: auto;
-  width: 100%;
+.registros h2 {
+  font-size: 30px;
+  padding: 20px;
+  margin: 0;
 }
-
-.info .registros p {
-  margin-bottom: 1%;
+.registros-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
-.historialRegistro {
-  color: rgb(64, 64, 64);
-  font-size: large;
-  margin: 0 0 0 2%;
+.fechaEntrevista{
+  width: 15%;
 }
+.registroEspecifico {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+ }
 
 .registroEspecifico button {
   position: relative;
-  left: 80%;
   background-color: rgb(210, 210, 210);
   border: none;
   color: black;
@@ -56,18 +120,6 @@
   cursor: pointer;
   border-radius: 5px;
 }
-
-.registroEspecifico {
-  margin: 0 2% 0 2%;
-}
-
-.registroInfo {
-  padding: 20px;
-  background-color: rgb(210, 210, 210);
-  margin-left: 5%;
-  margin-right: 5%;
-}
-
 
 .secciones a {
   background-color: white;
@@ -83,14 +135,12 @@
 .btnCrearRegistro {
   background-color: #8626ff;
   border: #8626ff;
-  position: fixed;
-  left: 82.5%;
-  bottom: 4%;
   border-color: #6f1fcf;
   color: rgb(255, 255, 255);
-  padding: 12px 22px;
+  padding: 10px 15px;
   cursor: pointer;
   border-radius: 5px;
+  text-decoration: none;
 }
 
 .btnatras {
@@ -105,6 +155,12 @@
   border-radius: 5px;
 }
 
+
+/* Seccion del perfil */
+
+.perfil-clan{
+  color: rgb(115, 115, 115);
+}
 .seccionesPerfil {
   list-style: none;
   padding: 20px 10px;
@@ -133,8 +189,8 @@
 }
 
 .perfil img{
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
 }
 
@@ -146,18 +202,49 @@
   color: rgb(78, 78, 78);
 }
 
-/* Estilo para el texto que se muestra en Ver Más */
+/* Estilos de resultados de los test */
+.container-result{
+  display: flex;
+  flex-direction: column;
+  gap: 20%;
+  width: 100%;
+  height: 100%;
+}
+  /* cards de resultados de result test */
 
-/* .textarea{
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente blanco */
-/*   border: 1px solid #ccc;
-  z-index: 1000;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
-/*} */
+  .container-result{
+    display: flex;
+    align-items: center;
+  }
+  .content-result{
+    display: flex;
+    gap: 8%;
+  }
+  .design-result{
+    overflow-y: scroll;
+    height: 200px;
+    width: 400px;
+    border: 1px black solid;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  }
+  .design-result h1{
+    text-align: center;
+  }
 
+  .design-result::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento */
+  }
+
+  .design-result::-webkit-scrollbar-track {
+      background: #f1f1f1; /* Color de la pista de desplazamiento */
+  }
+  .design-result::-webkit-scrollbar-thumb {
+      background: #888; /* Color de la manija de desplazamiento */
+  }
+
+  .design-result::-webkit-scrollbar-thumb:hover {
+      background: #555; /* Color de la manija de desplazamiento al pasar el ratón por encima */
+  }
+  
