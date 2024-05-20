@@ -72,15 +72,17 @@ buttonStudents.addEventListener("click", () => {
   usersList.style.display = "block";
 });
 
-buttonTest.addEventListener("click", () => {
-  containerFormEstudents.style.display = "none";
-  containerFormTeachers.style.display = "none";
-  containerFormTest.style.display = "none";
-  buttonStudents.style.display = "none";
-  buttonPsicologyst.style.display = "none";
-  buttonTest.style.display = "none";
-  testList.style.display = "block";
-});
+buttonTest.addEventListener('click',()=>{
+  containerFormEstudents.style.display="none";
+  containerFormTeachers.style.display="none";
+  containerFormTest.style.display="none";
+  buttonStudents.style.display="none";
+  buttonPsicologyst.style.display="none";
+  buttonTest.style.display="none";
+  testList.style.display="block";
+  testList.style.height="600px";
+  testList.style.overflowY="auto";
+})
 
 buttonStudentAdd.addEventListener("click", () => {
   containerForms.style.display = "block";
@@ -499,15 +501,15 @@ async function renderTest() {
   tests.content.forEach((test) => {
     tbodyTest.innerHTML += `
       <tr>
-          <td>${test.idQuestion}</td>
-          <td>${test.typeQuestion}</td>
-          <td>${test.question}</td>
-          <td>${test.answers[0]}</td>
-          <button class="btn btn-danger btn-delete" testId="${test.idQuestion}">Delete</button>
-          <button class="btn btn-info btn-edit" testId="${test.idQuestion}">EDITAR</button>
+        <td>${test.idQuestion}</td>
+        <td>${test.typeQuestion}</td>
+        <td>${test.question}</td>
+        <td>${test.answers[0]}</td>
+        <td><button class="btn btn-danger btn-delete" testId="${test.idQuestion}">Delete</button></td>
+        <td><button class="btn btn-info btn-edit" testId="${test.idQuestion}">EDITAR</button></td>
       </tr>
-
-      `;
+     
+      `
   });
 }
 
