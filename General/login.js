@@ -97,7 +97,7 @@ async function validateLoginForm() {
     console.log(formDataPsychologist);
 
     try {
-        const response = await fetch('http://localhost:3000/v1/api/auth/login', {
+        const response = await fetch('http://localhost:3000/v1/api/auth/login/teacher', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
