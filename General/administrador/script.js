@@ -69,6 +69,8 @@ buttonTest.addEventListener('click',()=>{
   buttonPsicologyst.style.display="none";
   buttonTest.style.display="none";
   testList.style.display="block";
+  testList.style.height="600px";
+  testList.style.overflowY="auto";
 })
 
 buttonStudentAdd.addEventListener('click',()=>{
@@ -307,7 +309,6 @@ async function fillStudent(id) {
   document.querySelector('#clan').value = coder.clan;
   
   // profilePicEstudents.src = coder.foto
-
   containerForms.style.display = "block";
   containerFormTest.style.display = "block";
   formStudents.style.display = "none";
@@ -336,18 +337,23 @@ async function renderCoders() {
 
 
 
-renderCoders();
-
-
+// Event listener para edición y eliminación de tests
 document.body.addEventListener('click', event => {
   const id = event.target.getAttribute("studentId");
-  const studentToAction = `${URL_CODERS}/${id}`
-  if (event.target.classList.contains("btn-delete")) {
-    deleteHttp(studentToAction);
-  } if (event.target.classList.contains("btn-edit")) {
-    fillStudent(studentToAction);
+  console.log(id)
+  if (id) {
+    const studentToAction = `${URL_CODERS}/${id}`;
+    if (event.target.classList.contains("btn-delete")) {
+      deleteHttp(studentToAction);
+      renderCoders(); // Vuelve a renderizar los tests para reflejar los cambios
+    } else if (event.target.classList.contains("btn-edit")) {
+      fillStudent(studentToAction);
+    }
   }
-})
+});
+
+renderCoders();
+
 /* -------TEST------- */
 /* Select from create form */
 const formTest = document.querySelector('#formTest');
@@ -480,14 +486,13 @@ async function renderTest() {
   tbodyTest.innerHTML = '';
   tests.content.forEach(test => {
     tbodyTest.innerHTML += `
-
       <tr>
-          <td>${test.idQuestion}</td>
-          <td>${test.typeQuestion}</td>
-          <td>${test.question}</td>
-          <td>${test.answers[0]}</td>
-          <button class="btn btn-danger btn-delete" testId="${test.idQuestion}">Delete</button>
-          <button class="btn btn-info btn-edit" testId="${test.idQuestion}">EDITAR</button>
+        <td>${test.idQuestion}</td>
+        <td>${test.typeQuestion}</td>
+        <td>${test.question}</td>
+        <td>${test.answers[0]}</td>
+        <td><button class="btn btn-danger btn-delete" testId="${test.idQuestion}">Delete</button></td>
+        <td><button class="btn btn-info btn-edit" testId="${test.idQuestion}">EDITAR</button></td>
       </tr>
      
       `
