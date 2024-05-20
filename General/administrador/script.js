@@ -171,7 +171,7 @@ async function registerStudent() {
     clan: clan,
   };
 
-  console.log(newStudent);
+console.log(newStudent);
   console.log(typeof nameStudent);
   console.log(typeof documentCoder);
   console.log(typeof emailStudent);
