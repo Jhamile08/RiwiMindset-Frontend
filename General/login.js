@@ -13,7 +13,7 @@ const passwordCoder = document.querySelector("#passwordEstudiante");
 /* Select Psycologist */
 let buttonLoginPyschologist = document.querySelector('#buttonLoginPyschologist');
 const cedulaPsychologist = document.querySelector("#cedulaProfesor");
-const passwordProfesor = document.querySelector("#passwordProfesor");
+const passwordPsychologist = document.querySelector("#passwordProfesor");
 
 //Script animation Login
 inicioProfesor.addEventListener('click', () => {
@@ -24,23 +24,14 @@ inicioEstudiante.addEventListener('click', () => {
 });
 
 
+/* Descifrar Token */
+
+
 /* ----------- LOGIN STUDENTS -------- */
 buttonLoginStudent.addEventListener('click', (e) => {
     e.preventDefault()
     validateFormLoginStudents()
 })
-
-
-function decodeToken(token) {
-    try {
-        const decodedToken = jwt_decode(token);
-        const userId = decodedToken.sub; // Cambia 'id' por el nombre del campo que contiene el ID en tu token
-        localStorage.setItem('userId', userId);
-    } catch (error) {
-        console.error('Error al decodificar el token:', error);
-    }
-}
-
 
 async function validateFormLoginStudents() {
 
@@ -48,8 +39,6 @@ async function validateFormLoginStudents() {
         document: cedulaCoder.value,
         password: passwordCoder.value,
     }
-
-    console.log(formDataCoder);
 
     try {
         const response = await fetch('http://localhost:3000/v1/api/auth/login', {
@@ -70,18 +59,12 @@ async function validateFormLoginStudents() {
             localStorage.setItem('token', JSON.stringify(token));
         }
         else {
-            /* Swal.fire({
-                title: "Contraseña incorrecta",
-                icon: "error"
-            }); */
             console.error('Error al iniciar sesion');
         }
     } catch (error) {
         console.error('Error al iniciar sesion', error);
     }
 };
-
-
 
 
 
@@ -97,39 +80,42 @@ buttonLoginPyschologist.addEventListener('click', (e) => {
 })
 
 async function validateLoginForm() {
-    const responsePsychologists = await fetch(`${URL_PSYCHOLOGISTS}/${cedulaPsychologist.value}`);
-    const dataPsychologists = await responsePsychologists.json();
+   
+    const formDataPsychologist = {
+        document: cedulaPsychologist.value,
+        password: passwordPsychologist.value,
+    }
 
-    /*     const responseAdmins = await fetch(`${URL_ADMIN}?id=${cedulaProfesor.value}`);
-        const dataAdmins = await responseAdmins.json(); */
+    console.log(formDataPsychologist);
 
-    const psychologistsExist = dataPsychologists.content && dataPsychologists.content.length > 0;
-    /*     const adminsExist = dataAdmins && dataAdmins.length > 0; */
-
-    if (!psychologistsExist /* && !adminsExist */) {
-        console.error("Cedula no registrada");
-        Swal.fire({
-            title: "La Cedula que ingresaste no se encuentra registrada",
-            icon: "warning"
+    try {
+        const response = await fetch('http://localhost:3000/v1/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formDataPsychologist),
         });
-        return;
-    }
 
-    if (psychologistsExist && dataPsychologists[0].password === passwordProfesor.value) {
-        localStorage.setItem("psychologist", dataPsychologists[0].id);
-        window.location.href = "../Teachers/HomeTeachers/indexTeachersHome.html";
-        return;
-    }
+        console.log(response);
 
-    if (adminsExist && dataAdmins[0].password === passwordProfesor.value) {
-        localStorage.setItem("admin", dataAdmins[0].id);
-        window.location.href = "./administrador/index.html";
-        return;
-    }
+        const accesToken = await response.json()
 
-    console.error("Contraseña incorrecta");
-    Swal.fire({
-        title: "Contraseña incorrecta",
-        icon: "error"
-    });
+        console.log(accesToken);
+
+        const token = accesToken.access_token;
+
+        console.log(token);
+
+        if (response.ok) {
+            decodeToken(token);
+            window.location.href = '../Teachers/HomeTeachers/indexTeachersHome.html'
+            localStorage.setItem('token', JSON.stringify(token));
+        }
+        else {
+            console.error('Error al iniciar sesion');
+        }
+    } catch (error) {
+        console.error('Error al iniciar sesion', error);
+    }
 }
