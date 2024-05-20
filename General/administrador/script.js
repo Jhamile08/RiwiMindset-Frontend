@@ -478,6 +478,7 @@ async function renderTest() {
   tbodyTest.innerHTML = '';
   tests.content.forEach(test => {
     tbodyTest.innerHTML += `
+
       <tr>
           <td>${test.idQuestion}</td>
           <td>${test.typeQuestion}</td>
@@ -486,7 +487,7 @@ async function renderTest() {
           <button class="btn btn-danger btn-delete" testId="${test.idQuestion}">Delete</button>
           <button class="btn btn-info btn-edit" testId="${test.idQuestion}">EDITAR</button>
       </tr>
-
+     
       `
   });
 };
