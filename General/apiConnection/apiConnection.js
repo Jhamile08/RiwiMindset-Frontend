@@ -18,7 +18,12 @@ export async function post(url,info){
 // READ - OBTENER DATOS DEL JSON
 export async function get(url){
     try {
-        const response = await fetch(url);
+        const response = await fetch(url,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+    });
         const data = await response.json();
         return data;
     } catch (error) {
@@ -47,11 +52,11 @@ export async function update (url,info){
 // METODO DELETE - REcibe la URL de lo que se va a borrar, concatendad con el id
 export async function deleteHttp(url){
     try {
-        const response = await fetch(url,{
+        await fetch(url,{
             method: "DELETE",
         });
-        const data = await response.json();
-        return data;
+        console.log("eliminado");
+        window.location.href = window.location.href;
     } catch (error) {
         console.error(error);
     }
