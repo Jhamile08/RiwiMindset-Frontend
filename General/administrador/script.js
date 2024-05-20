@@ -43,6 +43,8 @@ header.addEventListener('click',()=>{
   usersList.style.display="none";
 })
 
+/* BOTON CODER */
+
 buttonStudents.addEventListener('click',()=>{
   containerFormEstudents.style.display="none";
   containerFormTeachers.style.display="none";
@@ -58,6 +60,15 @@ buttonStudentAdd.addEventListener('click',()=>{
   usersList.style.display="none";
 })
 
+/* BOTON PSICOLOGA */
+buttonPsicologyst.addEventListener('click',()=>{
+  containerFormEstudents.style.display="none";
+  containerFormTeachers.style.display="none";
+  buttonStudents.style.display="none";
+  buttonPsicologyst.style.display="none";
+  buttonTest.style.display="none";
+  usersList.style.display="none";
+})
 
 /* -------STUDENTS------- */
 /* Select */
@@ -275,7 +286,7 @@ async function fillStudent(id) {
 
 }
 
-async function renderStudents() {
+async function renderCoders() {
   const coders = await get(URL_CODERS);
   tbody.innerHTML = '';
   coders.content.forEach(coder => {
@@ -295,7 +306,9 @@ async function renderStudents() {
   });
 };
 
-renderStudents();
+
+
+renderCoders();
 
 
 document.body.addEventListener('click', event => {
