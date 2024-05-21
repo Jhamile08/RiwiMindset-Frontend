@@ -14,7 +14,7 @@ import {
 let profilePicEstudents = document.getElementById("profilePictureEstudents");
 let inputFileEstudents = document.getElementById("inputFileEstudents");
 
-let newStudent = {}; // Objeto para almacenar los datos del nuevo estudiante
+let newCoder = {}; // Objeto para almacenar los datos del nuevo estudiante
 
 inputFileEstudents.onchange = function () {
   const file = inputFileEstudents.files[0];
@@ -23,7 +23,7 @@ inputFileEstudents.onchange = function () {
 
   reader.onload = function () {
     profilePicEstudents.src = reader.result; // Asigna la imagen al elemento img
-    newStudent.foto = reader.result; // Asigna la URL base64 al objeto newStudent
+    newCoder.foto = reader.result; // Asigna la URL base64 al objeto newStudent
   };
 };
 
@@ -88,6 +88,7 @@ buttonStudentAdd.addEventListener("click", () => {
   containerForms.style.display = "block";
   containerFormEstudents.style.display = "block";
   usersList.style.display = "none";
+  psychologistList.style.display = "none";
 });
 buttonTestAdd.addEventListener("click", () => {
   containerForms.style.display = "block";
@@ -102,7 +103,8 @@ buttonPsicologyst.addEventListener("click", () => {
   buttonStudents.style.display = "none";
   buttonPsicologyst.style.display = "none";
   buttonTest.style.display = "none";
-  usersList.style.display = "none";
+  psychologistList.style.display = "block";
+  psychologistList.style.width = "500px";
 });
 
 /* -------STUDENTS------- */
@@ -110,7 +112,7 @@ buttonPsicologyst.addEventListener("click", () => {
 /* Events */
 formStudents.addEventListener("submit", (event) => {
   event.preventDefault();
-  registerStudent();
+  createCoder();
 });
 
 let photoUrl;
@@ -148,7 +150,7 @@ document
       });
   });
 
-async function registerStudent() {
+async function createCoder() {
   /* Select */
   const formStudents = document.querySelector("#formStudents").value;
   const nameStudent = document.querySelector("#nameStudent").value;
@@ -157,11 +159,11 @@ async function registerStudent() {
   const celStudent = document.querySelector("#celStudent").value;
   const bornDateStudent = document.querySelector("#bornDateStudent").value;
   const clan = document.querySelector("#clan").value;
-  const studentId = document.querySelector("#studentId").value;
+  const coderId = document.querySelector("#studentId").value;
   const password = document.querySelector("#password").value;
   const rol = document.querySelector("#role").value;
 
-  newStudent = {
+  newCoder = {
     "name": nameStudent,
     "photo": await photoUrl, // Asigna la URL base64 del objeto newStudent
     "email": emailStudent,
@@ -174,11 +176,9 @@ async function registerStudent() {
   };
 
 
-
-
-  if (studentId) {
+  if (coderId) {
     try {
-      await updateCoder(studentId.value, newStudent);
+      await updateCoder(coderId.value, newCoder);
       alert("coder actualizado correctamente");
     } catch (error) {
       console.log("Error el actualizar el coder", error);
@@ -199,7 +199,7 @@ async function registerStudent() {
         alert("el documento ya se encuentra registrado");
         return;
       }
-      await post("http://localhost:3000/v1/api/students/register", newStudent);
+      await postCoder(newCoder);
       alert("Coder registrado correctamente");
     } catch (error) {
       console.error("error al realizar la operacion:", error);
@@ -207,6 +207,7 @@ async function registerStudent() {
     }
   }
 }
+
 async function updateCoder(studentId, updatedTest) {
   const url = `${URL_CODERS}/${studentId}`;
   const response = await fetch(url, {
@@ -222,6 +223,23 @@ async function updateCoder(studentId, updatedTest) {
   }
 }
 
+async function postCoder(newCoder) {
+  const response = await fetch(URL_CODERS, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newCoder),
+  });
+
+  if (!response.ok) {
+    throw new Error("Error al crear coder");
+  }
+}
+
+
+
+
 /* INYECTAR USUARIOS */
 
 async function getStudentId(id) {
@@ -231,27 +249,54 @@ async function getStudentId(id) {
 }
 
 async function fillStudent(id) {
-  const coder = await getStudentId(id);
 
-  document.querySelector("#formStudents");
-  document.querySelector("#nameStudent").value = coder.nombre;
-  document.querySelector("#lastNameStudent").value = coder.nombre;
-  document.querySelector("#idStudent").value = coder.id;
+      //  const fileInput = document.getElementById("inputFileEstudents");
+      //  const file = fileInput.files[0];
+
+      //  const cloudName = "dycsevcp0";
+      // const uploadPreset = "RiwiMindset-files";
+
+      //  const formData = new FormData();
+      //  formData.append("file", file);
+      //  formData.append("upload_preset", uploadPreset);
+  
+      //  photoUrl = fetch(
+      //    `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+      //    {
+      //      method: "POST",
+      //      body: formData,
+      //    }
+      //  )
+
+      //   .then((response) => response.json())
+      //   .then((data) => data.secure_url)
+      //   .catch((error) => {
+      //     console.error("Error uploading the image:", error);
+      //   });
+
+
+
+  const coder = await getStudentId(id);
+  // fileInput.value = coder.photo;
+  // photoUrl = coder.photo;
+  document.querySelector("#nameStudent").value = coder.name;
+  document.querySelector("#idStudent").value = coder.document;
   document.querySelector("#emailStudent").value = coder.email;
   document.querySelector("#celStudent").value = coder.phone;
-  document.querySelector("#bornDateStudent").value = coder.bornDateStudent;
+  document.querySelector("#bornDateStudent").value = coder.dateBirth;
+  document.querySelector("#password").value = coder.document;
   document.querySelector("#clan").value = coder.clan;
 
   // profilePicEstudents.src = coder.foto
 
   containerForms.style.display = "block";
-  containerFormTest.style.display = "block";
-  formStudents.style.display = "none";
+  containerFormEstudents.style.display = "block";
+  usersList.style.display = "none";
 }
 
 async function renderCoders() {
   const coders = await get(URL_CODERS);
-  console.log(coders);
+
   tbody.innerHTML = "";
   coders.content.forEach((coder) => {
     tbody.innerHTML += `
@@ -261,7 +306,7 @@ async function renderCoders() {
           <td>${coder.name}</td>
           <td>${coder.clan}</td>
           <td>
-              <button class="btn btn-info btn-info" studentId="${coder._id}">EDITAR</button>
+              <button class="btn btn-info btn-edit" studentId="${coder._id}">EDITAR</button>
               <button class="btn btn-danger btn-delete" studentId="${coder._id}">Delete</button>
           </td>
       </tr>
@@ -270,17 +315,16 @@ async function renderCoders() {
   });
 }
 
-renderCoders();
 
 // Event listener para edición y eliminación de tests
 document.body.addEventListener("click", (event) => {
   const id = event.target.getAttribute("studentId");
   console.log(id);
   if (id) {
-    const studentToAction = `${URL_PREGUNTAS}/${id}`;
+    const studentToAction = `${URL_CODERS}/${id}`;
     if (event.target.classList.contains("btn-delete")) {
       deleteHttp(studentToAction);
-      renderTest(); // Vuelve a renderizar los tests para reflejar los cambios
+      renderCoders(); // Vuelve a renderizar los tests para reflejar los cambios
     } else if (event.target.classList.contains("btn-edit")) {
       fillStudent(id);
     }
@@ -365,6 +409,22 @@ async function registerPsychologists() {
   post(URL_PSYCHOLOGISTS, newPsychologue);
   alert("Registrado exitosamente");
 }
+async function renderPsychologists() {
+  const psychologists = await get(URL_PSYCHOLOGISTS);
+
+  tbodyPsychologist.innerHTML = "";
+  psychologists.content.forEach((psychologist) => {
+    tbodyPsychologist.innerHTML += `
+      <tr>
+          <td><img src="${psychologist.photo}" width="50px" height="50px" style="border-radius: 50%;"></td>
+          <td>${psychologist.document}</td>
+          <td>${psychologist.name}</td>
+      </tr>
+      `;
+    /*       <button class="btn btn-dark btn-edit" studentId="${student.id}">Edit</button> */
+  });
+}
+renderPsychologists()
 
 /* -------TEST------- */
 /* Select from create form */
@@ -403,8 +463,9 @@ async function createTest() {
   if (testId) {
     // Si testId tiene un valor, se está editando un test existente
     try {
-      await updateCoder(testId, newTest);
+      await updateTest(testId, newTest);
       alert("Test actualizado exitosamente");
+      window.location.href = window.location.href;
     } catch (error) {
       console.error("Error al actualizar el test:", error);
       alert(
@@ -432,6 +493,7 @@ async function createTest() {
       // Si no existe, crear la nueva pregunta
       await postTest(newTest);
       alert("Pregunta registrada exitosamente");
+      window.location.href = window.location.href;
     } catch (error) {
       console.error("Error al realizar la operación:", error);
       alert(
