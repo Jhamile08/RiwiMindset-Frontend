@@ -1,8 +1,8 @@
-// (()=>{
-//     const company = localStorage.getItem("admin");
+(()=>{
+    const admin = localStorage.getItem("rol");
 
-//     if (!company){
-//         window.location.href = "../index.html"
-//     }
-// }
-// )(); 
+    if (!admin){
+        window.location.href = "../home/home.html"
+    }
+}
+)(); 

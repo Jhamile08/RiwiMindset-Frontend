@@ -1,8 +1,8 @@
-// (()=>{
-//     const company = localStorage.getItem("student");
+(()=>{
+    const coder = localStorage.getItem("userId");
 
-//     if (!company){
-//         window.location.href = "../../General/index.html"
-//     }
-// }
-// )(); 
+    if (!coder){
+        window.location.href = "../../General/home/home.html"
+    }
+}
+)(); 

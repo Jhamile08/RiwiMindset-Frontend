@@ -28,8 +28,12 @@ inicioEstudiante.addEventListener('click', () => {
 function decodeToken(token) {
     try {
         const decodedToken = jwt_decode(token);
-        const userId = decodedToken.sub; // Cambia 'id' por el nombre del campo que contiene el ID en tu token
+        const userId = decodedToken.sub;
+        const rol = decodedToken.role;
         localStorage.setItem('userId', userId);
+        localStorage.setItem('rol', rol);
+        console.log(rol);
+        
     } catch (error) {
         console.error('Error al decodificar el token:', error);
     }
@@ -115,8 +119,15 @@ async function validateLoginForm() {
 
         console.log(token);
 
+        
+
         if (response.ok) {
             decodeToken(token);
+            if ( localStorage.getItem("rol") == "admin") {
+                console.log("hola");
+                window.location.href = '../General/administrador/index.html'
+                return;
+            }
             window.location.href = '../Teachers/HomeTeachers/indexTeachersHome.html'
             localStorage.setItem('token', JSON.stringify(token));
         }
