@@ -39,8 +39,10 @@ export async function update (url,info){
             headers: {
                 "Content-Type":"application/json"
             },
+            
             body: JSON.stringify(info),
         });
+        
         const data = response.json();
         return data;
     } catch (error) {
