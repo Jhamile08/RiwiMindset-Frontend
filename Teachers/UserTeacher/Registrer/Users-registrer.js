@@ -35,23 +35,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function inyectHistoria() {
-    const record = await get(`${URL_RECORDS}`);
+    const selectedStudentId = localStorage.getItem("selectedStudentId");
+    const record = await get(`${URL_RECORDS}/find/${selectedStudentId}`);
     const historial = document.querySelector("#registro");
-
-    console.log(record.content);
-    console.log(record.content[0].dateRecord);
-    console.log(record.content[0].registration);
+    console.log(selectedStudentId);
+    console.log(record[0].registration);
+    console.log(record.length);
+    console.log(record.registration);
 
     // Iterar sobre el array de fechas (puede ser cualquier otro array)
-    for (let i = 0; i < record.content; i++) {
+    for (let i = 0; i < record.length; i++) {
       const register = document.createElement("div");
       register.classList.add("registroEspecifico");
       register.innerHTML = ` 
             <p class="fechaEntrevista">
-                <b> fecha: </b> ${record.content[i].dateRecord}
+                <b> fecha: </b> ${record[i].dateRecord}
             </p>
             <p class="registroInfo">
-                ${record.content[i].registration}
+                ${record[i].registration}
             </p>
             <button id="btndentro btn" class="btnrecomendacion" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Ver más</button>
         `;
@@ -64,7 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
   async function ocultarMostrar(i) {
     const containerRegistros = document.querySelector(".registros");
     containerRegistros.style.display = "none";
-    const record = await get(`${URL_RECORDS}`);
+     const selectedStudentId = localStorage.getItem("selectedStudentId");
+    const record = await get(`${URL_RECORDS}/find/${selectedStudentId}`);
 
     const parrafoRecomendaciones = document.querySelector(".pRecomendaciones");
     parrafoRecomendaciones.innerHTML = `
@@ -75,8 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     <img src="../../../General/Images/ImagesTeachers/SVG/delete.svg" alt="">
                 </div>
             </div>
-            <p>${record.content.dateRecord}</p>
-            <p>${record.content.registration}</p>
+            <p>${record[0].dateRecord}</p>
+            <p>${record[0].registration}</p>
             <hr>
             `;
 
@@ -102,6 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   // MODAL VER MAS
   async function mostrarVerMasRecomendaciones(i) {
+    
     const record = await get(`${URL_RECORDS}`);
     const pObservaciones = document.querySelector(".pObservaciones");
     pObservaciones.style.display = "none";
