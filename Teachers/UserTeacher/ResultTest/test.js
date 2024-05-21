@@ -1,49 +1,32 @@
 // Generamos una url base
-import { get, post, update } from "./../../../General/apiConnection/apiConnection.js";
-
-const url = "http://localhost:8080/api/v1/result";
-const urlBase = "http://localhost:4002/";
+import { get } from "./../../../General/apiConnection/apiConnection.js";
+import {
+    URL_CODERS,
+    URL_RESULT,
+  } from "../../../General/apiConnection/URLS.js";
 // Obtener el ID del estudiante del localStorage
 const selectedStudentId = localStorage.getItem("selectedStudentId");
 
-async function getStudent(studentId) {
-    const response = await fetch(`${urlBase}students/${studentId}`);
-    const data = await response.json();
-    return data;
-};
-
-//Inyeccion del perfil del menu
-async function inyect() {
-  const student = await getStudent(selectedStudentId);
-  // Inyectar foto y card 
-  const user = document.querySelector('#data-user');
-  const coderUser = document.createElement('div');
-
-  coderUser.innerHTML = `
-      <img src="${student.foto}" alt="" id="foto"></img>
-      <p id="nombre">${student.nombre}</p>
-      <p id="nombre">  edad: ${student.edad}</p>
-  `;
-
-  user.appendChild(coderUser);
-};
-
 document.addEventListener("DOMContentLoaded",()=>{
-    inyect(), inyectarResultado();
+     inyectarResultado();
 })
 // Inyeccion de resultados 
 
-async function inyectarResultado(){
-    let contentResult = document.querySelector(".content-result")
-    let contentResultEnglish = document.querySelector(".result-english")
-    let contentResultLogic = document.querySelector(".result-logic")
-    let contentResultMental = document.querySelector(".result-mental")
-    let data = await get(url);
+async function inyectarResultado() {
+    const selectedStudentId = localStorage.getItem("selectedStudentId");
+    let contentResultEnglish = document.querySelector(".result-english");
+    let contentResultLogic = document.querySelector(".result-logic");
+    let contentResultMental = document.querySelector(".result-mental");
+    let data = await get(URL_RESULT);
+
     let hasEnglishResult = false;
     let hasLogicResult = false;
     let hasMentalResult = false;
 
-    data["content"].forEach(resultado => {
+    // Filtrar los resultados del estudiante seleccionado
+    let resultadosEstudiante = data["content"].filter(resultado => resultado.id_coder === selectedStudentId);
+
+    resultadosEstudiante.forEach(resultado => {
         if (resultado.typeTest === "ENGLISH") {
             hasEnglishResult = true;
         } else if (resultado.typeTest === "LOGIC") {
@@ -52,7 +35,7 @@ async function inyectarResultado(){
             hasMentalResult = true;
         }
     });
-    
+
     // Mostrar mensajes si no hay resultados de algún tipo
     if (!hasEnglishResult) {
         contentResultEnglish.innerHTML += `
@@ -61,7 +44,7 @@ async function inyectarResultado(){
             </ul>
         `;
     }
-    
+
     if (!hasLogicResult) {
         contentResultLogic.innerHTML += `
             <ul>
@@ -69,7 +52,7 @@ async function inyectarResultado(){
             </ul>
         `;
     }
-    
+
     if (!hasMentalResult) {
         contentResultMental.innerHTML += `
             <ul>
@@ -78,29 +61,33 @@ async function inyectarResultado(){
         `;
     }
 
-    data["content"].forEach(resultado => {
-
+    // Mostrar resultados del estudiante filtrado
+    resultadosEstudiante.forEach(resultado => {
         if (resultado.typeTest == "ENGLISH") {
             contentResultEnglish.innerHTML += `
                 <ul>
-                    <li>Puntaje : ${resultado.result}</li>
+                    <li>Puntaje: ${resultado.result}</li>
                 </ul>
             `;
-        }else if (resultado.typeTest == "LOGIC") {
+        } else if (resultado.typeTest == "LOGIC") {
             contentResultLogic.innerHTML += `
-            <ul>
-                <li>Puntaje : ${resultado.result}</li>
-            </ul>
-        `;
-        }else{
+                <ul>
+                    <li>Puntaje: ${resultado.result}</li>
+                </ul>
+            `;
+        } else if (resultado.typeTest == "MENTAL") {
             contentResultMental.innerHTML += `
-            <ul>
-                <li>Puntaje : ${resultado.result}</li>
-            </ul>
-        `;
+                <ul>
+                    <li>Puntaje: ${resultado.result}</li>
+                </ul>
+            `;
         }
     });
 }
+
+
+// Llamar a la función para mostrar resultados
+inyectarResultado();
 
 
 

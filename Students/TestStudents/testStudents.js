@@ -1,7 +1,7 @@
 import { renderModal } from "./FunctionsDOM.js";
 import { URL_PREGUNTAS } from "./../../General/apiConnection/URLS.js";
 import { get, post } from "../../../General/apiConnection/apiConnection.js";
-
+const selectedStudentId = localStorage.getItem("selectedStudentId");
 // selectors
 // selector del boton del modal
 let testButton = document.querySelector("#testButton");
@@ -176,11 +176,12 @@ function calificacionTest(cont, num, type){
     }
 }
 async function guardarCalificacion(resultado){
+    selectedStudentId
     const resultTest = {
         result : resultado,
-        id_coder: "wwwewe"
+        id_coder: selectedStudentId
       };
       
       const data = await post(URL_PREGUNTAS, resultTest);
-
+      return data;
 }
