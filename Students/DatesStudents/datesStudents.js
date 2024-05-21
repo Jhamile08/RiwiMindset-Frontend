@@ -1,9 +1,87 @@
-import { calendar, isTimeSlotOccupied } from "../../Teachers/SheduleTeachers/TeachersSchedule.js";
+import {URL_APPOINTMENTS } from "../../General/apiConnection/URLS.js"
 
 /* Select NameStudent & Photo */
 const nameStudent = document.querySelector("#nameStudent");
 const fotoStudent = document.querySelector("#fotoStudent");
 const clanStudent = document.querySelector("#clanStudent");
+const coderId = localStorage.getItem("userId");
+
+// Crear y configurar el calendario
+let studentCalendar;
+
+document.addEventListener("DOMContentLoaded", function () {
+  const psychologistSelect = document.getElementById("psychologist");
+
+  if (psychologistSelect) {
+    psychologistSelect.addEventListener("change", function () {
+      studentCalendar.refetchEvents();
+    });
+
+    let calendarEl = document.getElementById("calendar");
+
+    if (calendarEl) {
+      studentCalendar = new FullCalendar.Calendar(calendarEl, {
+        locale: "es",
+        initialView: "timeGridWeek",
+        initialDate: moment().format('YYYY-MM-DD'),
+        headerToolbar: {
+          left: "prev,next today",
+          center: "title",
+          right: "dayGridMonth,timeGridWeek,timeGridDay"
+        },
+        buttonText: {
+          today: 'Hoy',
+          month: 'Mes',
+          week: 'Semana',
+          day: 'Día'
+        },
+        events: function (info, successCallback, failureCallback) {
+          fetchStudentEventsFromServer(info, successCallback, failureCallback, psychologistSelect.value);
+        }
+      });
+
+      studentCalendar.render();
+    }
+  }
+});
+
+// Función para obtener los eventos del servidor
+async function fetchStudentEventsFromServer(info, successCallback, failureCallback, psychologistId) {
+  try {
+    const response = await fetch(`${URL_APPOINTMENTS}?page=1&size=30`);
+    if (response.ok) {
+      const data = await response.json();
+      const appointments = data.content;
+      
+      // Filtrar los eventos según el psychologistId seleccionado
+      const filteredAppointments = appointments.filter(appointment => appointment.pyschologist._id === psychologistId);
+
+      // Modificar los eventos para que el título sea "Reservado"
+      const modifiedAppointments = filteredAppointments.map(appointment => {
+        return {
+          ...appointment,
+          title: "Reservado"
+        };
+      });
+
+      console.log(modifiedAppointments);
+      successCallback(modifiedAppointments);
+    } else {
+      console.error('Error al obtener eventos desde el servidor:', response.status);
+      failureCallback('Hubo un error al obtener los eventos desde el servidor.');
+    }
+  } catch (error) {
+    console.error('Error al obtener eventos desde el servidor:', error);
+    Swal.fire({
+      title: "Hubo un error al obtener los eventos. Por favor, intenta de nuevo",
+      icon: "error"
+    });
+    failureCallback('Hubo un error al obtener los eventos desde el servidor.');
+  }
+}
+
+
+
 
   /* Se selecciona el form */
 const eventForm = document.getElementById("eventForm");
@@ -15,6 +93,7 @@ eventForm.addEventListener("submit", async function (e) {
   const eventDate = document.getElementById("eventDate").value;
   const eventTime = document.getElementById("eventTime").value;
   const reason = document.getElementById("reason").value;
+  const psychologist = document.getElementById("psychologist").value;
   /* Formatea la hora para que coincida con el formato esperado en el calendar (añadiendo ":00" al final) */
   const formattedTime = `${eventTime}:00`;
   // Formatea la fecha y hora para comparación
@@ -32,7 +111,7 @@ eventForm.addEventListener("submit", async function (e) {
   try {
     // verificamos si el horario seleccionado no esta ocupado segun la funcion isTimeSlotOccupied
     if (
-      !(await isTimeSlotOccupied(calendar, `${eventDate}T${formattedTime}`))
+      !(await isTimeSlotOccupied(studentCalendar, `${eventDate}T${formattedTime}`))
     ) {
       // creamos el evento con propiedades especificas del calendar
       const newEvent = {
@@ -43,10 +122,12 @@ eventForm.addEventListener("submit", async function (e) {
         date: eventDate,
         time: eventTime,
         profileStudent: [fotoStudent.src],
-        clanStudent: clanStudent.textContent
+        clanStudent: clanStudent.textContent,
+        coderId: coderId,
+        pyschologistId: psychologist
       };
       // Enviar el nuevo evento al servidor usando fetch con una solicitud POST al servidor JSON.
-      const response = await fetch("http://localhost:4002/events", {
+      const response = await fetch(URL_APPOINTMENTS, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -55,8 +136,12 @@ eventForm.addEventListener("submit", async function (e) {
       });
       // Verifica si la respuesta del servidor indica que la solicitud fue exitosa (estado 200-299). Si es así, recarga los eventos en FullCalendar y limpia el formulario. De lo contrario, muestra un mensaje de error.
       if (response.ok) {
+        Swal.fire({
+          title: "Cita agendada con exito",
+          icon: "success"
+        });
         // Recargar los eventos en FullCalendar después de agregar el nuevo evento
-        calendar.refetchEvents();
+        studentCalendar.refetchEvents();
         // Limpiar el formulario
         eventForm.reset();
         // Captura cualquier error que pueda ocurrir durante la ejecución del bloque try y muestra un mensaje de error.
@@ -82,6 +167,26 @@ eventForm.addEventListener("submit", async function (e) {
   }
 });
 
-/* const calendarStudents = document.querySelector('#calendar');
-calendarStudents.style.display = "none"; */
 
+async function isTimeSlotOccupied(calendar, startTime) {
+  const allEvents = calendar.getEvents();
+  const startMoment = moment(startTime);
+  const endMoment = startMoment.clone().add(1, 'hour');
+  const exactMatch = allEvents.some(event => {
+    const eventStartMoment = moment(event.start);
+    const eventEndMoment = moment(event.end);
+    return (
+      eventStartMoment.isSame(startMoment, 'minute') &&
+      eventEndMoment.isSame(endMoment, 'minute')
+    );
+  });
+  const overlapping = allEvents.some(event => {
+    const eventStartMoment = moment(event.start);
+    const eventEndMoment = moment(event.end);
+    return (
+      (eventStartMoment.isBefore(endMoment) && eventEndMoment.isAfter(startMoment)) ||
+      (eventStartMoment.isSame(startMoment) && eventEndMoment.isSame(endMoment))
+    );
+  });
+  return exactMatch || overlapping;
+}

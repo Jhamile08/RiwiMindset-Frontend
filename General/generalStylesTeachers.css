@@ -331,3 +331,7 @@ input:checked + .slider::before {
   transition: all ease 0.7s;
   border: 2px solid var(--background-btn-primary);
 }
+
+#fotoTeacher{
+  object-fit: cover;
+}
