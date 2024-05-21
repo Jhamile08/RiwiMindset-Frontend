@@ -1,11 +1,11 @@
 import { deleteEventFromServer } from "../SheduleTeachers/TeachersSchedule.js";
-import { URL_APPOINTMENTS } from "../../General/apiConnection/URLS.js"
+import { URL_APPOINTMENTS, URL_PSYCHOLOGISTS } from "../../General/apiConnection/URLS.js"
 
 /* Inyectar citas de la base de datos json */
 getDataJsonArray();
 
 function getDataJsonArray() {
-  fetch(URL_APPOINTMENTS)
+  fetch(URL_PSYCHOLOGISTS)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -14,19 +14,26 @@ function getDataJsonArray() {
     })
     .then((dataJsonArray) => {
 
-      dataJsonArray.content.sort((a, b) => {
-        const dateA = moment(`${a.date} ${a.time}`, "YYYY-MM-DD HH:mm");
-        const dateB = moment(`${b.date} ${b.time}`, "YYYY-MM-DD HH:mm");
-        return dateA - dateB;
-      });
+      let psicologas = dataJsonArray.content;
 
-      // Muestra los eventos ordenados
-      dataJsonArray.content.forEach((element) => {
-        showHTMLArray(element);
-      });
-      // Llama a la función de informe con los datos del evento
-      console.log(dataJsonArray);
-      generateReport(dataJsonArray.content);
+      for (let i = 0; i < psicologas.length; i++) {
+        const psicologaId = psicologas[i]._id;
+        if (psicologaId == localStorage.getItem("userId")) {
+          dataJsonArray.content[i].appointments.sort((a, b) => {
+            const dateA = moment(`${a.date} ${a.time}`, "YYYY-MM-DD HH:mm");
+            const dateB = moment(`${b.date} ${b.time}`, "YYYY-MM-DD HH:mm");
+            return dateA - dateB;
+          });
+    
+          // Muestra los eventos ordenados
+          dataJsonArray.content[i].appointments.forEach((appointment) => {
+            showHTMLArray(appointment);
+          });
+          // Llama a la función de informe con los datos del evento
+          generateReport(dataJsonArray.content[i].appointments);
+          break;
+        }
+      }
     })
     .catch((error) => {
       console.error("Error al obtener y parsear el JSON:", error);
@@ -72,35 +79,36 @@ function showHTMLArray({
 
   eventHTML.innerHTML = `
         <div class="codersData">
-          <img class="profilePhoto" src="${coder.photo}">
 
-          <div class="codersData-text">
-            <p><b>${coder.name}</b></p>
-            <p class="pClan">${coder.clan}</p>
-          </div>
-        </div>
+            <img class="profilePhoto" src="${coder.photo}">
 
-        <hr class="line">
-
-        <div class="buttons">
-          <button class="delete-appointment">Eliminar cita</button>
-          <button class="update-appointment">Reagendar cita</button>
-        </div>
-        
-        <hr class="line">
-
-        <div class="eventsData">
-          <div class="eventsDate">
-            <h3> <span class="dayOfWeek">${dayOfWeek}</span> <span class="formattedDate">${formattedDate}</span></h3>
-            <h4><b>${startTime} - ${endTime}</b></h4>
+            <div class="codersData-text">
+              <p><b>${coder.name}</b></p>
+              <p class="pClan">${coder.clan}</p>
+            </div>
           </div>
 
-          <hr class="line lineEvents">
+          <hr class="line">
 
-          <div class="reason">
-            <p class="reasonText">Motivo</p>
-            <p><b>${reason}</b></p>
+          <div class="buttons">
+            <button class="delete-appointment">Eliminar cita</button>
+            <button class="update-appointment">Reagendar cita</button>
           </div>
+          
+          <hr class="line">
+
+          <div class="eventsData">
+            <div class="eventsDate">
+              <h3> <span class="dayOfWeek">${dayOfWeek}</span> <span class="formattedDate">${formattedDate}</span></h3>
+              <h4><b>${startTime} - ${endTime}</b></h4>
+            </div>
+
+            <hr class="line lineEvents">
+
+            <div class="reason">
+              <p class="reasonText">Motivo</p>
+              <p><b>${reason}</b></p>
+            </div>
         </div>
     `;
 

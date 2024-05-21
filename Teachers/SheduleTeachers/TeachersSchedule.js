@@ -1,4 +1,4 @@
-import { URL_APPOINTMENTS } from '../../General/apiConnection/URLS.js';
+import { URL_APPOINTMENTS, URL_PSYCHOLOGISTS } from '../../General/apiConnection/URLS.js';
 
 
 /* ------------CALENDAR----------------- */
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
       });
     }
-    , 
+    ,
   });
   calendar.render();
 
@@ -82,19 +82,19 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 });
 
-  /* Se selecciona el form */
-  const eventFormTeacher = document.getElementById("eventFormTeacher");
-  /* un evento que escucha el envio del formulario  */
-  eventFormTeacher.addEventListener("submit", async function (e) {
-    /* Previene el comportamiento predeterminado del formulario, que es recargar la página cuando se envía. */
-    e.preventDefault();
-    /* Obtener valores de los inputs del formulario */
-    const eventDate = document.getElementById("eventDate").value;
-    const startTime = document.getElementById("starTime").value;
-    const endTime = document.getElementById("endTime").value;
-    /* Formatea la hora para que coincida con el formato esperado en el calendar (añadiendo ":00" al final) */
-    const formattedStartTime = `${eventDate}T${startTime}:00`;
-    const formattedEndTime = `${eventDate}T${endTime}:00`;
+/* Se selecciona el form */
+const eventFormTeacher = document.getElementById("eventFormTeacher");
+/* un evento que escucha el envio del formulario  */
+eventFormTeacher.addEventListener("submit", async function (e) {
+  /* Previene el comportamiento predeterminado del formulario, que es recargar la página cuando se envía. */
+  e.preventDefault();
+  /* Obtener valores de los inputs del formulario */
+  const eventDate = document.getElementById("eventDate").value;
+  const startTime = document.getElementById("starTime").value;
+  const endTime = document.getElementById("endTime").value;
+  /* Formatea la hora para que coincida con el formato esperado en el calendar (añadiendo ":00" al final) */
+  const formattedStartTime = `${eventDate}T${startTime}:00`;
+  const formattedEndTime = `${eventDate}T${endTime}:00`;
 
 
   // Formatea la fecha y hora para comparación
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     try {
       // Obtén todos los eventos en el calendario
       const allEvents = calendar.getEvents();
-  
+
       // Verifica si hay alguna superposición con el nuevo bloque de horario
       const overlapping = allEvents.some(event => {
         const eventStartMoment = moment(event.start);
@@ -118,9 +118,9 @@ document.addEventListener("DOMContentLoaded", async function () {
           (eventStartMoment.isSame(moment(formattedStartTime)) && eventEndMoment.isSame(moment(formattedEndTime)))
         );
       });
-  
+
       if (!overlapping) {
-      const psychologistLoggedIn = localStorage.getItem("psychologist");
+        const psychologistLoggedIn = localStorage.getItem("userId");
 
         const newEvent = {
           title: 'Bloqueado',
@@ -129,9 +129,12 @@ document.addEventListener("DOMContentLoaded", async function () {
           reason: 'Bloqueado',
           date: eventDate,
           time: `${startTime} - ${endTime}`,
-          pyschologistId: psychologistLoggedIn
+          pyschologistId: psychologistLoggedIn,
+          coderId: "664b8230ff3a8b793dcc7e43"
         };
-  
+
+        console.log(newEvent);
+
         // Envia el nuevo evento al servidor
         const response = await fetch(URL_APPOINTMENTS, {
           method: "POST",
@@ -140,7 +143,7 @@ document.addEventListener("DOMContentLoaded", async function () {
           },
           body: JSON.stringify(newEvent),
         });
-  
+
         if (response.ok) {
           calendar.refetchEvents();
           eventFormTeacher.reset();
@@ -170,8 +173,8 @@ document.addEventListener("DOMContentLoaded", async function () {
       icon: "warning"
     });
   }
-  
-  });
+
+});
 
 // iniciamos la funcion con dos parámetros: calendar (la instancia del calendario FullCalendar) y startTime (el momento de inicio del intervalo de tiempo que se va a verificar).
 export async function isTimeSlotOccupied(calendar, startTime) {
@@ -206,25 +209,30 @@ export async function isTimeSlotOccupied(calendar, startTime) {
 // funcion para obtener events de la base de datos data.json que esta guardada en el json-server
 export async function fetchEventsFromServer(info, successCallback, failureCallback) {
   try {
-     // Determina el tipo de vista
-     const isStudentView = document.body.classList.contains('student-view');
+    // Determina el tipo de vista
+    const isStudentView = document.body.classList.contains('student-view');
     // Realizar una solicitud (fetch) a la URL del servidor que contiene los eventos
-    const response = await fetch(URL_APPOINTMENTS);
+    const response = await fetch(URL_PSYCHOLOGISTS);
     // Verifica si la solicitud fue exitosa (código de estado 200)
     if (response.ok) {
       // Si la respuesta fue exitosa, convierte el cuerpo de la respuesta a formato JSON
-      const events = await response.json();
+      const data = await response.json();
+      const psychologists = data.content;
+      for (let i = 0; i < psychologists.length; i++) {
+        const psicologaId = psychologists[i]._id;
+        if (psicologaId == localStorage.getItem("userId")) {
+          const appointments = psychologists[i].appointments;
+          // Procesa los eventos según el tipo de vista
+          const processedEvents = isStudentView
+            ? appointments.map(event => ({ ...event, title: 'Reservado' }))
+            : appointments;
 
-    
-       // Procesa los eventos según el tipo de vista
-       const processedEvents = isStudentView
-       ? events.content.map(event => ({ ...event, title: 'Reservado' }))
-       : events.content;
+          console.log(processedEvents);
 
-       console.log(processedEvents);
-
-      // Llama a la función de retorno de éxito (successCallback) y pasa los eventos
-      successCallback(processedEvents);
+          // Llama a la función de retorno de éxito (successCallback) y pasa los eventos
+          successCallback(processedEvents);
+        }
+      }
     } else {
       // Si la respuesta no es exitosa, imprime un mensaje de error en la consola
       console.error('Error al obtener eventos desde el servidor:', response.status);
