@@ -52,15 +52,17 @@
     flex-direction: row;
     align-items: center;
     gap: 5%;
+    background-size: cover;
+    height:     200px;
 }
 
 .profilePhoto{
-
-    width: 32%;
+    width: 100px;
     height: 100px;
     align-self: center;
-    border-radius: 500%;
+    border-radius: 50%;
     background-position: center;
+    object-fit: cover;
 }
 
 .titleEvent{
