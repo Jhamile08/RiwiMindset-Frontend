@@ -1,53 +1,47 @@
-//Generamos una url base
-const urlBase = "http://localhost:4002/";
+import { URL_CODERS } from "../../General/apiConnection/URLS.js";
+
 // Seleccionamos el contenedor principal donde vamos a inyectars los coders
 let inyeccionCoders = document.querySelector("#container-users");
 //Funcion que obtiene los datos desde el archivo json
-async function getStudent() {
-  const response = await fetch(`${urlBase}students`);
+async function getCoder() {
+  const response = await fetch(URL_CODERS);
   const data = response.json();
   return data;
 };
 
 let studentsInjected = [];
 
-async function renderStudents() {
-  const students = await getStudent();
+async function renderCoders() {
+  const coders = await getCoder();
   inyeccionCoders.innerHTML = '';
-  students.forEach(student => {
+  coders.content.forEach(coder => {
     inyeccionCoders.innerHTML += `
         <div class="estudents actualizar">
-            <p id="">${student.nombre} </p>
-            <p class="borrar" id="nombre">${student.nombre} ${student.clan}</p> 
-            <p id="">${student.clan} </p>
-            <a href="/Teachers/UserTeacher/Registrer/IndexTeachersUsers-register.html" type="submit" id="${student.id}" class= "actualizar">ver perfil</a>
-            <img src="${student.foto}" alt="" id="foto"></img>
+            <p id="">${coder.name} </p>
+            <p class="borrar" id="nombre">${coder.name} ${coder.clan}</p> 
+            <p id="">${coder.clan} </p>
+            <a href="/Teachers/UserTeacher/Registrer/IndexTeachersUsers-register.html" type="submit" id="${coder._id}" class= "actualizar">ver perfil</a>
+            <img src="${coder.photo}" alt="" id="foto"></img>
         </div>
         `
   });
 
-  students.forEach((student) => {
+  coders.content.forEach((coder) => {
 
     const {
       id,
       clan,
-      foto,
-      nombre,
-      edad,
-      recomendaciones,
-      observaciones,
-      fecha,
-    } = student;
+      photo,
+      name,
+      dateborn,
+    } = coder;
 
     const data = {
       clan,
       id,
-      foto,
-      nombre,
-      edad,
-      recomendaciones,
-      observaciones,
-      fecha,
+      photo,
+      name,
+      dateborn,
     };
 
     studentsInjected.push(data);
@@ -77,8 +71,9 @@ function nombre(apellido) {
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("actualizar")) {
     const studentId = e.target.getAttribute("id");
+    console.log(studentId);
     localStorage.setItem("selectedStudentId", studentId); // Almacenar ID del estudiante seleccionado
   }
 });
 
-renderStudents();
+renderCoders();
